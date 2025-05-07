@@ -4,6 +4,7 @@
 
 **DateWise is a lightweight, high-performance date utility library for JavaScript and TypeScript. Designed with minimal bundle size and developer productivity in mind, it provides essential date operations without the bloat of full-featured date libraries.**
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/19bff778386b42779ffa07b61171420e)](https://app.codacy.com/gh/Fintector/date-wise?utm_source=github.com&utm_medium=referral&utm_content=Fintector/date-wise&utm_campaign=Badge_Grade)
 [![npm version](https://img.shields.io/npm/v/datewise.svg)](https://www.npmjs.com/package/datewise)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/datewise)](https://bundlephobia.com/package/datewise)
 [![Downloads](https://img.shields.io/npm/dm/datewise.svg)](https://www.npmjs.com/package/datewise)
