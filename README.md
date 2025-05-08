@@ -6,10 +6,10 @@
 
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/19bff778386b42779ffa07b61171420e)](https://app.codacy.com/gh/Fintector/date-wise?utm_source=github.com&utm_medium=referral&utm_content=Fintector/date-wise&utm_campaign=Badge_Grade)
-[![npm version](https://img.shields.io/npm/v/chrono-utilz.svg)](https://www.npmjs.com/package/chrono-utilz)
+[![npm version](https://img.shields.io/npm/v/@mfuon2/chrono-utilz.svg)](https://www.npmjs.com/package/chrono-utilz)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/@mfuon2/chrono-utilz)](https://bundlephobia.com/package/@mfuon2/chrono-utilz)
 [![Downloads](https://img.shields.io/npm/dm/@mfuon2/chrono-utilz.svg)](https://www.npmjs.com/package/@mfuon2/chrono-utilz)
-[![License](https://img.shields.io/npm/l/chrono-utilz.svg)](https://github.com/Fintector/chrono-utilz/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/@mfuon2/chrono-utilz.svg)](https://github.com/mfuon2/chrono-utilz/blob/main/LICENSE.md)
 
 > 🌍 Designed for Node.js, modern browsers, and TypeScript-first projects.
 </div>
@@ -18,7 +18,7 @@
 
 Working with dates in JavaScript doesn't have to be complicated. ChronoUtilz provides a comprehensive set of utilities to make date manipulation simple, reliable, and lightweight.
 
-- **🪶 Lightweight** - Only ~3KB gzipped, no dependencies
+- **🪶 Lightweight** - ![Bundle Size](https://img.shields.io/bundlephobia/minzip/@mfuon2/chrono-utilz) gzipped, no dependencies
 - **⚡ Fast** - Optimized for performance
 - **🔧 Versatile** - Works in browsers, Node.js, and with TypeScript
 - **🌍 Timezone aware** - Proper handling of timezones
@@ -171,14 +171,14 @@ ChronoUtilz supports all modern browsers (Chrome, Firefox, Safari, Edge) and IE1
 ## Comparison with other libraries
 
 | Feature | ChronoUtilz | 
-|---------|----------|
-| Bundle size | ~3KB |
-| Dependencies | None |
-| Immutable | ✅ |
-| Tree-shaking | ✅ |
-| TypeScript | ✅ |
-| Timezone support | ✅ |
-| Modern focus | ✅ |
+|---------|-------------|
+| Bundle size | ~ ![Bundle Size](https://img.shields.io/bundlephobia/minzip/@mfuon2/chrono-utilz)          |
+| Dependencies | None        |
+| Immutable | ✅           |
+| Tree-shaking | ✅           |
+| TypeScript | ✅           |
+| Timezone support | ✅           |
+| Modern focus | ✅           |
 
 ## Contributing
 
