@@ -18,7 +18,7 @@
 
 Working with dates in JavaScript doesn't have to be complicated. ChronoUtilz provides a comprehensive set of utilities to make date manipulation simple, reliable, and lightweight.
 
-- **🪶 Lightweight** - Only ~3KB gzipped, no dependencies
+- **🪶 Lightweight** - ![Bundle Size](https://img.shields.io/bundlephobia/minzip/@mfuon2/chrono-utilz) gzipped, no dependencies
 - **⚡ Fast** - Optimized for performance
 - **🔧 Versatile** - Works in browsers, Node.js, and with TypeScript
 - **🌍 Timezone aware** - Proper handling of timezones
@@ -171,14 +171,14 @@ ChronoUtilz supports all modern browsers (Chrome, Firefox, Safari, Edge) and IE1
 ## Comparison with other libraries
 
 | Feature | ChronoUtilz | 
-|---------|----------|
-| Bundle size | ~3KB |
-| Dependencies | None |
-| Immutable | ✅ |
-| Tree-shaking | ✅ |
-| TypeScript | ✅ |
-| Timezone support | ✅ |
-| Modern focus | ✅ |
+|---------|-------------|
+| Bundle size | ~ ![Bundle Size](https://img.shields.io/bundlephobia/minzip/@mfuon2/chrono-utilz)          |
+| Dependencies | None        |
+| Immutable | ✅           |
+| Tree-shaking | ✅           |
+| TypeScript | ✅           |
+| Timezone support | ✅           |
+| Modern focus | ✅           |
 
 ## Contributing
 
