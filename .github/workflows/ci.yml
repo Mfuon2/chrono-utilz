@@ -89,19 +89,25 @@ jobs:
       - name: Build (Ensure output before publishing)
         run: npm run prepare
 
-      - name: Publish to npm
+      - name: ✅ Publish to npm
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # 📦 Publish to GitHub Packages
+      - name: Configure .npmrc for npm and GitHub
+        run: |
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+            echo "@mfuon2:registry=https://npm.pkg.github.com" >> ~/.npmrc
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+
       - name: Set up Node.js for GitHub Packages
         uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
           registry-url: 'https://npm.pkg.github.com/'
 
-      - name: Publish to GitHub Packages
-        run: npm publish
+
+      - name: 📦 Publish to GitHub Packages
+        run: npm publish --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
