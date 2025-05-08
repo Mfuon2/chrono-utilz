@@ -1,34 +1,26 @@
 {
   "stats": {
     "suites": 27,
-    "tests": 88,
-    "passes": 88,
+    "tests": 86,
+    "passes": 86,
     "pending": 0,
     "failures": 0,
-    "start": "2025-05-08T07:21:52.633Z",
-    "end": "2025-05-08T07:21:52.649Z",
-    "duration": 16
+    "start": "2025-05-08T08:12:20.112Z",
+    "end": "2025-05-08T08:12:20.127Z",
+    "duration": 15
   },
   "tests": [
     {
       "title": "should return a number for a valid Date object",
       "fullTitle": "ChronoUtilz getTimezoneOffset should return a number for a valid Date object",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
       "title": "should return correct offset compared to native Date object",
       "fullTitle": "ChronoUtilz getTimezoneOffset should return correct offset compared to native Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return correct offset for timestamp",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should return correct offset for timestamp",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
       "duration": 0,
       "currentRetry": 0,
@@ -182,7 +174,7 @@
       "title": "should add years",
       "fullTitle": "ChronoUtilz addTime should add years",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -238,7 +230,7 @@
       "title": "should return true when date is between start and end (inclusive)",
       "fullTitle": "ChronoUtilz isBetweenDates should return true when date is between start and end (inclusive)",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -275,14 +267,6 @@
       "err": {}
     },
     {
-      "title": "should return false for invalid dates",
-      "fullTitle": "ChronoUtilz isValidDate should return false for invalid dates",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
       "title": "should get start of day",
       "fullTitle": "ChronoUtilz startOf should get start of day",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
@@ -302,7 +286,7 @@
       "title": "should get start of year",
       "fullTitle": "ChronoUtilz startOf should get start of year",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -414,7 +398,7 @@
       "title": "should return a valid timezone format",
       "fullTitle": "ChronoUtilz getTimezoneString should return a valid timezone format",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -722,21 +706,13 @@
       "title": "should return a number for a valid Date object",
       "fullTitle": "ChronoUtilz getTimezoneOffset should return a number for a valid Date object",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
       "title": "should return correct offset compared to native Date object",
       "fullTitle": "ChronoUtilz getTimezoneOffset should return correct offset compared to native Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return correct offset for timestamp",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should return correct offset for timestamp",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
       "duration": 0,
       "currentRetry": 0,
@@ -890,7 +866,7 @@
       "title": "should add years",
       "fullTitle": "ChronoUtilz addTime should add years",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -946,7 +922,7 @@
       "title": "should return true when date is between start and end (inclusive)",
       "fullTitle": "ChronoUtilz isBetweenDates should return true when date is between start and end (inclusive)",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -983,14 +959,6 @@
       "err": {}
     },
     {
-      "title": "should return false for invalid dates",
-      "fullTitle": "ChronoUtilz isValidDate should return false for invalid dates",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
       "title": "should get start of day",
       "fullTitle": "ChronoUtilz startOf should get start of day",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
@@ -1010,7 +978,7 @@
       "title": "should get start of year",
       "fullTitle": "ChronoUtilz startOf should get start of year",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -1122,7 +1090,7 @@
       "title": "should return a valid timezone format",
       "fullTitle": "ChronoUtilz getTimezoneString should return a valid timezone format",
       "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },

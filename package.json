@@ -1,7 +1,7 @@
 {
   "name": "@mfuon2/chrono-utilz",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "version": "1.0.5",
   "description": "A lightweight, high-performance date utility library for JavaScript and TypeScript",
