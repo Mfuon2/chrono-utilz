@@ -70,7 +70,7 @@ jobs:
 
     environment:
       name: npm-publish
-      url: https://www.npmjs.com/package/chrono-utilz
+      url: https://www.npmjs.com/package/@mfuon2/chrono-utilz
 
     steps:
       - uses: actions/checkout@v3
