@@ -62,12 +62,11 @@ jobs:
       - name: Build
         run: npm run prepublishOnly
 
-  publish:
+  publish-npm-registry:
     runs-on: ubuntu-latest
     name: Publish to npm
     needs: build
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
-
     environment:
       name: npm-publish
       url: https://www.npmjs.com/package/@mfuon2/chrono-utilz
@@ -75,7 +74,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node.js for npm
         uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
@@ -86,6 +85,10 @@ jobs:
           rm -rf node_modules package-lock.json
           npm install
 
+      - name: Configure .npmrc for npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Build (Ensure output before publishing)
         run: npm run prepare
 
@@ -94,11 +97,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Configure .npmrc for npm and GitHub
-        run: |
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-            echo "@mfuon2:registry=https://npm.pkg.github.com" >> ~/.npmrc
-            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+  publish-gh-registry:
+    runs-on: ubuntu-latest
+    name: Publish to GitHub Packages
+    needs: build
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js for GitHub Packages
         uses: actions/setup-node@v4
@@ -106,6 +112,18 @@ jobs:
           node-version: 22.14.0
           registry-url: 'https://npm.pkg.github.com/'
 
+      - name: Configure .npmrc for GitHub
+        run: |
+          echo "@mfuon2:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
+
+      - name: Build (Ensure output before publishing)
+        run: npm run prepare
 
       - name: 📦 Publish to GitHub Packages
         run: npm publish --registry=https://npm.pkg.github.com
