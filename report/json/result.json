@@ -1,699 +1,571 @@
 {
   "stats": {
-    "suites": 27,
-    "tests": 86,
-    "passes": 86,
+    "suites": 20,
+    "tests": 70,
+    "passes": 70,
     "pending": 0,
     "failures": 0,
-    "start": "2025-05-08T08:12:20.112Z",
-    "end": "2025-05-08T08:12:20.127Z",
-    "duration": 15
+    "start": "2025-09-03T18:55:47.927Z",
+    "end": "2025-09-03T18:55:47.951Z",
+    "duration": 24
   },
   "tests": [
     {
-      "title": "should return a number for a valid Date object",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should return a number for a valid Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should convert timezone from UTC to New York",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should convert timezone from UTC to New York",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 10,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should convert timezone with preserveTime option",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should convert timezone with preserveTime option",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should throw error for invalid date",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should throw error for invalid date",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return correct offset compared to native Date object",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should return correct offset compared to native Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"today\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"today\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw an error for invalid date string",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should throw an error for invalid date string",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"tomorrow\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"tomorrow\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse ISO date strings",
-      "fullTitle": "ChronoUtilz parseDate should parse ISO date strings",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"next friday\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"next friday\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse Date objects",
-      "fullTitle": "ChronoUtilz parseDate should parse Date objects",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"in 2 weeks\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"in 2 weeks\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse timestamps",
-      "fullTitle": "ChronoUtilz parseDate should parse timestamps",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"3 days ago\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"3 days ago\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse MM/DD/YYYY format",
-      "fullTitle": "ChronoUtilz parseDate should parse MM/DD/YYYY format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should return null for invalid expressions",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should return null for invalid expressions",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return null for invalid dates when throwError is false",
-      "fullTitle": "ChronoUtilz parseDate should return null for invalid dates when throwError is false",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should throw error in strict parsing mode",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should throw error in strict parsing mode",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw for invalid dates when throwError is true",
-      "fullTitle": "ChronoUtilz parseDate should throw for invalid dates when throwError is true",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate daily recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate daily recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return fallback for invalid dates",
-      "fullTitle": "ChronoUtilz parseDate should return fallback for invalid dates",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate weekly recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates as YYYY-MM-DD by default",
-      "fullTitle": "ChronoUtilz formatDate should format dates as YYYY-MM-DD by default",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate monthly recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate monthly recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates as MM/DD/YYYY",
-      "fullTitle": "ChronoUtilz formatDate should format dates as MM/DD/YYYY",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate quarterly recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate quarterly recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates as DD/MM/YYYY",
-      "fullTitle": "ChronoUtilz formatDate should format dates as DD/MM/YYYY",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should respect end date constraint",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should respect end date constraint",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates with time",
-      "fullTitle": "ChronoUtilz formatDate should format dates with time",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate weekdays only",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates with month names",
-      "fullTitle": "ChronoUtilz formatDate should format dates with month names",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should throw error for invalid start date",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should throw error for invalid start date",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format time only",
-      "fullTitle": "ChronoUtilz formatDate should format time only",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should compare dates with detailed breakdown",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Detailed Comparison should compare dates with detailed breakdown",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw for unsupported formats",
-      "fullTitle": "ChronoUtilz formatDate should throw for unsupported formats",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle same dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Detailed Comparison should handle same dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add days",
-      "fullTitle": "ChronoUtilz addTime should add days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should calculate advanced duration with default options",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate advanced duration with default options",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add months",
-      "fullTitle": "ChronoUtilz addTime should add months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should calculate duration with custom precision",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should handle month overflow",
-      "fullTitle": "ChronoUtilz addTime should handle month overflow",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should include zero values when requested",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should include zero values when requested",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add years",
-      "fullTitle": "ChronoUtilz addTime should add years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should calculate fiscal period with default config",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Fiscal Periods should calculate fiscal period with default config",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate fiscal period with custom config",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Fiscal Periods should calculate fiscal period with custom config",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate working hours between dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Working Hours should calculate working hours between dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should return 0 for end date before start date",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Working Hours should return 0 for end date before start date",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate weekly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate biweekly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate biweekly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate monthly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate monthly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate semimonthly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate semimonthly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate overtime for standard week",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Overtime Calculation should calculate overtime for standard week",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate double time when applicable",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Overtime Calculation should calculate double time when applicable",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should throw error for negative hours",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Overtime Calculation should throw error for negative hours",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate SLA compliance",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - SLA Compliance should calculate SLA compliance",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should format ISO with default options",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO with default options",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should format ISO date only",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO date only",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should format ISO without timezone",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO without timezone",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should parse ISO dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should parse ISO dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should parse natural language",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should parse natural language",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should return null for invalid input",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should return null for invalid input",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should handle empty input",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should handle empty input",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should get timezone information",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should get timezone information",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should handle UTC timezone",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should handle UTC timezone",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add hours, minutes, seconds",
-      "fullTitle": "ChronoUtilz addTime should add hours, minutes, seconds",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should return array of timezones",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone List should return array of timezones",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should subtract days",
-      "fullTitle": "ChronoUtilz subtractTime should subtract days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should humanize duration with default options",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Human Duration should humanize duration with default options",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should subtract months",
-      "fullTitle": "ChronoUtilz subtractTime should subtract months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle negative durations",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Human Duration should handle negative durations",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate difference in days",
-      "fullTitle": "ChronoUtilz getDateDiff should calculate difference in days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should format with short format",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Human Duration should format with short format",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate difference in months",
-      "fullTitle": "ChronoUtilz getDateDiff should calculate difference in months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle negative differences",
-      "fullTitle": "ChronoUtilz getDateDiff should handle negative differences",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return true when date is between start and end (inclusive)",
-      "fullTitle": "ChronoUtilz isBetweenDates should return true when date is between start and end (inclusive)",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle invalid dates gracefully",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid dates gracefully",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should consider boundary dates when inclusive is true",
-      "fullTitle": "ChronoUtilz isBetweenDates should consider boundary dates when inclusive is true",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle invalid timezone",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should not consider boundary dates when inclusive is false",
-      "fullTitle": "ChronoUtilz isBetweenDates should not consider boundary dates when inclusive is false",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should validate fiscal year config",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should validate fiscal year config",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return false when date is outside range",
-      "fullTitle": "ChronoUtilz isBetweenDates should return false when date is outside range",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle leap year dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Edge Cases should handle leap year dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return true for valid dates",
-      "fullTitle": "ChronoUtilz isValidDate should return true for valid dates",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle year boundaries",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Edge Cases should handle year boundaries",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get start of day",
-      "fullTitle": "ChronoUtilz startOf should get start of day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle month boundaries",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Edge Cases should handle month boundaries",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get start of month",
-      "fullTitle": "ChronoUtilz startOf should get start of month",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should return a complete configuration object",
+      "fullTitle": "Configuration Functions getConfigs should return a complete configuration object",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get start of year",
-      "fullTitle": "ChronoUtilz startOf should get start of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should get end of day",
-      "fullTitle": "ChronoUtilz endOf should get end of day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have correct date formats",
+      "fullTitle": "Configuration Functions getConfigs should have correct date formats",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get end of month",
-      "fullTitle": "ChronoUtilz endOf should get end of month",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have correct time units",
+      "fullTitle": "Configuration Functions getConfigs should have correct time units",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get end of year",
-      "fullTitle": "ChronoUtilz endOf should get end of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have comprehensive timezone list",
+      "fullTitle": "Configuration Functions getConfigs should have comprehensive timezone list",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate day of year",
-      "fullTitle": "ChronoUtilz getDayOfYear should calculate day of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have natural language expressions",
+      "fullTitle": "Configuration Functions getConfigs should have natural language expressions",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should handle leap years",
-      "fullTitle": "ChronoUtilz getDayOfYear should handle leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have recurring patterns",
+      "fullTitle": "Configuration Functions getConfigs should have recurring patterns",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate week of year",
-      "fullTitle": "ChronoUtilz getWeekOfYear should calculate week of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have business day configuration",
+      "fullTitle": "Configuration Functions getConfigs should have business day configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should identify leap years",
-      "fullTitle": "ChronoUtilz isLeapYear should identify leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have holiday configuration",
+      "fullTitle": "Configuration Functions getConfigs should have holiday configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should identify non-leap years",
-      "fullTitle": "ChronoUtilz isLeapYear should identify non-leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have locale configuration",
+      "fullTitle": "Configuration Functions getConfigs should have locale configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should work with date objects",
-      "fullTitle": "ChronoUtilz isLeapYear should work with date objects",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have working time defaults",
+      "fullTitle": "Configuration Functions getConfigs should have working time defaults",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should convert a local Date to UTC equivalent",
-      "fullTitle": "ChronoUtilz toUTC should convert a local Date to UTC equivalent",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have payroll frequencies",
+      "fullTitle": "Configuration Functions getConfigs should have payroll frequencies",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should accept string date inputs",
-      "fullTitle": "ChronoUtilz toUTC should accept string date inputs",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have seasonal configuration",
+      "fullTitle": "Configuration Functions getConfigs should have seasonal configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw if invalid date is provided",
-      "fullTitle": "ChronoUtilz toUTC should throw if invalid date is provided",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have format tokens with descriptions",
+      "fullTitle": "Configuration Functions getConfigs should have format tokens with descriptions",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return a string starting with \"UTC\"",
-      "fullTitle": "ChronoUtilz getTimezoneString should return a string starting with \"UTC\"",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have fiscal year defaults",
+      "fullTitle": "Configuration Functions getConfigs should have fiscal year defaults",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return a valid timezone format",
-      "fullTitle": "ChronoUtilz getTimezoneString should return a valid timezone format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have overtime configuration",
+      "fullTitle": "Configuration Functions getConfigs should have overtime configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should reflect correct offset from Date object",
-      "fullTitle": "ChronoUtilz getTimezoneString should reflect correct offset from Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should reflect dynamic business day configuration changes",
+      "fullTitle": "Configuration Functions getConfigs should reflect dynamic business day configuration changes",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return a Date object",
-      "fullTitle": "ChronoUtilz utcNow should return a Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should be approximately equal to current UTC time",
-      "fullTitle": "ChronoUtilz utcNow should be approximately equal to current UTC time",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create a valid date for year, month, and day",
-      "fullTitle": "ChronoUtilz createDate should create a valid date for year, month, and day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should default time components to zero if not provided",
-      "fullTitle": "ChronoUtilz createDate should default time components to zero if not provided",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create a valid date with full time components",
-      "fullTitle": "ChronoUtilz createDate should create a valid date with full time components",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if month is less than 0",
-      "fullTitle": "ChronoUtilz createDate should throw if month is less than 0",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if month is greater than 11",
-      "fullTitle": "ChronoUtilz createDate should throw if month is greater than 11",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if date is invalid (e.g., April 31)",
-      "fullTitle": "ChronoUtilz createDate should throw if date is invalid (e.g., April 31)",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if components result in an invalid date (e.g., Feb 30)",
-      "fullTitle": "ChronoUtilz createDate should throw if components result in an invalid date (e.g., Feb 30)",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should allow Feb 29 on a leap year",
-      "fullTitle": "ChronoUtilz createDate should allow Feb 29 on a leap year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should get correct days for 30-day months",
-      "fullTitle": "ChronoUtilz getDaysInMonth should get correct days for 30-day months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should get correct days for 31-day months",
-      "fullTitle": "ChronoUtilz getDaysInMonth should get correct days for 31-day months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle February in leap and non-leap years",
-      "fullTitle": "ChronoUtilz getDaysInMonth should handle February in leap and non-leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format future times",
-      "fullTitle": "ChronoUtilz getRelativeTime should format future times",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format past times",
-      "fullTitle": "ChronoUtilz getRelativeTime should format past times",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle just now",
-      "fullTitle": "ChronoUtilz getRelativeTime should handle just now",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle longer time periods",
-      "fullTitle": "ChronoUtilz getRelativeTime should handle longer time periods",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create from year, month, day",
-      "fullTitle": "ChronoUtilz CalendarDate should create from year, month, day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should convert to Date object",
-      "fullTitle": "ChronoUtilz CalendarDate should convert to Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create from Date object",
-      "fullTitle": "ChronoUtilz CalendarDate should create from Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should compare dates correctly",
-      "fullTitle": "ChronoUtilz CalendarDate should compare dates correctly",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should add time",
-      "fullTitle": "ChronoUtilz CalendarDate should add time",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should check equality",
-      "fullTitle": "ChronoUtilz CalendarDate should check equality",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should validate YYYY-MM-DD format",
-      "fullTitle": "ChronoUtilz validateDateFormat should validate YYYY-MM-DD format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should validate MM/DD/YYYY format",
-      "fullTitle": "ChronoUtilz validateDateFormat should validate MM/DD/YYYY format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should validate time formats",
-      "fullTitle": "ChronoUtilz validateDateFormat should validate time formats",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should generate a daily inclusive date range",
-      "fullTitle": "ChronoUtilz generateDateRange should generate a daily inclusive date range",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw for invalid range",
-      "fullTitle": "ChronoUtilz generateDateRange should throw for invalid range",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format duration in long format by default",
-      "fullTitle": "ChronoUtilz formatDuration should format duration in long format by default",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format duration in short format",
-      "fullTitle": "ChronoUtilz formatDuration should format duration in short format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle 0 ms",
-      "fullTitle": "ChronoUtilz formatDuration should handle 0 ms",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return correct quarter",
-      "fullTitle": "ChronoUtilz getQuarter should return correct quarter",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw on invalid date",
-      "fullTitle": "ChronoUtilz getQuarter should throw on invalid date",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should count weekdays excluding weekends and holidays",
-      "fullTitle": "ChronoUtilz getBusinessDays should count weekdays excluding weekends and holidays",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return age in years",
-      "fullTitle": "ChronoUtilz calculateAge should return age in years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return detailed age in years, months, and days",
-      "fullTitle": "ChronoUtilz calculateAge should return detailed age in years, months, and days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should reflect dynamic holiday configuration changes",
+      "fullTitle": "Configuration Functions getConfigs should reflect dynamic holiday configuration changes",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
@@ -703,689 +575,561 @@
   "failures": [],
   "passes": [
     {
-      "title": "should return a number for a valid Date object",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should return a number for a valid Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should convert timezone from UTC to New York",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should convert timezone from UTC to New York",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 10,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should convert timezone with preserveTime option",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should convert timezone with preserveTime option",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should throw error for invalid date",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should throw error for invalid date",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return correct offset compared to native Date object",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should return correct offset compared to native Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"today\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"today\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw an error for invalid date string",
-      "fullTitle": "ChronoUtilz getTimezoneOffset should throw an error for invalid date string",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"tomorrow\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"tomorrow\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse ISO date strings",
-      "fullTitle": "ChronoUtilz parseDate should parse ISO date strings",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"next friday\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"next friday\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse Date objects",
-      "fullTitle": "ChronoUtilz parseDate should parse Date objects",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"in 2 weeks\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"in 2 weeks\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse timestamps",
-      "fullTitle": "ChronoUtilz parseDate should parse timestamps",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should parse \"3 days ago\"",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should parse \"3 days ago\"",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should parse MM/DD/YYYY format",
-      "fullTitle": "ChronoUtilz parseDate should parse MM/DD/YYYY format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should return null for invalid expressions",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should return null for invalid expressions",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return null for invalid dates when throwError is false",
-      "fullTitle": "ChronoUtilz parseDate should return null for invalid dates when throwError is false",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should throw error in strict parsing mode",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Natural Language Parsing should throw error in strict parsing mode",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw for invalid dates when throwError is true",
-      "fullTitle": "ChronoUtilz parseDate should throw for invalid dates when throwError is true",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate daily recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate daily recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return fallback for invalid dates",
-      "fullTitle": "ChronoUtilz parseDate should return fallback for invalid dates",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate weekly recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates as YYYY-MM-DD by default",
-      "fullTitle": "ChronoUtilz formatDate should format dates as YYYY-MM-DD by default",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate monthly recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate monthly recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates as MM/DD/YYYY",
-      "fullTitle": "ChronoUtilz formatDate should format dates as MM/DD/YYYY",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate quarterly recurring dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate quarterly recurring dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates as DD/MM/YYYY",
-      "fullTitle": "ChronoUtilz formatDate should format dates as DD/MM/YYYY",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should respect end date constraint",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should respect end date constraint",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates with time",
-      "fullTitle": "ChronoUtilz formatDate should format dates with time",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should generate weekdays only",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format dates with month names",
-      "fullTitle": "ChronoUtilz formatDate should format dates with month names",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should throw error for invalid start date",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should throw error for invalid start date",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should format time only",
-      "fullTitle": "ChronoUtilz formatDate should format time only",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should compare dates with detailed breakdown",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Detailed Comparison should compare dates with detailed breakdown",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw for unsupported formats",
-      "fullTitle": "ChronoUtilz formatDate should throw for unsupported formats",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle same dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Detailed Comparison should handle same dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add days",
-      "fullTitle": "ChronoUtilz addTime should add days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should calculate advanced duration with default options",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate advanced duration with default options",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add months",
-      "fullTitle": "ChronoUtilz addTime should add months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should calculate duration with custom precision",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should handle month overflow",
-      "fullTitle": "ChronoUtilz addTime should handle month overflow",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should include zero values when requested",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should include zero values when requested",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add years",
-      "fullTitle": "ChronoUtilz addTime should add years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should calculate fiscal period with default config",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Fiscal Periods should calculate fiscal period with default config",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate fiscal period with custom config",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Fiscal Periods should calculate fiscal period with custom config",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate working hours between dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Working Hours should calculate working hours between dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should return 0 for end date before start date",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Working Hours should return 0 for end date before start date",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate weekly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate biweekly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate biweekly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate monthly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate monthly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should generate semimonthly payroll periods",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate semimonthly payroll periods",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate overtime for standard week",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Overtime Calculation should calculate overtime for standard week",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate double time when applicable",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Overtime Calculation should calculate double time when applicable",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should throw error for negative hours",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Overtime Calculation should throw error for negative hours",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should calculate SLA compliance",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - SLA Compliance should calculate SLA compliance",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should format ISO with default options",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO with default options",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should format ISO date only",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO date only",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should format ISO without timezone",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO without timezone",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should parse ISO dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should parse ISO dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should parse natural language",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should parse natural language",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should return null for invalid input",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should return null for invalid input",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should handle empty input",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should handle empty input",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should get timezone information",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should get timezone information",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should handle UTC timezone",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should handle UTC timezone",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should add hours, minutes, seconds",
-      "fullTitle": "ChronoUtilz addTime should add hours, minutes, seconds",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should return array of timezones",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone List should return array of timezones",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should subtract days",
-      "fullTitle": "ChronoUtilz subtractTime should subtract days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should humanize duration with default options",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Human Duration should humanize duration with default options",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should subtract months",
-      "fullTitle": "ChronoUtilz subtractTime should subtract months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle negative durations",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Human Duration should handle negative durations",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate difference in days",
-      "fullTitle": "ChronoUtilz getDateDiff should calculate difference in days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should format with short format",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Human Duration should format with short format",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate difference in months",
-      "fullTitle": "ChronoUtilz getDateDiff should calculate difference in months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle negative differences",
-      "fullTitle": "ChronoUtilz getDateDiff should handle negative differences",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return true when date is between start and end (inclusive)",
-      "fullTitle": "ChronoUtilz isBetweenDates should return true when date is between start and end (inclusive)",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle invalid dates gracefully",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid dates gracefully",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should consider boundary dates when inclusive is true",
-      "fullTitle": "ChronoUtilz isBetweenDates should consider boundary dates when inclusive is true",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle invalid timezone",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should not consider boundary dates when inclusive is false",
-      "fullTitle": "ChronoUtilz isBetweenDates should not consider boundary dates when inclusive is false",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should validate fiscal year config",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should validate fiscal year config",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return false when date is outside range",
-      "fullTitle": "ChronoUtilz isBetweenDates should return false when date is outside range",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle leap year dates",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Edge Cases should handle leap year dates",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return true for valid dates",
-      "fullTitle": "ChronoUtilz isValidDate should return true for valid dates",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle year boundaries",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Edge Cases should handle year boundaries",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get start of day",
-      "fullTitle": "ChronoUtilz startOf should get start of day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should handle month boundaries",
+      "fullTitle": "ChronoUtilz v2.0 - New Functions Edge Cases should handle month boundaries",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get start of month",
-      "fullTitle": "ChronoUtilz startOf should get start of month",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should return a complete configuration object",
+      "fullTitle": "Configuration Functions getConfigs should return a complete configuration object",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get start of year",
-      "fullTitle": "ChronoUtilz startOf should get start of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should get end of day",
-      "fullTitle": "ChronoUtilz endOf should get end of day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have correct date formats",
+      "fullTitle": "Configuration Functions getConfigs should have correct date formats",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get end of month",
-      "fullTitle": "ChronoUtilz endOf should get end of month",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have correct time units",
+      "fullTitle": "Configuration Functions getConfigs should have correct time units",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should get end of year",
-      "fullTitle": "ChronoUtilz endOf should get end of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have comprehensive timezone list",
+      "fullTitle": "Configuration Functions getConfigs should have comprehensive timezone list",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate day of year",
-      "fullTitle": "ChronoUtilz getDayOfYear should calculate day of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have natural language expressions",
+      "fullTitle": "Configuration Functions getConfigs should have natural language expressions",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should handle leap years",
-      "fullTitle": "ChronoUtilz getDayOfYear should handle leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have recurring patterns",
+      "fullTitle": "Configuration Functions getConfigs should have recurring patterns",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should calculate week of year",
-      "fullTitle": "ChronoUtilz getWeekOfYear should calculate week of year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have business day configuration",
+      "fullTitle": "Configuration Functions getConfigs should have business day configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should identify leap years",
-      "fullTitle": "ChronoUtilz isLeapYear should identify leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have holiday configuration",
+      "fullTitle": "Configuration Functions getConfigs should have holiday configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should identify non-leap years",
-      "fullTitle": "ChronoUtilz isLeapYear should identify non-leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have locale configuration",
+      "fullTitle": "Configuration Functions getConfigs should have locale configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should work with date objects",
-      "fullTitle": "ChronoUtilz isLeapYear should work with date objects",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have working time defaults",
+      "fullTitle": "Configuration Functions getConfigs should have working time defaults",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should convert a local Date to UTC equivalent",
-      "fullTitle": "ChronoUtilz toUTC should convert a local Date to UTC equivalent",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have payroll frequencies",
+      "fullTitle": "Configuration Functions getConfigs should have payroll frequencies",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should accept string date inputs",
-      "fullTitle": "ChronoUtilz toUTC should accept string date inputs",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have seasonal configuration",
+      "fullTitle": "Configuration Functions getConfigs should have seasonal configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should throw if invalid date is provided",
-      "fullTitle": "ChronoUtilz toUTC should throw if invalid date is provided",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have format tokens with descriptions",
+      "fullTitle": "Configuration Functions getConfigs should have format tokens with descriptions",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return a string starting with \"UTC\"",
-      "fullTitle": "ChronoUtilz getTimezoneString should return a string starting with \"UTC\"",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have fiscal year defaults",
+      "fullTitle": "Configuration Functions getConfigs should have fiscal year defaults",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return a valid timezone format",
-      "fullTitle": "ChronoUtilz getTimezoneString should return a valid timezone format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should have overtime configuration",
+      "fullTitle": "Configuration Functions getConfigs should have overtime configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should reflect correct offset from Date object",
-      "fullTitle": "ChronoUtilz getTimezoneString should reflect correct offset from Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should reflect dynamic business day configuration changes",
+      "fullTitle": "Configuration Functions getConfigs should reflect dynamic business day configuration changes",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
     {
-      "title": "should return a Date object",
-      "fullTitle": "ChronoUtilz utcNow should return a Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should be approximately equal to current UTC time",
-      "fullTitle": "ChronoUtilz utcNow should be approximately equal to current UTC time",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create a valid date for year, month, and day",
-      "fullTitle": "ChronoUtilz createDate should create a valid date for year, month, and day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should default time components to zero if not provided",
-      "fullTitle": "ChronoUtilz createDate should default time components to zero if not provided",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create a valid date with full time components",
-      "fullTitle": "ChronoUtilz createDate should create a valid date with full time components",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if month is less than 0",
-      "fullTitle": "ChronoUtilz createDate should throw if month is less than 0",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if month is greater than 11",
-      "fullTitle": "ChronoUtilz createDate should throw if month is greater than 11",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if date is invalid (e.g., April 31)",
-      "fullTitle": "ChronoUtilz createDate should throw if date is invalid (e.g., April 31)",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw if components result in an invalid date (e.g., Feb 30)",
-      "fullTitle": "ChronoUtilz createDate should throw if components result in an invalid date (e.g., Feb 30)",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should allow Feb 29 on a leap year",
-      "fullTitle": "ChronoUtilz createDate should allow Feb 29 on a leap year",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should get correct days for 30-day months",
-      "fullTitle": "ChronoUtilz getDaysInMonth should get correct days for 30-day months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should get correct days for 31-day months",
-      "fullTitle": "ChronoUtilz getDaysInMonth should get correct days for 31-day months",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle February in leap and non-leap years",
-      "fullTitle": "ChronoUtilz getDaysInMonth should handle February in leap and non-leap years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format future times",
-      "fullTitle": "ChronoUtilz getRelativeTime should format future times",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format past times",
-      "fullTitle": "ChronoUtilz getRelativeTime should format past times",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle just now",
-      "fullTitle": "ChronoUtilz getRelativeTime should handle just now",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle longer time periods",
-      "fullTitle": "ChronoUtilz getRelativeTime should handle longer time periods",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create from year, month, day",
-      "fullTitle": "ChronoUtilz CalendarDate should create from year, month, day",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should convert to Date object",
-      "fullTitle": "ChronoUtilz CalendarDate should convert to Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should create from Date object",
-      "fullTitle": "ChronoUtilz CalendarDate should create from Date object",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should compare dates correctly",
-      "fullTitle": "ChronoUtilz CalendarDate should compare dates correctly",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should add time",
-      "fullTitle": "ChronoUtilz CalendarDate should add time",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should check equality",
-      "fullTitle": "ChronoUtilz CalendarDate should check equality",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should validate YYYY-MM-DD format",
-      "fullTitle": "ChronoUtilz validateDateFormat should validate YYYY-MM-DD format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should validate MM/DD/YYYY format",
-      "fullTitle": "ChronoUtilz validateDateFormat should validate MM/DD/YYYY format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should validate time formats",
-      "fullTitle": "ChronoUtilz validateDateFormat should validate time formats",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should generate a daily inclusive date range",
-      "fullTitle": "ChronoUtilz generateDateRange should generate a daily inclusive date range",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw for invalid range",
-      "fullTitle": "ChronoUtilz generateDateRange should throw for invalid range",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format duration in long format by default",
-      "fullTitle": "ChronoUtilz formatDuration should format duration in long format by default",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should format duration in short format",
-      "fullTitle": "ChronoUtilz formatDuration should format duration in short format",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should handle 0 ms",
-      "fullTitle": "ChronoUtilz formatDuration should handle 0 ms",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return correct quarter",
-      "fullTitle": "ChronoUtilz getQuarter should return correct quarter",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should throw on invalid date",
-      "fullTitle": "ChronoUtilz getQuarter should throw on invalid date",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should count weekdays excluding weekends and holidays",
-      "fullTitle": "ChronoUtilz getBusinessDays should count weekdays excluding weekends and holidays",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return age in years",
-      "fullTitle": "ChronoUtilz calculateAge should return age in years",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "should return detailed age in years, months, and days",
-      "fullTitle": "ChronoUtilz calculateAge should return detailed age in years, months, and days",
-      "file": "/Users/mfuon/WebstormProjects/date-wise/tests/datewise.test.ts",
+      "title": "should reflect dynamic holiday configuration changes",
+      "fullTitle": "Configuration Functions getConfigs should reflect dynamic holiday configuration changes",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
       "err": {}
