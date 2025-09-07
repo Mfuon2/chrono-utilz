@@ -5,9 +5,9 @@
     "passes": 70,
     "pending": 0,
     "failures": 0,
-    "start": "2025-09-07T07:28:16.762Z",
-    "end": "2025-09-07T07:28:16.801Z",
-    "duration": 39
+    "start": "2025-09-07T08:02:40.722Z",
+    "end": "2025-09-07T08:02:40.763Z",
+    "duration": 41
   },
   "tests": [
     {
@@ -30,7 +30,7 @@
       "title": "should throw error for invalid date",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should throw error for invalid date",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -102,7 +102,7 @@
       "title": "should generate weekly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -110,7 +110,7 @@
       "title": "should generate monthly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate monthly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -134,7 +134,7 @@
       "title": "should generate weekdays only",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -142,7 +142,7 @@
       "title": "should throw error for invalid start date",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should throw error for invalid start date",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -174,7 +174,7 @@
       "title": "should calculate duration with custom precision",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -222,7 +222,7 @@
       "title": "should generate weekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 14,
+      "duration": 15,
       "currentRetry": 0,
       "err": {}
     },
@@ -238,7 +238,7 @@
       "title": "should generate monthly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate monthly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -286,7 +286,7 @@
       "title": "should format ISO with default options",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO with default options",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -326,7 +326,7 @@
       "title": "should return null for invalid input",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should return null for invalid input",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -398,7 +398,7 @@
       "title": "should handle invalid timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -454,7 +454,7 @@
       "title": "should have correct time units",
       "fullTitle": "Configuration Functions getConfigs should have correct time units",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -594,7 +594,7 @@
       "title": "should throw error for invalid date",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should throw error for invalid date",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -666,7 +666,7 @@
       "title": "should generate weekly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -674,7 +674,7 @@
       "title": "should generate monthly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate monthly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -698,7 +698,7 @@
       "title": "should generate weekdays only",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -706,7 +706,7 @@
       "title": "should throw error for invalid start date",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should throw error for invalid start date",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -738,7 +738,7 @@
       "title": "should calculate duration with custom precision",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -786,7 +786,7 @@
       "title": "should generate weekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 14,
+      "duration": 15,
       "currentRetry": 0,
       "err": {}
     },
@@ -802,7 +802,7 @@
       "title": "should generate monthly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate monthly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -850,7 +850,7 @@
       "title": "should format ISO with default options",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO with default options",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -890,7 +890,7 @@
       "title": "should return null for invalid input",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Smart Parsing should return null for invalid input",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -962,7 +962,7 @@
       "title": "should handle invalid timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -1018,7 +1018,7 @@
       "title": "should have correct time units",
       "fullTitle": "Configuration Functions getConfigs should have correct time units",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
