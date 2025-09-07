@@ -22,6 +22,9 @@
 // Import holiday configuration
 import { holidays } from './holidays';
 
+// Import locale configuration
+import { STANDARD_LOCALES, LOCALES_BY_REGION } from './locales';
+
 // Import timezone utilities
 import { 
     TIMEZONE_IDS, 
@@ -5600,7 +5603,7 @@ export interface ChronoUtilzConfig {
         availableHolidayRules: Record<string, Array<{name: string, date: string, type: string}>>;
     };
     locales: {
-        popular: string[];
+        standard: readonly string[];
         regions: Record<string, string[]>;
     };
     workingTimeDefaults: {
@@ -5773,38 +5776,8 @@ export function getConfigs(): ChronoUtilzConfig {
         },
         
         locales: {
-            popular: [
-                'en-US',    // English (United States)
-                'en-GB',    // English (United Kingdom)
-                'es-ES',    // Spanish (Spain)
-                'fr-FR',    // French (France)
-                'de-DE',    // German (Germany)
-                'it-IT',    // Italian (Italy)
-                'pt-BR',    // Portuguese (Brazil)
-                'ja-JP',    // Japanese (Japan)
-                'ko-KR',    // Korean (South Korea)
-                'zh-CN',    // Chinese (Simplified)
-                'zh-TW',    // Chinese (Traditional)
-                'ru-RU',    // Russian (Russia)
-                'ar-SA',    // Arabic (Saudi Arabia)
-                'hi-IN',    // Hindi (India)
-                'th-TH',    // Thai (Thailand)
-                'tr-TR',    // Turkish (Turkey)
-                'pl-PL',    // Polish (Poland)
-                'nl-NL',    // Dutch (Netherlands)
-                'sv-SE',    // Swedish (Sweden)
-                'da-DK',    // Danish (Denmark)
-                'no-NO',    // Norwegian (Norway)
-                'fi-FI'     // Finnish (Finland)
-            ],
-            regions: {
-                'North America': ['en-US', 'en-CA', 'es-MX', 'fr-CA'],
-                'Europe': ['en-GB', 'fr-FR', 'de-DE', 'it-IT', 'es-ES', 'pt-PT', 'nl-NL', 'sv-SE', 'da-DK', 'no-NO', 'fi-FI', 'pl-PL', 'ru-RU'],
-                'Asia': ['ja-JP', 'ko-KR', 'zh-CN', 'zh-TW', 'hi-IN', 'th-TH', 'id-ID', 'vi-VN', 'ms-MY'],
-                'South America': ['pt-BR', 'es-AR', 'es-CO', 'es-CL', 'es-PE'],
-                'Africa': ['ar-SA', 'ar-EG', 'sw-KE', 'af-ZA'],
-                'Oceania': ['en-AU', 'en-NZ']
-            }
+            standard: STANDARD_LOCALES,
+            regions: LOCALES_BY_REGION
         },
         
         workingTimeDefaults: {
