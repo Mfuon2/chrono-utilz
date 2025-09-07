@@ -4,7 +4,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "sideEffects": false,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A comprehensive date utility library built on Three Pillars Architecture: Core Operations (45+ functions), Business Utilities (55+ functions), and Formatting & Parsing (35+ functions). Features natural language parsing, timezone conversion, fiscal periods, working days, and advanced business logic.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
