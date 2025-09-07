@@ -20,21 +20,18 @@
  */
 
 // Import holiday configuration
-const { holidays } = require('./holidays');
+import { holidays } from './holidays';
 
 // Import timezone utilities
 import { 
-    TIMEZONES, 
     TIMEZONE_IDS, 
     getUserTimezone, 
     getTimezoneInfo as getTimezoneInfoFromDB, 
-    getTimezoneOffset as getTzOffset, 
-    convertTimezone as convertTz, 
-    DEFAULT_TIMEZONE_CONFIG 
+    getTimezoneOffset as getTzOffset
 } from './timezones';
 
 // Global configuration for ChronoUtilz
-let globalTimezoneConfig = {
+const globalTimezoneConfig = {
     defaultTimezone: getUserTimezone(),
     autoDetect: true
 };
@@ -426,8 +423,7 @@ export class ChronoUtilzError extends Error {
  * @throws {ChronoUtilzError} If the date is invalid and throwError is true
  */
 export function parseDate(input: string | number | Date, options: DateParseOptions = {}): Date | null {
-    const { throwError = false, fallback = null, timezone } = options;
-    const effectiveTimezone = getEffectiveTimezone(timezone);
+    const { throwError = false, fallback = null } = options;
 
     try {
         if (input instanceof Date) {
@@ -636,8 +632,6 @@ export function addTime(
         throw new ChronoUtilzError('Invalid date provided to addTime');
     }
 
-    // Get current timezone offset to maintain consistency
-    const currentOffset = getTzOffset(targetTimezone, safeDate);
     const result = new Date(safeDate.getTime());
 
     switch (unit) {
@@ -5766,7 +5760,7 @@ export function getConfigs(): ChronoUtilzConfig {
             availableHolidayRules: (() => {
                 const rules: Record<string, Array<{name: string, date: string, type: string}>> = {};
                 for (const countryCode in holidays) {
-                    if (holidays.hasOwnProperty(countryCode)) {
+                    if (Object.prototype.hasOwnProperty.call(holidays, countryCode)) {
                         rules[countryCode] = holidays[countryCode].holidays.map((holiday: any) => ({
                             name: holiday.name,
                             date: holiday.date,

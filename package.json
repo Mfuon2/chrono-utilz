@@ -44,7 +44,7 @@
     "test": "mocha -r ts-node/register 'tests/**/*.test.ts' --reporter mocha-json-output-reporter --reporter-options output=report/json/result.json",
     "test:ci": "npm run test",
     "coverage": "nyc --reporter=lcov npm test",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts' --fix",
     "typecheck": "tsc --noEmit",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint && npm run typecheck && npm run test && npm run build"

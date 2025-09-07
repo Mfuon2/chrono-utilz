@@ -3,6 +3,20 @@
  * Organized alphabetically by ISO country code
  */
 
+// TypeScript interfaces for holiday data
+export interface Holiday {
+  name: string;
+  date: string;
+  type: 'fixed' | 'calculated';
+}
+
+export interface CountryHolidays {
+  name: string;
+  holidays: Holiday[];
+}
+
+export type HolidayData = Record<string, CountryHolidays>;
+
 // Holiday data structure:
 // countryCode: {
 //   name: "Official Country Name",
@@ -11,7 +25,7 @@
 //   ]
 // }
 
-const holidays = {
+export const holidays: HolidayData = {
   // A - Countries
   'AD': {
     name: "Andorra",
@@ -1584,5 +1598,3 @@ const holidays = {
     ]
   }
 };
-
-module.exports = { holidays };
