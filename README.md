@@ -160,6 +160,36 @@ const duration = ChronoUtilz.humanizeDuration(
 - **TypeScript**: 4.0+ (full type safety)
 - **Bundle Size**: Tree-shakeable, use only what you need
 
+## Web UI
+
+This project now includes a comprehensive web interface to showcase all ChronoUtilz functions with interactive examples.
+
+To use the web UI:
+
+1. Build the library:
+   ```bash
+   npm run build
+   ```
+
+2. Build the browser version:
+   ```bash
+   npm run build:browser
+   ```
+
+3. Start the web server:
+   ```bash
+   cd web
+   node server.js
+   ```
+
+4. Open your browser to `http://localhost:3000`
+
+The web UI provides:
+- Interactive demonstrations of all 135+ functions
+- Live code playground
+- Function categorization and search
+- Responsive design for all devices
+
 ## Comparison with Other Libraries
 
 | Feature | ChronoUtilz v2.0 | date-fns | moment.js | luxon |

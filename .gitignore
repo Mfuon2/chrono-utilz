@@ -13,4 +13,9 @@ yarn-error.log*
 /.nyc_output
 .idea/workspace.xml
 dist/
+web/
+build-browser.js
+start-web-ui.js
+start-web-ui.sh
+
 
