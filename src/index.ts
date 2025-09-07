@@ -19,6 +19,66 @@
  * @version 2.0.0
  */
 
+// Import holiday configuration
+import { holidays } from './holidays';
+
+// Import locale configuration
+import { STANDARD_LOCALES, POPULAR_LOCALES, LOCALES_BY_REGION } from './locales';
+
+// Import timezone utilities
+import { 
+    TIMEZONE_IDS, 
+    getUserTimezone, 
+    getTimezoneInfo as getTimezoneInfoFromDB, 
+    getTimezoneOffset as getTzOffset
+} from './timezones';
+
+// Global configuration for ChronoUtilz
+const globalTimezoneConfig = {
+    defaultTimezone: getUserTimezone(),
+    autoDetect: true
+};
+
+/**
+ * Get the effective timezone to use (either auto-detected or manually set default)
+ */
+function getEffectiveTimezone(providedTimezone?: IANATimezone): string {
+    if (providedTimezone) return providedTimezone;
+    return globalTimezoneConfig.autoDetect ? getUserTimezone() : globalTimezoneConfig.defaultTimezone;
+}
+
+/**
+ * Configure global timezone behavior for ChronoUtilz
+ * @param config - Timezone configuration
+ */
+export function configureTimezone(config: {
+    defaultTimezone?: IANATimezone;
+    autoDetect?: boolean;
+}): void {
+    if (config.defaultTimezone !== undefined) {
+        globalTimezoneConfig.defaultTimezone = config.defaultTimezone;
+    }
+    if (config.autoDetect !== undefined) {
+        globalTimezoneConfig.autoDetect = config.autoDetect;
+    }
+}
+
+/**
+ * Get current timezone configuration
+ * @returns Current configuration
+ */
+export function getTimezoneConfig(): {
+    defaultTimezone: string;
+    autoDetect: boolean;
+    currentEffectiveTimezone: string;
+} {
+    return {
+        defaultTimezone: globalTimezoneConfig.defaultTimezone,
+        autoDetect: globalTimezoneConfig.autoDetect,
+        currentEffectiveTimezone: getEffectiveTimezone()
+    };
+}
+
 /**
  * DateFormat options for formatting dates
  */
@@ -38,28 +98,9 @@ export type DateFormat =
 export type TimeUnit = 'millisecond' | 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
 
 /**
- * IANA Timezone identifiers
+ * IANA Timezone identifiers - Complete standardized list
  */
-export type IANATimezone = 
-    | 'UTC'
-    | 'America/New_York'
-    | 'America/Chicago'
-    | 'America/Denver'
-    | 'America/Los_Angeles'
-    | 'America/Toronto'
-    | 'America/Vancouver'
-    | 'Europe/London'
-    | 'Europe/Paris'
-    | 'Europe/Berlin'
-    | 'Europe/Rome'
-    | 'Europe/Madrid'
-    | 'Asia/Tokyo'
-    | 'Asia/Shanghai'
-    | 'Asia/Kolkata'
-    | 'Asia/Dubai'
-    | 'Australia/Sydney'
-    | 'Australia/Melbourne'
-    | string; // Allow custom IANA zones
+export type IANATimezone = typeof TIMEZONE_IDS[number] | string;
 
 /**
  * Natural language time expressions
@@ -118,6 +159,129 @@ export interface DateParseOptions {
      * The fallback date to use if parsing fails
      */
     fallback?: Date | null;
+    /**
+     * Timezone to use for parsing (defaults to user's timezone)
+     */
+    timezone?: IANATimezone;
+}
+
+/**
+ * Timezone conversion options
+ */
+export interface TimezoneConversionOptions {
+    from?: IANATimezone;
+    to: IANATimezone;
+    preserveTime?: boolean;
+}
+
+/**
+ * Advanced formatting options
+ */
+export interface AdvancedFormatOptions {
+    locale?: string;
+    timezone?: IANATimezone;
+    includeTime?: boolean;
+    includeSeconds?: boolean;
+    use24Hour?: boolean;
+    includeDayOfWeek?: boolean;
+    includeTimezone?: boolean;
+}
+
+/**
+ * Recurring date configuration
+ */
+export interface RecurringConfig {
+    pattern: RecurringPattern;
+    interval?: number; // e.g., every 2 weeks
+    daysOfWeek?: number[]; // 0-6, Sunday is 0
+    daysOfMonth?: number[]; // 1-31
+    monthsOfYear?: number[]; // 1-12
+    endDate?: Date;
+    maxOccurrences?: number;
+}
+
+/**
+ * Natural language parsing options
+ */
+export interface NaturalLanguageOptions {
+    baseDate?: Date;
+    timezone?: IANATimezone;
+    strictParsing?: boolean;
+}
+
+/**
+ * Duration display options
+ */
+export interface DurationDisplayOptions {
+    precision?: number;
+    units?: TimeUnit[];
+    format?: 'long' | 'short' | 'narrow';
+    separator?: string;
+    includeZeroValues?: boolean;
+}
+
+/**
+ * Holiday configuration
+ */
+export interface HolidayConfig {
+    country?: string;
+    region?: string;
+    includeObserved?: boolean;
+    customHolidays?: Date[];
+}
+
+/**
+ * Working time configuration
+ */
+export interface WorkingTimeConfig {
+    startHour: number;
+    endHour: number;
+    workingDays: number[]; // 0-6, Sunday is 0
+    timezone?: IANATimezone;
+    excludeHolidays?: boolean;
+    holidayConfig?: HolidayConfig;
+}
+
+/**
+ * Date comparison result
+ */
+export interface DateComparison {
+    isBefore: boolean;
+    isAfter: boolean;
+    isSame: boolean;
+    difference: {
+        years: number;
+        months: number;
+        days: number;
+        hours: number;
+        minutes: number;
+        seconds: number;
+        milliseconds: number;
+    };
+}
+
+/**
+ * Fiscal period information
+ */
+export interface FiscalPeriod {
+    quarter: number;
+    year: number;
+    startDate: Date;
+    endDate: Date;
+    isCurrentPeriod: boolean;
+}
+
+/**
+ * Calendar event interface
+ */
+export interface CalendarEvent {
+    id?: string;
+    title: string;
+    startDate: Date;
+    endDate?: Date;
+    isAllDay?: boolean;
+    recurring?: RecurringConfig;
+    timezone?: IANATimezone;
 }
 
 /**
@@ -286,17 +450,20 @@ export function parseDate(input: string | number | Date, options: DateParseOptio
             'july', 'august', 'september', 'october', 'november', 'december'
         ];
 
-        // MM/DD/YYYY or DD/MM/YYYY
-        const slashFormat = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+        // MM/DD/YYYY or DD/MM/YYYY with optional time
+        const slashFormat = /^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:,?\s*(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/;
         const slashMatch = input.match(slashFormat);
         if (slashMatch) {
-            const [, first, second, yearStr] = slashMatch;
+            const [, first, second, yearStr, hourStr, minuteStr, secondStr] = slashMatch;
             const year = parseInt(yearStr, 10);
+            const hour = hourStr ? parseInt(hourStr, 10) : 0;
+            const minute = minuteStr ? parseInt(minuteStr, 10) : 0;
+            const seconds = secondStr ? parseInt(secondStr, 10) : 0;
 
-            // Try MM/DD/YYYY
+            // Try MM/DD/YYYY first
             const month = parseInt(first, 10);
             const day = parseInt(second, 10);
-            const date = new Date(year, month - 1, day);
+            const date = new Date(year, month - 1, day, hour, minute, seconds);
             if (date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day) {
                 return date;
             }
@@ -304,53 +471,73 @@ export function parseDate(input: string | number | Date, options: DateParseOptio
             // Try DD/MM/YYYY fallback
             const altDay = month;
             const altMonth = day;
-            const altDate = new Date(year, altMonth - 1, altDay);
+            const altDate = new Date(year, altMonth - 1, altDay, hour, minute, seconds);
             if (altDate.getFullYear() === year && altDate.getMonth() === altMonth - 1 && altDate.getDate() === altDay) {
                 return altDate;
             }
         }
 
-        // DD MMM YYYY
-        const ddMmmYyyy = /^(\d{1,2})\s+([a-zA-Z]{3,})\s+(\d{4})$/;
+        // DD MMM YYYY with optional time
+        const ddMmmYyyy = /^(\d{1,2})\s+([a-zA-Z]{3,})\s+(\d{4})(?:,?\s*(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/;
         const match1 = input.match(ddMmmYyyy);
         if (match1) {
-            const [, dayStr, monthStr, yearStr] = match1;
+            const [, dayStr, monthStr, yearStr, hourStr, minuteStr, secondStr] = match1;
             const day = parseInt(dayStr, 10);
             const year = parseInt(yearStr, 10);
+            const hour = hourStr ? parseInt(hourStr, 10) : 0;
+            const minute = minuteStr ? parseInt(minuteStr, 10) : 0;
+            const seconds = secondStr ? parseInt(secondStr, 10) : 0;
             const monthIndex = months.findIndex(m => m.startsWith(monthStr.toLowerCase().slice(0, 3)));
 
             if (monthIndex !== -1) {
-                const date = new Date(year, monthIndex, day);
+                const date = new Date(year, monthIndex, day, hour, minute, seconds);
                 if (date.getFullYear() === year && date.getMonth() === monthIndex && date.getDate() === day) {
                     return date;
                 }
             }
         }
 
-        // MMM DD, YYYY
-        const mmmDdYyyy = /^([a-zA-Z]{3,})\s+(\d{1,2})(?:,)?\s+(\d{4})$/;
+        // MMM DD, YYYY with optional time
+        const mmmDdYyyy = /^([a-zA-Z]{3,})\s+(\d{1,2})(?:,)?\s+(\d{4})(?:,?\s*(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/;
         const match2 = input.match(mmmDdYyyy);
         if (match2) {
-            const [, monthStr, dayStr, yearStr] = match2;
+            const [, monthStr, dayStr, yearStr, hourStr, minuteStr, secondStr] = match2;
             const day = parseInt(dayStr, 10);
             const year = parseInt(yearStr, 10);
+            const hour = hourStr ? parseInt(hourStr, 10) : 0;
+            const minute = minuteStr ? parseInt(minuteStr, 10) : 0;
+            const seconds = secondStr ? parseInt(secondStr, 10) : 0;
             const monthIndex = months.findIndex(m => m.startsWith(monthStr.toLowerCase().slice(0, 3)));
 
             if (monthIndex !== -1) {
-                const date = new Date(year, monthIndex, day);
+                const date = new Date(year, monthIndex, day, hour, minute, seconds);
                 if (date.getFullYear() === year && date.getMonth() === monthIndex && date.getDate() === day) {
                     return date;
                 }
             }
         }
 
-        // Fallback to ISO string parse
-        const isoDate = new Date(input);
-        if (!isNaN(isoDate.getTime())) {
-            const [yyyy, mm, dd] = isoDate.toISOString().split('T')[0].split('-').map(Number);
-            if (isoDate.getFullYear() === yyyy && isoDate.getMonth() === mm - 1 && isoDate.getDate() === dd) {
-                return isoDate;
-            }
+        // Handle ISO string patterns but interpret as local time
+        const isoPattern = /^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?)?(?:Z|[+-]\d{2}:\d{2})?$/;
+        const isoMatch = input.match(isoPattern);
+        if (isoMatch) {
+            const [, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr, msStr] = isoMatch;
+            const year = parseInt(yearStr, 10);
+            const month = parseInt(monthStr, 10) - 1; // Month is 0-based
+            const day = parseInt(dayStr, 10);
+            const hour = hourStr ? parseInt(hourStr, 10) : 0;
+            const minute = minuteStr ? parseInt(minuteStr, 10) : 0;
+            const second = secondStr ? parseInt(secondStr, 10) : 0;
+            const ms = msStr ? parseInt(msStr, 10) : 0;
+            
+            // Create date in local timezone
+            return new Date(year, month, day, hour, minute, second, ms);
+        }
+        
+        // Fallback to native Date constructor
+        const fallbackDate = new Date(input);
+        if (!isNaN(fallbackDate.getTime())) {
+            return fallbackDate;
         }
 
         throw new ChronoUtilzError(`Unable to parse date: ${input}`);
@@ -369,8 +556,9 @@ export function parseDate(input: string | number | Date, options: DateParseOptio
  * @returns Formatted date string
  * @throws {ChronoUtilzError} If the date is invalid
  */
-export function formatDate(date: Date | string | number, format: DateFormat = 'YYYY-MM-DD'): string {
-    const safeDate = parseDate(date, { throwError: true });
+export function formatDate(date: Date | string | number, format: DateFormat = 'YYYY-MM-DD', timezone?: IANATimezone): string {
+    const targetTimezone = getEffectiveTimezone(timezone);
+    const safeDate = parseDate(date, { throwError: true, timezone: targetTimezone });
     if (!safeDate) {
         throw new ChronoUtilzError('Invalid date provided to formatDate');
     }
@@ -421,9 +609,28 @@ export function formatDate(date: Date | string | number, format: DateFormat = 'Y
 export function addTime(
     date: Date | string | number,
     amount: number,
-    unit: TimeUnit
+    unit: TimeUnit,
+    timezone?: IANATimezone
 ): Date {
-    const safeDate = parseDate(date, { throwError: true });
+    let safeDate: Date | null;
+    const targetTimezone = getEffectiveTimezone(timezone);
+    
+    if (date instanceof Date) {
+        // Always reinterpret Date objects to ensure consistent local timezone handling
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const day = date.getDate();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        const ms = date.getMilliseconds();
+        
+        // Create new date ensuring local timezone interpretation
+        safeDate = new Date(year, month, day, hours, minutes, seconds, ms);
+    } else {
+        safeDate = parseDate(date, { throwError: true });
+    }
+    
     if (!safeDate) {
         throw new ChronoUtilzError('Invalid date provided to addTime');
     }
@@ -432,34 +639,91 @@ export function addTime(
 
     switch (unit) {
         case 'millisecond':
-            result.setMilliseconds(result.getMilliseconds() + amount);
-            break;
+            return new Date(result.getTime() + amount);
         case 'second':
-            result.setSeconds(result.getSeconds() + amount);
-            break;
+            return new Date(result.getTime() + (amount * 1000));
         case 'minute':
-            result.setMinutes(result.getMinutes() + amount);
-            break;
-        case 'hour':
-            result.setHours(result.getHours() + amount);
-            break;
-        case 'day':
-            result.setDate(result.getDate() + amount);
-            break;
-        case 'week':
-            result.setDate(result.getDate() + (amount * 7));
-            break;
-        case 'month':
-            result.setMonth(result.getMonth() + amount);
-            break;
-        case 'year':
-            result.setFullYear(result.getFullYear() + amount);
-            break;
+            return new Date(result.getTime() + (amount * 60 * 1000));
+        case 'hour': {
+            // Factor in timezone offset for accurate hour calculations
+            const newTime = result.getTime() + (amount * 60 * 60 * 1000);
+            const newDate = new Date(newTime);
+            
+            // Check if DST boundary was crossed and adjust if needed
+            const originalOffset = getTzOffset(targetTimezone, result);
+            const newOffset = getTzOffset(targetTimezone, newDate);
+            
+            if (originalOffset !== newOffset) {
+                const offsetDiff = (newOffset - originalOffset) * 60 * 60 * 1000;
+                return new Date(newTime - offsetDiff);
+            }
+            
+            return newDate;
+        }
+        case 'day': {
+            // For day calculations, maintain the same time but account for DST
+            const targetDate = new Date(result.getTime());
+            targetDate.setDate(targetDate.getDate() + amount);
+            
+            // Check for DST changes and adjust
+            const originalOffset = getTzOffset(targetTimezone, result);
+            const newOffset = getTzOffset(targetTimezone, targetDate);
+            
+            if (originalOffset !== newOffset) {
+                const offsetDiff = (newOffset - originalOffset) * 60 * 60 * 1000;
+                return new Date(targetDate.getTime() - offsetDiff);
+            }
+            
+            return targetDate;
+        }
+        case 'week': {
+            // Similar to day but multiply by 7
+            const targetDate = new Date(result.getTime());
+            targetDate.setDate(targetDate.getDate() + (amount * 7));
+            
+            const originalOffset = getTzOffset(targetTimezone, result);
+            const newOffset = getTzOffset(targetTimezone, targetDate);
+            
+            if (originalOffset !== newOffset) {
+                const offsetDiff = (newOffset - originalOffset) * 60 * 60 * 1000;
+                return new Date(targetDate.getTime() - offsetDiff);
+            }
+            
+            return targetDate;
+        }
+        case 'month': {
+            // For months, we need to use setMonth to handle varying month lengths
+            const tempResult = new Date(result.getTime());
+            const targetMonth = tempResult.getMonth() + amount;
+            const targetYear = tempResult.getFullYear() + Math.floor(targetMonth / 12);
+            const normalizedMonth = ((targetMonth % 12) + 12) % 12;
+            
+            tempResult.setFullYear(targetYear, normalizedMonth, tempResult.getDate());
+            
+            // Handle edge case where target month doesn't have enough days (e.g., Jan 31 + 1 month)
+            if (tempResult.getMonth() !== normalizedMonth) {
+                tempResult.setDate(0); // Go to last day of previous month
+            }
+            
+            return tempResult;
+        }
+        case 'year': {
+            // For years, preserve the date and time but handle leap year edge cases
+            const tempResult = new Date(result.getTime());
+            const targetYear = tempResult.getFullYear() + amount;
+            
+            tempResult.setFullYear(targetYear);
+            
+            // Handle Feb 29 on non-leap years
+            if (tempResult.getMonth() !== result.getMonth()) {
+                tempResult.setDate(0); // Go to last day of previous month (Feb 28)
+            }
+            
+            return tempResult;
+        }
         default:
             throw new ChronoUtilzError(`Invalid time unit: ${unit}`);
     }
-
-    return result;
 }
 
 /**
@@ -467,14 +731,16 @@ export function addTime(
  * @param date - The base date
  * @param amount - The amount to subtract
  * @param unit - The time unit
+ * @param timezone - Optional timezone (defaults to user's timezone)
  * @returns A new Date with the subtracted time
  */
 export function subtractTime(
     date: Date | string | number,
     amount: number,
-    unit: TimeUnit
+    unit: TimeUnit,
+    timezone?: IANATimezone
 ): Date {
-    return addTime(date, -amount, unit);
+    return addTime(date, -amount, unit, timezone);
 }
 
 /**
@@ -487,10 +753,12 @@ export function subtractTime(
 export function getDateDiff(
     date1: Date | string | number,
     date2: Date | string | number,
-    unit: TimeUnit
+    unit: TimeUnit,
+    timezone?: IANATimezone
 ): number {
-    const safeDate1 = parseDate(date1, { throwError: true });
-    const safeDate2 = parseDate(date2, { throwError: true });
+    const targetTimezone = getEffectiveTimezone(timezone);
+    const safeDate1 = parseDate(date1, { throwError: true, timezone: targetTimezone });
+    const safeDate2 = parseDate(date2, { throwError: true, timezone: targetTimezone });
 
     if (!safeDate1 || !safeDate2) {
         throw new ChronoUtilzError('Invalid date(s) provided to getDateDiff');
@@ -525,6 +793,73 @@ export function getDateDiff(
             const d2Year = safeDate2.getFullYear();
             const monthAdjustment = (safeDate1.getMonth() - safeDate2.getMonth()) / 12;
             return d1Year - d2Year + monthAdjustment;
+        }
+        default:
+            throw new ChronoUtilzError(`Invalid time unit: ${unit}`);
+    }
+}
+
+/**
+ * Calculates remaining time until a target date, or elapsed time if past
+ * @param targetDate - The target date to calculate time to/from
+ * @param unit - The time unit to return (default: 'millisecond')
+ * @param referenceDate - Optional reference date (default: now)
+ * @param timezone - Optional timezone (defaults to user's timezone)
+ * @returns Positive number if target is in future (remaining time), negative if past (elapsed time)
+ */
+export function remainingTime(
+    targetDate: Date | string | number,
+    unit: TimeUnit = 'millisecond',
+    referenceDate: Date | string | number = new Date(),
+    timezone?: IANATimezone
+): number {
+    const targetTimezone = getEffectiveTimezone(timezone);
+    const safeTargetDate = parseDate(targetDate, { throwError: true, timezone: targetTimezone });
+    const safeReferenceDate = parseDate(referenceDate, { throwError: true, timezone: targetTimezone });
+
+    if (!safeTargetDate || !safeReferenceDate) {
+        throw new ChronoUtilzError('Invalid date(s) provided to remainingTime');
+    }
+
+    // Calculate difference: target - reference
+    // Positive = time remaining, Negative = time elapsed
+    const diffMs = safeTargetDate.getTime() - safeReferenceDate.getTime();
+
+    switch (unit) {
+        case 'millisecond':
+            return diffMs;
+        case 'second':
+            return Math.floor(diffMs / 1000);
+        case 'minute':
+            return Math.floor(diffMs / (1000 * 60));
+        case 'hour':
+            return Math.floor(diffMs / (1000 * 60 * 60));
+        case 'day':
+            return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        case 'week':
+            return Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+        case 'month': {
+            // More accurate month calculations
+            const targetYear = safeTargetDate.getFullYear();
+            const refYear = safeReferenceDate.getFullYear();
+            const targetMonth = safeTargetDate.getMonth();
+            const refMonth = safeReferenceDate.getMonth();
+
+            return (targetYear - refYear) * 12 + (targetMonth - refMonth);
+        }
+        case 'quarter': {
+            const targetYear = safeTargetDate.getFullYear();
+            const refYear = safeReferenceDate.getFullYear();
+            const targetQuarter = Math.floor(safeTargetDate.getMonth() / 3);
+            const refQuarter = Math.floor(safeReferenceDate.getMonth() / 3);
+
+            return (targetYear - refYear) * 4 + (targetQuarter - refQuarter);
+        }
+        case 'year': {
+            const targetYear = safeTargetDate.getFullYear();
+            const refYear = safeReferenceDate.getFullYear();
+            const monthAdjustment = (safeTargetDate.getMonth() - safeReferenceDate.getMonth()) / 12;
+            return targetYear - refYear + monthAdjustment;
         }
         default:
             throw new ChronoUtilzError(`Invalid time unit: ${unit}`);
@@ -2486,8 +2821,11 @@ export function configureHolidays(holidays: (Date | string | number)[]): Busines
             throw new ChronoUtilzError(`Invalid holiday date: ${holiday}`);
         }
         
-        // Store as YYYY-MM-DD format for consistent comparison
-        const holidayStr = parsedHoliday.toISOString().split('T')[0];
+        // Store as YYYY-MM-DD format for consistent comparison (timezone neutral)
+        const year = parsedHoliday.getFullYear();
+        const month = String(parsedHoliday.getMonth() + 1).padStart(2, '0');
+        const day = String(parsedHoliday.getDate()).padStart(2, '0');
+        const holidayStr = `${year}-${month}-${day}`;
         holidaySet.add(holidayStr);
     }
     
@@ -2603,9 +2941,11 @@ export function isBusinessDay(date: Date | string | number): boolean {
  */
 export function addBusinessDays(
     date: Date | string | number,
-    businessDays: number
+    businessDays: number,
+    timezone?: IANATimezone
 ): Date {
-    const safeDate = parseDate(date, { throwError: true });
+    const targetTimezone = getEffectiveTimezone(timezone);
+    const safeDate = parseDate(date, { throwError: true, timezone: targetTimezone });
     if (!safeDate) {
         throw new ChronoUtilzError('Invalid date provided to addBusinessDays');
     }
@@ -2965,9 +3305,11 @@ const customHolidays: Set<string> = new Set();
  */
 export function isHoliday(
     date: Date | string | number,
-    holidaysList?: (Date | string)[]
+    holidaysList?: (Date | string)[],
+    timezone?: IANATimezone
 ): boolean {
-    const safeDate = parseDate(date, { throwError: true });
+    const targetTimezone = getEffectiveTimezone(timezone);
+    const safeDate = parseDate(date, { throwError: true, timezone: targetTimezone });
     if (!safeDate) {
         throw new ChronoUtilzError('Invalid date provided to isHoliday');
     }
@@ -5163,8 +5505,11 @@ export function getTimezoneInfo(
     offset: number;
     isDST: boolean;
     offsetString: string;
+    description?: string;
 } {
     try {
+        // Use our standardized timezone database
+        const tzInfo = getTimezoneInfoFromDB(timezone);
         const formatter = new Intl.DateTimeFormat('en', {
             timeZone: timezone,
             timeZoneName: 'short'
@@ -5194,9 +5539,10 @@ export function getTimezoneInfo(
         return {
             name: timezone,
             abbreviation,
-            offset,
+            offset: offset / 60, // Convert to hours
             isDST,
-            offsetString
+            offsetString,
+            description: tzInfo?.description
         };
     } catch (error) {
         throw new ChronoUtilzError(`Failed to get timezone info for ${timezone}: ${error}`);
@@ -5208,44 +5554,36 @@ export function getTimezoneInfo(
  * @returns Array of timezone names
  */
 export function listTimezones(): string[] {
-    // This would normally use Intl.supportedValuesOf('timeZone') in newer environments
-    // For broader compatibility, we'll return a comprehensive list
-    return [
-        'UTC',
-        'America/New_York',
-        'America/Chicago',
-        'America/Denver',
-        'America/Los_Angeles',
-        'America/Toronto',
-        'America/Vancouver',
-        'America/Mexico_City',
-        'America/Sao_Paulo',
-        'America/Buenos_Aires',
-        'Europe/London',
-        'Europe/Paris',
-        'Europe/Berlin',
-        'Europe/Rome',
-        'Europe/Madrid',
-        'Europe/Amsterdam',
-        'Europe/Stockholm',
-        'Europe/Moscow',
-        'Asia/Tokyo',
-        'Asia/Shanghai',
-        'Asia/Seoul',
-        'Asia/Kolkata',
-        'Asia/Dubai',
-        'Asia/Singapore',
-        'Asia/Hong_Kong',
-        'Australia/Sydney',
-        'Australia/Melbourne',
-        'Australia/Perth',
-        'Pacific/Auckland',
-        'Pacific/Honolulu',
-        'Africa/Cairo',
-        'Africa/Lagos',
-        'Africa/Johannesburg'
-    ];
+    // Return our comprehensive standardized timezone list
+    return TIMEZONE_IDS;
 }
+
+/**
+ * Get timezones by region
+ * @param region - Region to filter by (e.g., 'America', 'Europe', 'Asia')
+ * @returns Array of timezone objects in the specified region
+ */
+export { getTimezonesByRegion } from './timezones';
+
+/**
+ * Search timezones by description or ID
+ * @param query - Search query
+ * @returns Array of matching timezone objects
+ */
+export { searchTimezones } from './timezones';
+
+/**
+ * Get timezones by GMT offset
+ * @param offset - GMT offset in hours
+ * @returns Array of timezone objects with the specified offset
+ */
+export { getTimezonesByOffset } from './timezones';
+
+/**
+ * Get user's current timezone
+ * @returns The user's IANA timezone identifier
+ */
+export { getUserTimezone } from './timezones';
 
 /**
  * Configuration information interface for ChronoUtilz
@@ -5268,7 +5606,8 @@ export interface ChronoUtilzConfig {
         availableHolidayRules: Record<string, Array<{name: string, date: string, type: string}>>;
     };
     locales: {
-        popular: string[];
+        standard: readonly string[];
+        popular: readonly string[];
         regions: Record<string, string[]>;
     };
     workingTimeDefaults: {
@@ -5424,59 +5763,26 @@ export function getConfigs(): ChronoUtilzConfig {
         },
         
         holidayConfig: {
-            supportedCountries: ['US', 'UK', 'CA', 'AU', 'DE', 'FR', 'JP', 'IN'],
-            availableHolidayRules: {
-                'US': [
-                    { name: "New Year's Day", date: '01-01', type: 'fixed' },
-                    { name: 'Independence Day', date: '07-04', type: 'fixed' },
-                    { name: 'Christmas Day', date: '12-25', type: 'fixed' },
-                    { name: 'Thanksgiving', date: 'fourth-thursday-november', type: 'calculated' },
-                    { name: 'Memorial Day', date: 'last-monday-may', type: 'calculated' },
-                    { name: 'Labor Day', date: 'first-monday-september', type: 'calculated' }
-                ],
-                'UK': [
-                    { name: "New Year's Day", date: '01-01', type: 'fixed' },
-                    { name: 'Christmas Day', date: '12-25', type: 'fixed' },
-                    { name: 'Boxing Day', date: '12-26', type: 'fixed' },
-                    { name: 'Easter Monday', date: 'easter+1', type: 'calculated' },
-                    { name: 'Good Friday', date: 'easter-2', type: 'calculated' }
-                ]
-            }
+            supportedCountries: Object.keys(holidays),
+            availableHolidayRules: (() => {
+                const rules: Record<string, Array<{name: string, date: string, type: string}>> = {};
+                for (const countryCode in holidays) {
+                    if (Object.prototype.hasOwnProperty.call(holidays, countryCode)) {
+                        rules[countryCode] = holidays[countryCode].holidays.map((holiday: any) => ({
+                            name: holiday.name,
+                            date: holiday.date,
+                            type: holiday.type
+                        }));
+                    }
+                }
+                return rules;
+            })()
         },
         
         locales: {
-            popular: [
-                'en-US',    // English (United States)
-                'en-GB',    // English (United Kingdom)
-                'es-ES',    // Spanish (Spain)
-                'fr-FR',    // French (France)
-                'de-DE',    // German (Germany)
-                'it-IT',    // Italian (Italy)
-                'pt-BR',    // Portuguese (Brazil)
-                'ja-JP',    // Japanese (Japan)
-                'ko-KR',    // Korean (South Korea)
-                'zh-CN',    // Chinese (Simplified)
-                'zh-TW',    // Chinese (Traditional)
-                'ru-RU',    // Russian (Russia)
-                'ar-SA',    // Arabic (Saudi Arabia)
-                'hi-IN',    // Hindi (India)
-                'th-TH',    // Thai (Thailand)
-                'tr-TR',    // Turkish (Turkey)
-                'pl-PL',    // Polish (Poland)
-                'nl-NL',    // Dutch (Netherlands)
-                'sv-SE',    // Swedish (Sweden)
-                'da-DK',    // Danish (Denmark)
-                'no-NO',    // Norwegian (Norway)
-                'fi-FI'     // Finnish (Finland)
-            ],
-            regions: {
-                'North America': ['en-US', 'en-CA', 'es-MX', 'fr-CA'],
-                'Europe': ['en-GB', 'fr-FR', 'de-DE', 'it-IT', 'es-ES', 'pt-PT', 'nl-NL', 'sv-SE', 'da-DK', 'no-NO', 'fi-FI', 'pl-PL', 'ru-RU'],
-                'Asia': ['ja-JP', 'ko-KR', 'zh-CN', 'zh-TW', 'hi-IN', 'th-TH', 'id-ID', 'vi-VN', 'ms-MY'],
-                'South America': ['pt-BR', 'es-AR', 'es-CO', 'es-CL', 'es-PE'],
-                'Africa': ['ar-SA', 'ar-EG', 'sw-KE', 'af-ZA'],
-                'Oceania': ['en-AU', 'en-NZ']
-            }
+            standard: STANDARD_LOCALES,
+            popular: POPULAR_LOCALES,
+            regions: LOCALES_BY_REGION
         },
         
         workingTimeDefaults: {

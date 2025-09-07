@@ -5,16 +5,16 @@
     "passes": 70,
     "pending": 0,
     "failures": 0,
-    "start": "2025-09-03T18:55:47.927Z",
-    "end": "2025-09-03T18:55:47.951Z",
-    "duration": 24
+    "start": "2025-09-07T07:28:16.762Z",
+    "end": "2025-09-07T07:28:16.801Z",
+    "duration": 39
   },
   "tests": [
     {
       "title": "should convert timezone from UTC to New York",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should convert timezone from UTC to New York",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 10,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -94,7 +94,7 @@
       "title": "should generate daily recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate daily recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -102,7 +102,7 @@
       "title": "should generate weekly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -126,7 +126,7 @@
       "title": "should respect end date constraint",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should respect end date constraint",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -134,7 +134,7 @@
       "title": "should generate weekdays only",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -174,7 +174,7 @@
       "title": "should calculate duration with custom precision",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -222,7 +222,7 @@
       "title": "should generate weekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 14,
       "currentRetry": 0,
       "err": {}
     },
@@ -230,7 +230,7 @@
       "title": "should generate biweekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate biweekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 7,
       "currentRetry": 0,
       "err": {}
     },
@@ -350,7 +350,7 @@
       "title": "should handle UTC timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should handle UTC timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -390,7 +390,7 @@
       "title": "should handle invalid dates gracefully",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid dates gracefully",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -398,7 +398,7 @@
       "title": "should handle invalid timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -578,7 +578,7 @@
       "title": "should convert timezone from UTC to New York",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should convert timezone from UTC to New York",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 10,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -658,7 +658,7 @@
       "title": "should generate daily recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate daily recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -666,7 +666,7 @@
       "title": "should generate weekly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -690,7 +690,7 @@
       "title": "should respect end date constraint",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should respect end date constraint",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -698,7 +698,7 @@
       "title": "should generate weekdays only",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -738,7 +738,7 @@
       "title": "should calculate duration with custom precision",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -786,7 +786,7 @@
       "title": "should generate weekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 14,
       "currentRetry": 0,
       "err": {}
     },
@@ -794,7 +794,7 @@
       "title": "should generate biweekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate biweekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 7,
       "currentRetry": 0,
       "err": {}
     },
@@ -914,7 +914,7 @@
       "title": "should handle UTC timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should handle UTC timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -954,7 +954,7 @@
       "title": "should handle invalid dates gracefully",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid dates gracefully",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -962,7 +962,7 @@
       "title": "should handle invalid timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
