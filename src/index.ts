@@ -285,6 +285,125 @@ export interface CalendarEvent {
 }
 
 /**
+ * Timezone conversion options
+ */
+export interface TimezoneConversionOptions {
+    from?: IANATimezone;
+    to: IANATimezone;
+    preserveTime?: boolean;
+}
+
+/**
+ * Advanced formatting options
+ */
+export interface AdvancedFormatOptions {
+    locale?: string;
+    timezone?: IANATimezone;
+    includeTime?: boolean;
+    includeSeconds?: boolean;
+    use24Hour?: boolean;
+    includeDayOfWeek?: boolean;
+    includeTimezone?: boolean;
+}
+
+/**
+ * Recurring date configuration
+ */
+export interface RecurringConfig {
+    pattern: RecurringPattern;
+    interval?: number; // e.g., every 2 weeks
+    daysOfWeek?: number[]; // 0-6, Sunday is 0
+    daysOfMonth?: number[]; // 1-31
+    monthsOfYear?: number[]; // 1-12
+    endDate?: Date;
+    maxOccurrences?: number;
+}
+
+/**
+ * Natural language parsing options
+ */
+export interface NaturalLanguageOptions {
+    baseDate?: Date;
+    timezone?: IANATimezone;
+    strictParsing?: boolean;
+}
+
+/**
+ * Duration display options
+ */
+export interface DurationDisplayOptions {
+    precision?: number;
+    units?: TimeUnit[];
+    format?: 'long' | 'short' | 'narrow';
+    separator?: string;
+    includeZeroValues?: boolean;
+}
+
+/**
+ * Holiday configuration
+ */
+export interface HolidayConfig {
+    country?: string;
+    region?: string;
+    includeObserved?: boolean;
+    customHolidays?: Date[];
+}
+
+/**
+ * Working time configuration
+ */
+export interface WorkingTimeConfig {
+    startHour: number;
+    endHour: number;
+    workingDays: number[]; // 0-6, Sunday is 0
+    timezone?: IANATimezone;
+    excludeHolidays?: boolean;
+    holidayConfig?: HolidayConfig;
+}
+
+/**
+ * Date comparison result
+ */
+export interface DateComparison {
+    isBefore: boolean;
+    isAfter: boolean;
+    isSame: boolean;
+    difference: {
+        years: number;
+        months: number;
+        days: number;
+        hours: number;
+        minutes: number;
+        seconds: number;
+        milliseconds: number;
+    };
+}
+
+/**
+ * Fiscal period information
+ */
+export interface FiscalPeriod {
+    quarter: number;
+    year: number;
+    startDate: Date;
+    endDate: Date;
+    isCurrentPeriod: boolean;
+}
+
+/**
+ * Calendar event interface
+ */
+export interface CalendarEvent {
+    id?: string;
+    title: string;
+    startDate: Date;
+    endDate?: Date;
+    isAllDay?: boolean;
+    recurring?: RecurringConfig;
+    timezone?: IANATimezone;
+}
+
+/**
  * ChronoUtilz error class
  */
 export class ChronoUtilzError extends Error {
