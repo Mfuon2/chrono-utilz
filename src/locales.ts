@@ -59,6 +59,13 @@ export const STANDARD_LOCALES: readonly string[] = [
   'zh-MO', 'zh-SG', 'zh-TW', 'zu-ZA'
 ] as const;
 
+// Popular locales for backwards compatibility
+export const POPULAR_LOCALES: readonly string[] = [
+  'en-US', 'en-GB', 'es-ES', 'fr-FR', 'de-DE', 'it-IT', 'pt-BR', 'ja-JP', 
+  'ko-KR', 'zh-CN', 'zh-TW', 'ru-RU', 'ar-SA', 'hi-IN', 'th-TH', 'tr-TR', 
+  'pl-PL', 'nl-NL', 'sv-SE', 'da-DK', 'no-NO', 'fi-FI'
+] as const;
+
 // Commonly used locales grouped by region for easier access
 export const LOCALES_BY_REGION: LocalesByRegion = {
   'North America': [

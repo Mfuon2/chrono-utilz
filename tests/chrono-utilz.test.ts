@@ -661,7 +661,10 @@ describe('Configuration Functions', () => {
         });
         
         it('should reflect dynamic holiday configuration changes', () => {
-            const { configureHolidays, getConfigs } = require('../src/index.ts');
+            const { configureHolidays, getConfigs, resetBusinessDayConfig } = require('../src/index.ts');
+            
+            // Reset to clean state first
+            resetBusinessDayConfig();
             
             // Add holidays
             configureHolidays(['2024-12-25', '2024-01-01']);

@@ -23,7 +23,7 @@
 import { holidays } from './holidays';
 
 // Import locale configuration
-import { STANDARD_LOCALES, LOCALES_BY_REGION } from './locales';
+import { STANDARD_LOCALES, POPULAR_LOCALES, LOCALES_BY_REGION } from './locales';
 
 // Import timezone utilities
 import { 
@@ -2821,8 +2821,11 @@ export function configureHolidays(holidays: (Date | string | number)[]): Busines
             throw new ChronoUtilzError(`Invalid holiday date: ${holiday}`);
         }
         
-        // Store as YYYY-MM-DD format for consistent comparison
-        const holidayStr = parsedHoliday.toISOString().split('T')[0];
+        // Store as YYYY-MM-DD format for consistent comparison (timezone neutral)
+        const year = parsedHoliday.getFullYear();
+        const month = String(parsedHoliday.getMonth() + 1).padStart(2, '0');
+        const day = String(parsedHoliday.getDate()).padStart(2, '0');
+        const holidayStr = `${year}-${month}-${day}`;
         holidaySet.add(holidayStr);
     }
     
@@ -5604,6 +5607,7 @@ export interface ChronoUtilzConfig {
     };
     locales: {
         standard: readonly string[];
+        popular: readonly string[];
         regions: Record<string, string[]>;
     };
     workingTimeDefaults: {
@@ -5777,6 +5781,7 @@ export function getConfigs(): ChronoUtilzConfig {
         
         locales: {
             standard: STANDARD_LOCALES,
+            popular: POPULAR_LOCALES,
             regions: LOCALES_BY_REGION
         },
         

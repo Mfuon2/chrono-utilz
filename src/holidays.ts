@@ -1596,5 +1596,20 @@ export const holidays: HolidayData = {
       { name: "Christmas Day", date: "12-25", type: "fixed" },
       { name: "Boxing Day", date: "12-26", type: "fixed" }
     ]
+  },
+
+  // Alias for backwards compatibility
+  'UK': {
+    name: "United Kingdom",
+    holidays: [
+      { name: "New Year's Day", date: "01-01", type: "fixed" },
+      { name: "Good Friday", date: "easter-2", type: "calculated" },
+      { name: "Easter Monday", date: "easter+1", type: "calculated" },
+      { name: "Early May Bank Holiday", date: "first-monday-may", type: "calculated" },
+      { name: "Spring Bank Holiday", date: "last-monday-may", type: "calculated" },
+      { name: "Summer Bank Holiday", date: "last-monday-august", type: "calculated" },
+      { name: "Christmas Day", date: "12-25", type: "fixed" },
+      { name: "Boxing Day", date: "12-26", type: "fixed" }
+    ]
   }
 };

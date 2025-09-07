@@ -2,12 +2,12 @@
   "stats": {
     "suites": 20,
     "tests": 70,
-    "passes": 67,
+    "passes": 70,
     "pending": 0,
-    "failures": 3,
-    "start": "2025-09-07T07:11:25.654Z",
-    "end": "2025-09-07T07:11:25.699Z",
-    "duration": 45
+    "failures": 0,
+    "start": "2025-09-07T07:28:16.762Z",
+    "end": "2025-09-07T07:28:16.801Z",
+    "duration": 39
   },
   "tests": [
     {
@@ -30,7 +30,7 @@
       "title": "should throw error for invalid date",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should throw error for invalid date",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -102,7 +102,7 @@
       "title": "should generate weekly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -110,7 +110,7 @@
       "title": "should generate monthly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate monthly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -134,7 +134,7 @@
       "title": "should generate weekdays only",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -174,7 +174,7 @@
       "title": "should calculate duration with custom precision",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -222,7 +222,7 @@
       "title": "should generate weekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 15,
+      "duration": 14,
       "currentRetry": 0,
       "err": {}
     },
@@ -302,7 +302,7 @@
       "title": "should format ISO without timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO without timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -342,7 +342,7 @@
       "title": "should get timezone information",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should get timezone information",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -358,7 +358,7 @@
       "title": "should return array of timezones",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone List should return array of timezones",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -398,7 +398,7 @@
       "title": "should handle invalid timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -494,29 +494,17 @@
       "title": "should have holiday configuration",
       "fullTitle": "Configuration Functions getConfigs should have holiday configuration",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
-      "err": {
-        "message": "expected [ 'AD', 'AE', 'AF', 'AG', 'AL', …(96) ] to be a superset of [ 'US', 'UK' ]",
-        "showDiff": true,
-        "actual": "[\n  \"AD\"\n  \"AE\"\n  \"AF\"\n  \"AG\"\n  \"AL\"\n  \"AM\"\n  \"BA\"\n  \"BB\"\n  \"BD\"\n  \"BE\"\n  \"BF\"\n  \"BG\"\n  \"CA\"\n  \"CH\"\n  \"CL\"\n  \"DE\"\n  \"DK\"\n  \"DM\"\n  \"EE\"\n  \"EG\"\n  \"ES\"\n  \"FI\"\n  \"FJ\"\n  \"FR\"\n  \"GB\"\n  \"GE\"\n  \"GH\"\n  \"HR\"\n  \"HU\"\n  \"ID\"\n  \"IE\"\n  \"IL\"\n  \"IN\"\n  \"IQ\"\n  \"IR\"\n  \"IS\"\n  \"IT\"\n  \"JM\"\n  \"JO\"\n  \"JP\"\n  \"KE\"\n  \"KG\"\n  \"KH\"\n  \"KR\"\n  \"LB\"\n  \"LK\"\n  \"LT\"\n  \"LU\"\n  \"LV\"\n  \"MA\"\n  \"MC\"\n  \"ME\"\n  \"MG\"\n  \"MK\"\n  \"ML\"\n  \"MM\"\n  \"MN\"\n  \"MT\"\n  \"MU\"\n  \"MX\"\n  \"MY\"\n  \"NG\"\n  \"NI\"\n  \"NL\"\n  \"NO\"\n  \"NP\"\n  \"NZ\"\n  \"OM\"\n  \"PA\"\n  \"PE\"\n  \"PG\"\n  \"PH\"\n  \"PK\"\n  \"PL\"\n  \"PT\"\n  \"PY\"\n  \"QA\"\n  \"RO\"\n  \"RS\"\n  \"RU\"\n  \"RW\"\n  \"SA\"\n  \"SE\"\n  \"SG\"\n  \"SI\"\n  \"SK\"\n  \"SN\"\n  \"TH\"\n  \"TN\"\n  \"TR\"\n  \"TZ\"\n  \"UA\"\n  \"UG\"\n  \"US\"\n  \"UY\"\n  \"UZ\"\n  \"VE\"\n  \"VN\"\n  \"ZA\"\n  \"ZM\"\n  \"ZW\"\n]",
-        "expected": "[\n  \"US\"\n  \"UK\"\n]",
-        "operator": "deepStrictEqual",
-        "stack": "AssertionError: expected [ 'AD', 'AE', 'AF', 'AG', 'AL', …(96) ] to be a superset of [ 'US', 'UK' ]\n    at Context.<anonymous> (tests/chrono-utilz.test.ts:588:72)\n    at processImmediate (node:internal/timers:505:21)"
-      }
+      "err": {}
     },
     {
       "title": "should have locale configuration",
       "fullTitle": "Configuration Functions getConfigs should have locale configuration",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
-      "err": {
-        "message": "expected undefined to be an array",
-        "showDiff": false,
-        "operator": "strictEqual",
-        "stack": "AssertionError: expected undefined to be an array\n    at Context.<anonymous> (tests/chrono-utilz.test.ts:595:55)\n    at processImmediate (node:internal/timers:505:21)"
-      }
+      "err": {}
     },
     {
       "title": "should have working time defaults",
@@ -580,66 +568,11 @@
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
-      "err": {
-        "message": "expected [ '2024-12-24', '2023-12-31' ] to include '2024-12-25'",
-        "showDiff": false,
-        "actual": [
-          "2024-12-24",
-          "2023-12-31"
-        ],
-        "operator": "strictEqual",
-        "stack": "AssertionError: expected [ '2024-12-24', '2023-12-31' ] to include '2024-12-25'\n    at Context.<anonymous> (tests/chrono-utilz.test.ts:671:72)\n    at processImmediate (node:internal/timers:505:21)"
-      }
+      "err": {}
     }
   ],
   "pending": [],
-  "failures": [
-    {
-      "title": "should have holiday configuration",
-      "fullTitle": "Configuration Functions getConfigs should have holiday configuration",
-      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {
-        "message": "expected [ 'AD', 'AE', 'AF', 'AG', 'AL', …(96) ] to be a superset of [ 'US', 'UK' ]",
-        "showDiff": true,
-        "actual": "[\n  \"AD\"\n  \"AE\"\n  \"AF\"\n  \"AG\"\n  \"AL\"\n  \"AM\"\n  \"BA\"\n  \"BB\"\n  \"BD\"\n  \"BE\"\n  \"BF\"\n  \"BG\"\n  \"CA\"\n  \"CH\"\n  \"CL\"\n  \"DE\"\n  \"DK\"\n  \"DM\"\n  \"EE\"\n  \"EG\"\n  \"ES\"\n  \"FI\"\n  \"FJ\"\n  \"FR\"\n  \"GB\"\n  \"GE\"\n  \"GH\"\n  \"HR\"\n  \"HU\"\n  \"ID\"\n  \"IE\"\n  \"IL\"\n  \"IN\"\n  \"IQ\"\n  \"IR\"\n  \"IS\"\n  \"IT\"\n  \"JM\"\n  \"JO\"\n  \"JP\"\n  \"KE\"\n  \"KG\"\n  \"KH\"\n  \"KR\"\n  \"LB\"\n  \"LK\"\n  \"LT\"\n  \"LU\"\n  \"LV\"\n  \"MA\"\n  \"MC\"\n  \"ME\"\n  \"MG\"\n  \"MK\"\n  \"ML\"\n  \"MM\"\n  \"MN\"\n  \"MT\"\n  \"MU\"\n  \"MX\"\n  \"MY\"\n  \"NG\"\n  \"NI\"\n  \"NL\"\n  \"NO\"\n  \"NP\"\n  \"NZ\"\n  \"OM\"\n  \"PA\"\n  \"PE\"\n  \"PG\"\n  \"PH\"\n  \"PK\"\n  \"PL\"\n  \"PT\"\n  \"PY\"\n  \"QA\"\n  \"RO\"\n  \"RS\"\n  \"RU\"\n  \"RW\"\n  \"SA\"\n  \"SE\"\n  \"SG\"\n  \"SI\"\n  \"SK\"\n  \"SN\"\n  \"TH\"\n  \"TN\"\n  \"TR\"\n  \"TZ\"\n  \"UA\"\n  \"UG\"\n  \"US\"\n  \"UY\"\n  \"UZ\"\n  \"VE\"\n  \"VN\"\n  \"ZA\"\n  \"ZM\"\n  \"ZW\"\n]",
-        "expected": "[\n  \"US\"\n  \"UK\"\n]",
-        "operator": "deepStrictEqual",
-        "stack": "AssertionError: expected [ 'AD', 'AE', 'AF', 'AG', 'AL', …(96) ] to be a superset of [ 'US', 'UK' ]\n    at Context.<anonymous> (tests/chrono-utilz.test.ts:588:72)\n    at processImmediate (node:internal/timers:505:21)"
-      }
-    },
-    {
-      "title": "should have locale configuration",
-      "fullTitle": "Configuration Functions getConfigs should have locale configuration",
-      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {
-        "message": "expected undefined to be an array",
-        "showDiff": false,
-        "operator": "strictEqual",
-        "stack": "AssertionError: expected undefined to be an array\n    at Context.<anonymous> (tests/chrono-utilz.test.ts:595:55)\n    at processImmediate (node:internal/timers:505:21)"
-      }
-    },
-    {
-      "title": "should reflect dynamic holiday configuration changes",
-      "fullTitle": "Configuration Functions getConfigs should reflect dynamic holiday configuration changes",
-      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {
-        "message": "expected [ '2024-12-24', '2023-12-31' ] to include '2024-12-25'",
-        "showDiff": false,
-        "actual": [
-          "2024-12-24",
-          "2023-12-31"
-        ],
-        "operator": "strictEqual",
-        "stack": "AssertionError: expected [ '2024-12-24', '2023-12-31' ] to include '2024-12-25'\n    at Context.<anonymous> (tests/chrono-utilz.test.ts:671:72)\n    at processImmediate (node:internal/timers:505:21)"
-      }
-    }
-  ],
+  "failures": [],
   "passes": [
     {
       "title": "should convert timezone from UTC to New York",
@@ -661,7 +594,7 @@
       "title": "should throw error for invalid date",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Timezone Conversion should throw error for invalid date",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -733,7 +666,7 @@
       "title": "should generate weekly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -741,7 +674,7 @@
       "title": "should generate monthly recurring dates",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate monthly recurring dates",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -765,7 +698,7 @@
       "title": "should generate weekdays only",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Recurring Date Generation should generate weekdays only",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -805,7 +738,7 @@
       "title": "should calculate duration with custom precision",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Core Operations - Advanced Duration should calculate duration with custom precision",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -853,7 +786,7 @@
       "title": "should generate weekly payroll periods",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Business Utilities - Payroll Periods should generate weekly payroll periods",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 15,
+      "duration": 14,
       "currentRetry": 0,
       "err": {}
     },
@@ -933,7 +866,7 @@
       "title": "should format ISO without timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - ISO Formatting should format ISO without timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -973,7 +906,7 @@
       "title": "should get timezone information",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone Info should get timezone information",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -989,7 +922,7 @@
       "title": "should return array of timezones",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Formatting & Parsing - Timezone List should return array of timezones",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "err": {}
     },
@@ -1029,7 +962,7 @@
       "title": "should handle invalid timezone",
       "fullTitle": "ChronoUtilz v2.0 - New Functions Error Handling should handle invalid timezone",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "err": {}
     },
@@ -1122,6 +1055,22 @@
       "err": {}
     },
     {
+      "title": "should have holiday configuration",
+      "fullTitle": "Configuration Functions getConfigs should have holiday configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should have locale configuration",
+      "fullTitle": "Configuration Functions getConfigs should have locale configuration",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
       "title": "should have working time defaults",
       "fullTitle": "Configuration Functions getConfigs should have working time defaults",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
@@ -1172,6 +1121,14 @@
     {
       "title": "should reflect dynamic business day configuration changes",
       "fullTitle": "Configuration Functions getConfigs should reflect dynamic business day configuration changes",
+      "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "should reflect dynamic holiday configuration changes",
+      "fullTitle": "Configuration Functions getConfigs should reflect dynamic holiday configuration changes",
       "file": "/Users/mf/Desktop/ChronoUtilz/chrono-utilz/tests/chrono-utilz.test.ts",
       "duration": 0,
       "currentRetry": 0,
