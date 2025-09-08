@@ -56,7 +56,6 @@ ChronoUtilz v2.0 is built on three comprehensive pillars:
 ## Why Choose ChronoUtilz v2.0?
 
 - **🏢 Enterprise-Ready** - Built for real-world business applications
-- **🎯 Comprehensive** - 135+ functions covering every date scenario
 - **⚡ Performance-First** - Optimized for speed and efficiency
 - **🔧 TypeScript Native** - Full type safety throughout
 - **🌍 Zero Dependencies** - Lightweight with no external requirements
@@ -80,7 +79,9 @@ pnpm add @mfuon2/chrono-utilz
 
 ## 📖 Complete Function Reference
 
-### [View Full Documentation](DOCS.md)
+### [View Full Documentation](DOCS.md) 
+# OR 
+### [Hosted Website](https://chronoutilz.netlify.app/)
 
 ## Browser & Environment Support
 
@@ -91,17 +92,16 @@ pnpm add @mfuon2/chrono-utilz
 
 ## Comparison with Other Libraries
 
-| Feature | ChronoUtilz v2.0 | date-fns | moment.js | luxon |
-|---------|------------------|----------|-----------|-------|
-| Bundle size | Tree-shakeable | Tree-shakeable | Large | Medium |
-| Dependencies | **Zero** | Zero | Zero | Zero |
-| Business Logic | **✅ Built-in** | Limited | Limited | Limited |
-| Natural Language | **✅ Advanced** | ❌ | ❌ | ❌ |
-| IANA Timezones | **✅ Full Support** | Limited | ❌ | ✅ |
-| Fiscal Periods | **✅ Custom Config** | ❌ | ❌ | ❌ |
-| TypeScript | **✅ Native** | ✅ | ✅ | ✅ |
-| Function Count | **135+** | 200+ | 100+ | 150+ |
-| Immutable | **✅** | ✅ | ❌ | ✅ |
+| Feature          | ChronoUtilz |
+|------------------|------------------|
+| Bundle size      | **Tree-shakeable** |
+| Dependencies     | **Zero** |
+| Business Logic   | **✅ Built-in** |
+| Natural Language | **✅ Advanced** |
+| IANA Timezones   | **✅ Full Support** |
+| Fiscal Periods   | **✅ Custom Config** |
+| TypeScript       | **✅ Native** |
+| Immutable        | **✅** |
 
 ## Contributing
 
