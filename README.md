@@ -10,6 +10,8 @@
 [![Downloads](https://img.shields.io/npm/dm/@mfuon2/chrono-utilz.svg)](https://www.npmjs.com/package/@mfuon2/chrono-utilz)
 [![License](https://img.shields.io/npm/l/@mfuon2/chrono-utilz.svg)](https://github.com/mfuon2/chrono-utilz/blob/main/LICENSE.md)
 
+#### [Online Docs](https://chronoutilz.netlify.app/)
+
 > 🌍 Enterprise-ready for Node.js, modern browsers, and TypeScript-first projects.
 </div>
 
