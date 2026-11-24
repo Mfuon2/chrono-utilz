@@ -5,6 +5,15 @@ on:
     tags: ['v*']
   pull_request:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag to retry (leave empty for verification only)
+        required: false
+        type: string
+      verified_run_id:
+        description: Previous run containing the verified npm-package artifact
+        required: false
+        type: string
 permissions:
   contents: read
 concurrency:
@@ -12,6 +21,7 @@ concurrency:
   cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
 jobs:
   verify:
+    if: github.event_name != 'workflow_dispatch' || inputs.tag == ''
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -51,35 +61,58 @@ jobs:
             coverage/lcov.info
             reports/mutation/mutation.json
   publish:
-    if: startsWith(github.ref, 'refs/tags/v')
     needs: verify
+    if: always() && ((startsWith(github.ref, 'refs/tags/v') && needs.verify.result == 'success') || (github.event_name == 'workflow_dispatch' && inputs.tag != ''))
     runs-on: ubuntu-latest
-    environment: npm-publish
     permissions:
       contents: read
+      actions: read
       id-token: write
+    environment: npm-publish
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+      VERIFIED_RUN_ID: ${{ inputs.verified_run_id || github.run_id }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ inputs.tag || github.ref_name }}
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
-      - name: Validate tag
-        run: node -e "if(process.env.GITHUB_REF_NAME !== 'v'+require('./package.json').version) process.exit(1)"
+      - name: Verify the source run and release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node <<'NODE'
+          const assert=require('node:assert/strict');
+          const {execFileSync}=require('node:child_process');
+          const {RELEASE_TAG,VERIFIED_RUN_ID,GITHUB_REPOSITORY}=process.env;
+          assert(/^v\d+\.\d+\.\d+$/.test(RELEASE_TAG),'Expected a version tag');
+          assert(/^\d+$/.test(VERIFIED_RUN_ID),'Expected a numeric run ID');
+          assert.equal(RELEASE_TAG,'v'+require('./package.json').version);
+          const api=path=>JSON.parse(execFileSync('gh',['api',`repos/${GITHUB_REPOSITORY}/${path}`],{encoding:'utf8'}));
+          const run=api(`actions/runs/${VERIFIED_RUN_ID}`);
+          assert.equal(run.path,'.github/workflows/ci.yml');
+          assert.equal(run.head_sha,execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());
+          const jobs=api(`actions/runs/${VERIFIED_RUN_ID}/jobs?per_page=100`).jobs;
+          for(const name of ['verify (22)','verify (24)']) assert(jobs.some(job=>job.name===name&&job.conclusion==='success'),`${name} must pass`);
+          NODE
       - uses: actions/download-artifact@v4
         with:
           name: npm-package
           path: release
-      - name: Publish the verified tarball
-        run: npm publish ./release/*.tgz --ignore-scripts --provenance --access public
+          run-id: ${{ inputs.verified_run_id || github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Verify packed version and publish
+        run: |
+          test "$(tar -xOf ./release/*.tgz package/package.json | node -e 'let s="";process.stdin.on("data",x=>s+=x);process.stdin.on("end",()=>console.log(JSON.parse(s).version))')" = "${RELEASE_TAG#v}"
+          npm publish ./release/*.tgz --ignore-scripts --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Verify public installation
         run: |
           mkdir /tmp/chrono-release
           cd /tmp/chrono-release
-          for attempt in 1 2 3 4 5; do
-            npm install --ignore-scripts "@mfuon2/chrono-utilz@${GITHUB_REF_NAME#v}" && break
-            sleep 5
-          done
+          npm install --ignore-scripts "@mfuon2/chrono-utilz@${RELEASE_TAG#v}"
           node -e "const assert=require('node:assert/strict'); const c=require('@mfuon2/chrono-utilz'); assert.equal(c.formatDate(c.addBusinessDays('2025-01-03',3)), '2025-01-08')"
