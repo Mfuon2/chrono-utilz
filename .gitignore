@@ -17,3 +17,10 @@ web/
 build-browser.js
 start-web-ui.js
 start-web-ui.sh
+
+release/
+.stryker-tmp/
+reports/
+playwright-report/
+test-results/
+.browser-profile/

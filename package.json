@@ -4,8 +4,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "sideEffects": false,
-  "version": "2.0.2",
-  "description": "A comprehensive date utility library built on Three Pillars Architecture: Core Operations (45+ functions), Business Utilities (55+ functions), and Formatting & Parsing (35+ functions). Features natural language parsing, timezone conversion, fiscal periods, working days, and advanced business logic.",
+  "version": "3.0.0",
+  "description": "Precise, tree-shakeable date utilities for JavaScript and TypeScript, from everyday calculations to business scheduling.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -25,32 +25,36 @@
     "fiscal",
     "working-days",
     "natural-language",
-    "iana-timezones", 
+    "iana-timezones",
     "recurring-patterns",
     "payroll",
     "project-management",
     "sla-compliance",
     "overtime-calculation",
     "shift-scheduling",
-    "three-pillars",
-    "comprehensive",
     "typescript",
     "date-utils"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "build:browser": "node build-browser.js",
-    "start:web": "node start-web-ui.js",
-    "test": "mocha -r ts-node/register 'tests/**/*.test.ts' --reporter mocha-json-output-reporter --reporter-options output=report/json/result.json",
-    "test:ci": "npm run test",
-    "coverage": "nyc --reporter=lcov npm test",
-    "lint": "eslint 'src/**/*.ts' --fix",
+    "build": "node scripts/build.cjs",
+    "test": "node scripts/test.cjs",
+    "test:ci": "npm test",
+    "test:zones": "node scripts/test-zones.cjs",
+    "test:package": "node scripts/test-package.cjs",
+    "test:examples": "node scripts/test-examples.cjs",
+    "coverage": "nyc --all --include \"src/**/*.ts\" --extension .ts --reporter=text --reporter=lcov npm test",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run lint && npm run typecheck && npm run test && npm run build"
-  },
-  "mochaJunitReporterReporterOptions": {
-    "mochaFile": "results/test-results.xml"
+    "docs": "node scripts/docs.cjs",
+    "docs:check": "node scripts/docs.cjs --check",
+    "size": "node scripts/size.cjs",
+    "check": "npm run lint && npm run typecheck && npm run test:zones && npm run build && npm run test:package && npm run test:examples && npm run docs:check && npm run size",
+    "prepublishOnly": "npm run check",
+    "test:browsers": "node scripts/test-browsers.cjs",
+    "test:mutation": "stryker run",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/*.{cjs,json}\"",
+    "benchmark": "node scripts/benchmark.cjs"
   },
   "repository": {
     "type": "git",
@@ -59,22 +63,32 @@
   "bugs": {
     "url": "https://github.com/Mfuon2/chrono-utilz/issues"
   },
-  "homepage": "https://github.com/Mfuon2/chrono-utilz#readme",
+  "homepage": "https://chronoutilz.netlify.app/",
   "author": "Leonard Mfuon <mfuoon@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@stryker-mutator/core": "10.1.1",
+    "@stryker-mutator/mocha-runner": "10.1.1",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.16.0",
     "@types/sinon": "^10.0.15",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
+    "assert": "2.1.0",
     "chai": "^4.3.7",
+    "date-fns": "4.4.0",
+    "dayjs": "1.11.23",
     "eslint": "^8.57.1",
+    "fast-check": "4.11.0",
     "globals": "^16.1.0",
+    "luxon": "3.7.2",
     "mocha": "^10.2.0",
     "mocha-json-output-reporter": "^2.1.0",
+    "moment": "2.31.0",
     "nyc": "^15.1.0",
+    "prettier": "3.10.1",
     "sinon": "^15.0.4",
     "ts-node": "^10.9.1",
     "tsup": "^8.4.0",
@@ -82,6 +96,699 @@
     "typescript-eslint": "^8.32.0"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./configureTimezone": {
+      "types": "./dist/configureTimezone.d.ts",
+      "import": "./dist/configureTimezone.mjs",
+      "require": "./dist/configureTimezone.js"
+    },
+    "./getTimezoneConfig": {
+      "types": "./dist/getTimezoneConfig.d.ts",
+      "import": "./dist/getTimezoneConfig.mjs",
+      "require": "./dist/getTimezoneConfig.js"
+    },
+    "./ChronoUtilzError": {
+      "types": "./dist/ChronoUtilzError.d.ts",
+      "import": "./dist/ChronoUtilzError.mjs",
+      "require": "./dist/ChronoUtilzError.js"
+    },
+    "./parseDate": {
+      "types": "./dist/parseDate.d.ts",
+      "import": "./dist/parseDate.mjs",
+      "require": "./dist/parseDate.js"
+    },
+    "./formatDate": {
+      "types": "./dist/formatDate.d.ts",
+      "import": "./dist/formatDate.mjs",
+      "require": "./dist/formatDate.js"
+    },
+    "./addTime": {
+      "types": "./dist/addTime.d.ts",
+      "import": "./dist/addTime.mjs",
+      "require": "./dist/addTime.js"
+    },
+    "./subtractTime": {
+      "types": "./dist/subtractTime.d.ts",
+      "import": "./dist/subtractTime.mjs",
+      "require": "./dist/subtractTime.js"
+    },
+    "./getDateDiff": {
+      "types": "./dist/getDateDiff.d.ts",
+      "import": "./dist/getDateDiff.mjs",
+      "require": "./dist/getDateDiff.js"
+    },
+    "./remainingTime": {
+      "types": "./dist/remainingTime.d.ts",
+      "import": "./dist/remainingTime.mjs",
+      "require": "./dist/remainingTime.js"
+    },
+    "./isBetweenDates": {
+      "types": "./dist/isBetweenDates.d.ts",
+      "import": "./dist/isBetweenDates.mjs",
+      "require": "./dist/isBetweenDates.js"
+    },
+    "./isValidDate": {
+      "types": "./dist/isValidDate.d.ts",
+      "import": "./dist/isValidDate.mjs",
+      "require": "./dist/isValidDate.js"
+    },
+    "./startOf": {
+      "types": "./dist/startOf.d.ts",
+      "import": "./dist/startOf.mjs",
+      "require": "./dist/startOf.js"
+    },
+    "./endOf": {
+      "types": "./dist/endOf.d.ts",
+      "import": "./dist/endOf.mjs",
+      "require": "./dist/endOf.js"
+    },
+    "./getDayOfYear": {
+      "types": "./dist/getDayOfYear.d.ts",
+      "import": "./dist/getDayOfYear.mjs",
+      "require": "./dist/getDayOfYear.js"
+    },
+    "./getWeekOfYear": {
+      "types": "./dist/getWeekOfYear.d.ts",
+      "import": "./dist/getWeekOfYear.mjs",
+      "require": "./dist/getWeekOfYear.js"
+    },
+    "./isLeapYear": {
+      "types": "./dist/isLeapYear.d.ts",
+      "import": "./dist/isLeapYear.mjs",
+      "require": "./dist/isLeapYear.js"
+    },
+    "./getDaysInMonth": {
+      "types": "./dist/getDaysInMonth.d.ts",
+      "import": "./dist/getDaysInMonth.mjs",
+      "require": "./dist/getDaysInMonth.js"
+    },
+    "./getRelativeTime": {
+      "types": "./dist/getRelativeTime.d.ts",
+      "import": "./dist/getRelativeTime.mjs",
+      "require": "./dist/getRelativeTime.js"
+    },
+    "./getTimezoneOffset": {
+      "types": "./dist/getTimezoneOffset.d.ts",
+      "import": "./dist/getTimezoneOffset.mjs",
+      "require": "./dist/getTimezoneOffset.js"
+    },
+    "./createDate": {
+      "types": "./dist/createDate.d.ts",
+      "import": "./dist/createDate.mjs",
+      "require": "./dist/createDate.js"
+    },
+    "./CalendarDate": {
+      "types": "./dist/CalendarDate.d.ts",
+      "import": "./dist/CalendarDate.mjs",
+      "require": "./dist/CalendarDate.js"
+    },
+    "./utcNow": {
+      "types": "./dist/utcNow.d.ts",
+      "import": "./dist/utcNow.mjs",
+      "require": "./dist/utcNow.js"
+    },
+    "./toUTC": {
+      "types": "./dist/toUTC.d.ts",
+      "import": "./dist/toUTC.mjs",
+      "require": "./dist/toUTC.js"
+    },
+    "./getTimezoneString": {
+      "types": "./dist/getTimezoneString.d.ts",
+      "import": "./dist/getTimezoneString.mjs",
+      "require": "./dist/getTimezoneString.js"
+    },
+    "./validateDateFormat": {
+      "types": "./dist/validateDateFormat.d.ts",
+      "import": "./dist/validateDateFormat.mjs",
+      "require": "./dist/validateDateFormat.js"
+    },
+    "./generateDateRange": {
+      "types": "./dist/generateDateRange.d.ts",
+      "import": "./dist/generateDateRange.mjs",
+      "require": "./dist/generateDateRange.js"
+    },
+    "./formatDuration": {
+      "types": "./dist/formatDuration.d.ts",
+      "import": "./dist/formatDuration.mjs",
+      "require": "./dist/formatDuration.js"
+    },
+    "./getQuarter": {
+      "types": "./dist/getQuarter.d.ts",
+      "import": "./dist/getQuarter.mjs",
+      "require": "./dist/getQuarter.js"
+    },
+    "./getQuarterDate": {
+      "types": "./dist/getQuarterDate.d.ts",
+      "import": "./dist/getQuarterDate.mjs",
+      "require": "./dist/getQuarterDate.js"
+    },
+    "./getBusinessDays": {
+      "types": "./dist/getBusinessDays.d.ts",
+      "import": "./dist/getBusinessDays.mjs",
+      "require": "./dist/getBusinessDays.js"
+    },
+    "./calculateAge": {
+      "types": "./dist/calculateAge.d.ts",
+      "import": "./dist/calculateAge.mjs",
+      "require": "./dist/calculateAge.js"
+    },
+    "./cloneDate": {
+      "types": "./dist/cloneDate.d.ts",
+      "import": "./dist/cloneDate.mjs",
+      "require": "./dist/cloneDate.js"
+    },
+    "./minDate": {
+      "types": "./dist/minDate.d.ts",
+      "import": "./dist/minDate.mjs",
+      "require": "./dist/minDate.js"
+    },
+    "./maxDate": {
+      "types": "./dist/maxDate.d.ts",
+      "import": "./dist/maxDate.mjs",
+      "require": "./dist/maxDate.js"
+    },
+    "./roundToNearest": {
+      "types": "./dist/roundToNearest.d.ts",
+      "import": "./dist/roundToNearest.mjs",
+      "require": "./dist/roundToNearest.js"
+    },
+    "./compareDates": {
+      "types": "./dist/compareDates.d.ts",
+      "import": "./dist/compareDates.mjs",
+      "require": "./dist/compareDates.js"
+    },
+    "./getTimestamp": {
+      "types": "./dist/getTimestamp.d.ts",
+      "import": "./dist/getTimestamp.mjs",
+      "require": "./dist/getTimestamp.js"
+    },
+    "./fromTimestamp": {
+      "types": "./dist/fromTimestamp.d.ts",
+      "import": "./dist/fromTimestamp.mjs",
+      "require": "./dist/fromTimestamp.js"
+    },
+    "./randomDate": {
+      "types": "./dist/randomDate.d.ts",
+      "import": "./dist/randomDate.mjs",
+      "require": "./dist/randomDate.js"
+    },
+    "./copyTime": {
+      "types": "./dist/copyTime.d.ts",
+      "import": "./dist/copyTime.mjs",
+      "require": "./dist/copyTime.js"
+    },
+    "./truncateToUnit": {
+      "types": "./dist/truncateToUnit.d.ts",
+      "import": "./dist/truncateToUnit.mjs",
+      "require": "./dist/truncateToUnit.js"
+    },
+    "./setTime": {
+      "types": "./dist/setTime.d.ts",
+      "import": "./dist/setTime.mjs",
+      "require": "./dist/setTime.js"
+    },
+    "./isSameDay": {
+      "types": "./dist/isSameDay.d.ts",
+      "import": "./dist/isSameDay.mjs",
+      "require": "./dist/isSameDay.js"
+    },
+    "./isSameWeek": {
+      "types": "./dist/isSameWeek.d.ts",
+      "import": "./dist/isSameWeek.mjs",
+      "require": "./dist/isSameWeek.js"
+    },
+    "./isSameMonth": {
+      "types": "./dist/isSameMonth.d.ts",
+      "import": "./dist/isSameMonth.mjs",
+      "require": "./dist/isSameMonth.js"
+    },
+    "./isSameYear": {
+      "types": "./dist/isSameYear.d.ts",
+      "import": "./dist/isSameYear.mjs",
+      "require": "./dist/isSameYear.js"
+    },
+    "./isAfter": {
+      "types": "./dist/isAfter.d.ts",
+      "import": "./dist/isAfter.mjs",
+      "require": "./dist/isAfter.js"
+    },
+    "./isBefore": {
+      "types": "./dist/isBefore.d.ts",
+      "import": "./dist/isBefore.mjs",
+      "require": "./dist/isBefore.js"
+    },
+    "./isWithinRange": {
+      "types": "./dist/isWithinRange.d.ts",
+      "import": "./dist/isWithinRange.mjs",
+      "require": "./dist/isWithinRange.js"
+    },
+    "./isValidRange": {
+      "types": "./dist/isValidRange.d.ts",
+      "import": "./dist/isValidRange.mjs",
+      "require": "./dist/isValidRange.js"
+    },
+    "./sortDates": {
+      "types": "./dist/sortDates.d.ts",
+      "import": "./dist/sortDates.mjs",
+      "require": "./dist/sortDates.js"
+    },
+    "./getEarliestDate": {
+      "types": "./dist/getEarliestDate.d.ts",
+      "import": "./dist/getEarliestDate.mjs",
+      "require": "./dist/getEarliestDate.js"
+    },
+    "./getLatestDate": {
+      "types": "./dist/getLatestDate.d.ts",
+      "import": "./dist/getLatestDate.mjs",
+      "require": "./dist/getLatestDate.js"
+    },
+    "./removeDuplicateDates": {
+      "types": "./dist/removeDuplicateDates.d.ts",
+      "import": "./dist/removeDuplicateDates.mjs",
+      "require": "./dist/removeDuplicateDates.js"
+    },
+    "./isFirstDayOfMonth": {
+      "types": "./dist/isFirstDayOfMonth.d.ts",
+      "import": "./dist/isFirstDayOfMonth.mjs",
+      "require": "./dist/isFirstDayOfMonth.js"
+    },
+    "./isLastDayOfMonth": {
+      "types": "./dist/isLastDayOfMonth.d.ts",
+      "import": "./dist/isLastDayOfMonth.mjs",
+      "require": "./dist/isLastDayOfMonth.js"
+    },
+    "./isFirstDayOfYear": {
+      "types": "./dist/isFirstDayOfYear.d.ts",
+      "import": "./dist/isFirstDayOfYear.mjs",
+      "require": "./dist/isFirstDayOfYear.js"
+    },
+    "./isLastDayOfYear": {
+      "types": "./dist/isLastDayOfYear.d.ts",
+      "import": "./dist/isLastDayOfYear.mjs",
+      "require": "./dist/isLastDayOfYear.js"
+    },
+    "./getWeekBoundaries": {
+      "types": "./dist/getWeekBoundaries.d.ts",
+      "import": "./dist/getWeekBoundaries.mjs",
+      "require": "./dist/getWeekBoundaries.js"
+    },
+    "./getMonthBoundaries": {
+      "types": "./dist/getMonthBoundaries.d.ts",
+      "import": "./dist/getMonthBoundaries.mjs",
+      "require": "./dist/getMonthBoundaries.js"
+    },
+    "./getYearBoundaries": {
+      "types": "./dist/getYearBoundaries.d.ts",
+      "import": "./dist/getYearBoundaries.mjs",
+      "require": "./dist/getYearBoundaries.js"
+    },
+    "./getQuarterBoundaries": {
+      "types": "./dist/getQuarterBoundaries.d.ts",
+      "import": "./dist/getQuarterBoundaries.mjs",
+      "require": "./dist/getQuarterBoundaries.js"
+    },
+    "./stripTime": {
+      "types": "./dist/stripTime.d.ts",
+      "import": "./dist/stripTime.mjs",
+      "require": "./dist/stripTime.js"
+    },
+    "./getMidnight": {
+      "types": "./dist/getMidnight.d.ts",
+      "import": "./dist/getMidnight.mjs",
+      "require": "./dist/getMidnight.js"
+    },
+    "./getNoon": {
+      "types": "./dist/getNoon.d.ts",
+      "import": "./dist/getNoon.mjs",
+      "require": "./dist/getNoon.js"
+    },
+    "./configureWorkingDays": {
+      "types": "./dist/configureWorkingDays.d.ts",
+      "import": "./dist/configureWorkingDays.mjs",
+      "require": "./dist/configureWorkingDays.js"
+    },
+    "./configureHolidays": {
+      "types": "./dist/configureHolidays.d.ts",
+      "import": "./dist/configureHolidays.mjs",
+      "require": "./dist/configureHolidays.js"
+    },
+    "./getBusinessDayConfig": {
+      "types": "./dist/getBusinessDayConfig.d.ts",
+      "import": "./dist/getBusinessDayConfig.mjs",
+      "require": "./dist/getBusinessDayConfig.js"
+    },
+    "./resetBusinessDayConfig": {
+      "types": "./dist/resetBusinessDayConfig.d.ts",
+      "import": "./dist/resetBusinessDayConfig.mjs",
+      "require": "./dist/resetBusinessDayConfig.js"
+    },
+    "./isWeekend": {
+      "types": "./dist/isWeekend.d.ts",
+      "import": "./dist/isWeekend.mjs",
+      "require": "./dist/isWeekend.js"
+    },
+    "./isWeekday": {
+      "types": "./dist/isWeekday.d.ts",
+      "import": "./dist/isWeekday.mjs",
+      "require": "./dist/isWeekday.js"
+    },
+    "./isBusinessDay": {
+      "types": "./dist/isBusinessDay.d.ts",
+      "import": "./dist/isBusinessDay.mjs",
+      "require": "./dist/isBusinessDay.js"
+    },
+    "./addBusinessDays": {
+      "types": "./dist/addBusinessDays.d.ts",
+      "import": "./dist/addBusinessDays.mjs",
+      "require": "./dist/addBusinessDays.js"
+    },
+    "./subtractBusinessDays": {
+      "types": "./dist/subtractBusinessDays.d.ts",
+      "import": "./dist/subtractBusinessDays.mjs",
+      "require": "./dist/subtractBusinessDays.js"
+    },
+    "./getNextBusinessDay": {
+      "types": "./dist/getNextBusinessDay.d.ts",
+      "import": "./dist/getNextBusinessDay.mjs",
+      "require": "./dist/getNextBusinessDay.js"
+    },
+    "./getPreviousBusinessDay": {
+      "types": "./dist/getPreviousBusinessDay.d.ts",
+      "import": "./dist/getPreviousBusinessDay.mjs",
+      "require": "./dist/getPreviousBusinessDay.js"
+    },
+    "./businessDaysInMonth": {
+      "types": "./dist/businessDaysInMonth.d.ts",
+      "import": "./dist/businessDaysInMonth.mjs",
+      "require": "./dist/businessDaysInMonth.js"
+    },
+    "./differenceInBusinessDays": {
+      "types": "./dist/differenceInBusinessDays.d.ts",
+      "import": "./dist/differenceInBusinessDays.mjs",
+      "require": "./dist/differenceInBusinessDays.js"
+    },
+    "./isLastBusinessDayOfMonth": {
+      "types": "./dist/isLastBusinessDayOfMonth.d.ts",
+      "import": "./dist/isLastBusinessDayOfMonth.mjs",
+      "require": "./dist/isLastBusinessDayOfMonth.js"
+    },
+    "./isFirstBusinessDayOfMonth": {
+      "types": "./dist/isFirstBusinessDayOfMonth.d.ts",
+      "import": "./dist/isFirstBusinessDayOfMonth.mjs",
+      "require": "./dist/isFirstBusinessDayOfMonth.js"
+    },
+    "./getBusinessDaysInMonth": {
+      "types": "./dist/getBusinessDaysInMonth.d.ts",
+      "import": "./dist/getBusinessDaysInMonth.mjs",
+      "require": "./dist/getBusinessDaysInMonth.js"
+    },
+    "./isHoliday": {
+      "types": "./dist/isHoliday.d.ts",
+      "import": "./dist/isHoliday.mjs",
+      "require": "./dist/isHoliday.js"
+    },
+    "./getHolidays": {
+      "types": "./dist/getHolidays.d.ts",
+      "import": "./dist/getHolidays.mjs",
+      "require": "./dist/getHolidays.js"
+    },
+    "./addHolidayRules": {
+      "types": "./dist/addHolidayRules.d.ts",
+      "import": "./dist/addHolidayRules.mjs",
+      "require": "./dist/addHolidayRules.js"
+    },
+    "./getNextHoliday": {
+      "types": "./dist/getNextHoliday.d.ts",
+      "import": "./dist/getNextHoliday.mjs",
+      "require": "./dist/getNextHoliday.js"
+    },
+    "./addCustomHolidays": {
+      "types": "./dist/addCustomHolidays.d.ts",
+      "import": "./dist/addCustomHolidays.mjs",
+      "require": "./dist/addCustomHolidays.js"
+    },
+    "./calculateBusinessDaysCustom": {
+      "types": "./dist/calculateBusinessDaysCustom.d.ts",
+      "import": "./dist/calculateBusinessDaysCustom.mjs",
+      "require": "./dist/calculateBusinessDaysCustom.js"
+    },
+    "./getWorkingHoursBetween": {
+      "types": "./dist/getWorkingHoursBetween.d.ts",
+      "import": "./dist/getWorkingHoursBetween.mjs",
+      "require": "./dist/getWorkingHoursBetween.js"
+    },
+    "./addWorkingHours": {
+      "types": "./dist/addWorkingHours.d.ts",
+      "import": "./dist/addWorkingHours.mjs",
+      "require": "./dist/addWorkingHours.js"
+    },
+    "./isWorkingHours": {
+      "types": "./dist/isWorkingHours.d.ts",
+      "import": "./dist/isWorkingHours.mjs",
+      "require": "./dist/isWorkingHours.js"
+    },
+    "./getNextWorkingHour": {
+      "types": "./dist/getNextWorkingHour.d.ts",
+      "import": "./dist/getNextWorkingHour.mjs",
+      "require": "./dist/getNextWorkingHour.js"
+    },
+    "./mergeDateTime": {
+      "types": "./dist/mergeDateTime.d.ts",
+      "import": "./dist/mergeDateTime.mjs",
+      "require": "./dist/mergeDateTime.js"
+    },
+    "./timeOfDay": {
+      "types": "./dist/timeOfDay.d.ts",
+      "import": "./dist/timeOfDay.mjs",
+      "require": "./dist/timeOfDay.js"
+    },
+    "./getISOWeek": {
+      "types": "./dist/getISOWeek.d.ts",
+      "import": "./dist/getISOWeek.mjs",
+      "require": "./dist/getISOWeek.js"
+    },
+    "./getWeekOfMonth": {
+      "types": "./dist/getWeekOfMonth.d.ts",
+      "import": "./dist/getWeekOfMonth.mjs",
+      "require": "./dist/getWeekOfMonth.js"
+    },
+    "./getFiscalQuarter": {
+      "types": "./dist/getFiscalQuarter.d.ts",
+      "import": "./dist/getFiscalQuarter.mjs",
+      "require": "./dist/getFiscalQuarter.js"
+    },
+    "./getFiscalYear": {
+      "types": "./dist/getFiscalYear.d.ts",
+      "import": "./dist/getFiscalYear.mjs",
+      "require": "./dist/getFiscalYear.js"
+    },
+    "./getPayPeriods": {
+      "types": "./dist/getPayPeriods.d.ts",
+      "import": "./dist/getPayPeriods.mjs",
+      "require": "./dist/getPayPeriods.js"
+    },
+    "./getSeason": {
+      "types": "./dist/getSeason.d.ts",
+      "import": "./dist/getSeason.mjs",
+      "require": "./dist/getSeason.js"
+    },
+    "./getMonthName": {
+      "types": "./dist/getMonthName.d.ts",
+      "import": "./dist/getMonthName.mjs",
+      "require": "./dist/getMonthName.js"
+    },
+    "./getMonthsInQuarter": {
+      "types": "./dist/getMonthsInQuarter.d.ts",
+      "import": "./dist/getMonthsInQuarter.mjs",
+      "require": "./dist/getMonthsInQuarter.js"
+    },
+    "./nextOccurrence": {
+      "types": "./dist/nextOccurrence.d.ts",
+      "import": "./dist/nextOccurrence.mjs",
+      "require": "./dist/nextOccurrence.js"
+    },
+    "./previousOccurrence": {
+      "types": "./dist/previousOccurrence.d.ts",
+      "import": "./dist/previousOccurrence.mjs",
+      "require": "./dist/previousOccurrence.js"
+    },
+    "./convertTimezone": {
+      "types": "./dist/convertTimezone.d.ts",
+      "import": "./dist/convertTimezone.mjs",
+      "require": "./dist/convertTimezone.js"
+    },
+    "./parseNaturalLanguage": {
+      "types": "./dist/parseNaturalLanguage.d.ts",
+      "import": "./dist/parseNaturalLanguage.mjs",
+      "require": "./dist/parseNaturalLanguage.js"
+    },
+    "./generateRecurringDates": {
+      "types": "./dist/generateRecurringDates.d.ts",
+      "import": "./dist/generateRecurringDates.mjs",
+      "require": "./dist/generateRecurringDates.js"
+    },
+    "./compareDetailed": {
+      "types": "./dist/compareDetailed.d.ts",
+      "import": "./dist/compareDetailed.mjs",
+      "require": "./dist/compareDetailed.js"
+    },
+    "./calculateAdvancedDuration": {
+      "types": "./dist/calculateAdvancedDuration.d.ts",
+      "import": "./dist/calculateAdvancedDuration.mjs",
+      "require": "./dist/calculateAdvancedDuration.js"
+    },
+    "./getNthWeekdayOfMonth": {
+      "types": "./dist/getNthWeekdayOfMonth.d.ts",
+      "import": "./dist/getNthWeekdayOfMonth.mjs",
+      "require": "./dist/getNthWeekdayOfMonth.js"
+    },
+    "./calculateBusinessDaysAdvanced": {
+      "types": "./dist/calculateBusinessDaysAdvanced.d.ts",
+      "import": "./dist/calculateBusinessDaysAdvanced.mjs",
+      "require": "./dist/calculateBusinessDaysAdvanced.js"
+    },
+    "./findClosestDate": {
+      "types": "./dist/findClosestDate.d.ts",
+      "import": "./dist/findClosestDate.mjs",
+      "require": "./dist/findClosestDate.js"
+    },
+    "./getFiscalPeriodAdvanced": {
+      "types": "./dist/getFiscalPeriodAdvanced.d.ts",
+      "import": "./dist/getFiscalPeriodAdvanced.mjs",
+      "require": "./dist/getFiscalPeriodAdvanced.js"
+    },
+    "./calculateWorkingHours": {
+      "types": "./dist/calculateWorkingHours.d.ts",
+      "import": "./dist/calculateWorkingHours.mjs",
+      "require": "./dist/calculateWorkingHours.js"
+    },
+    "./generatePayrollPeriods": {
+      "types": "./dist/generatePayrollPeriods.d.ts",
+      "import": "./dist/generatePayrollPeriods.mjs",
+      "require": "./dist/generatePayrollPeriods.js"
+    },
+    "./calculateProjectMilestones": {
+      "types": "./dist/calculateProjectMilestones.d.ts",
+      "import": "./dist/calculateProjectMilestones.mjs",
+      "require": "./dist/calculateProjectMilestones.js"
+    },
+    "./generateBusinessCalendar": {
+      "types": "./dist/generateBusinessCalendar.d.ts",
+      "import": "./dist/generateBusinessCalendar.mjs",
+      "require": "./dist/generateBusinessCalendar.js"
+    },
+    "./calculateOvertime": {
+      "types": "./dist/calculateOvertime.d.ts",
+      "import": "./dist/calculateOvertime.mjs",
+      "require": "./dist/calculateOvertime.js"
+    },
+    "./generateShiftSchedule": {
+      "types": "./dist/generateShiftSchedule.d.ts",
+      "import": "./dist/generateShiftSchedule.mjs",
+      "require": "./dist/generateShiftSchedule.js"
+    },
+    "./calculateSLACompliance": {
+      "types": "./dist/calculateSLACompliance.d.ts",
+      "import": "./dist/calculateSLACompliance.mjs",
+      "require": "./dist/calculateSLACompliance.js"
+    },
+    "./formatISO": {
+      "types": "./dist/formatISO.d.ts",
+      "import": "./dist/formatISO.mjs",
+      "require": "./dist/formatISO.js"
+    },
+    "./formatCustom": {
+      "types": "./dist/formatCustom.d.ts",
+      "import": "./dist/formatCustom.mjs",
+      "require": "./dist/formatCustom.js"
+    },
+    "./formatLocalized": {
+      "types": "./dist/formatLocalized.d.ts",
+      "import": "./dist/formatLocalized.mjs",
+      "require": "./dist/formatLocalized.js"
+    },
+    "./formatRelativeLocalized": {
+      "types": "./dist/formatRelativeLocalized.d.ts",
+      "import": "./dist/formatRelativeLocalized.mjs",
+      "require": "./dist/formatRelativeLocalized.js"
+    },
+    "./formatCalendar": {
+      "types": "./dist/formatCalendar.d.ts",
+      "import": "./dist/formatCalendar.mjs",
+      "require": "./dist/formatCalendar.js"
+    },
+    "./formatTimezone": {
+      "types": "./dist/formatTimezone.d.ts",
+      "import": "./dist/formatTimezone.mjs",
+      "require": "./dist/formatTimezone.js"
+    },
+    "./humanizeDuration": {
+      "types": "./dist/humanizeDuration.d.ts",
+      "import": "./dist/humanizeDuration.mjs",
+      "require": "./dist/humanizeDuration.js"
+    },
+    "./parseISO": {
+      "types": "./dist/parseISO.d.ts",
+      "import": "./dist/parseISO.mjs",
+      "require": "./dist/parseISO.js"
+    },
+    "./parseMultipleFormats": {
+      "types": "./dist/parseMultipleFormats.d.ts",
+      "import": "./dist/parseMultipleFormats.mjs",
+      "require": "./dist/parseMultipleFormats.js"
+    },
+    "./smartParse": {
+      "types": "./dist/smartParse.d.ts",
+      "import": "./dist/smartParse.mjs",
+      "require": "./dist/smartParse.js"
+    },
+    "./getTimezoneInfo": {
+      "types": "./dist/getTimezoneInfo.d.ts",
+      "import": "./dist/getTimezoneInfo.mjs",
+      "require": "./dist/getTimezoneInfo.js"
+    },
+    "./listTimezones": {
+      "types": "./dist/listTimezones.d.ts",
+      "import": "./dist/listTimezones.mjs",
+      "require": "./dist/listTimezones.js"
+    },
+    "./getConfigs": {
+      "types": "./dist/getConfigs.d.ts",
+      "import": "./dist/getConfigs.mjs",
+      "require": "./dist/getConfigs.js"
+    },
+    "./getTimezonesByRegion": {
+      "types": "./dist/getTimezonesByRegion.d.ts",
+      "import": "./dist/getTimezonesByRegion.mjs",
+      "require": "./dist/getTimezonesByRegion.js"
+    },
+    "./searchTimezones": {
+      "types": "./dist/searchTimezones.d.ts",
+      "import": "./dist/searchTimezones.mjs",
+      "require": "./dist/searchTimezones.js"
+    },
+    "./getTimezonesByOffset": {
+      "types": "./dist/getTimezonesByOffset.d.ts",
+      "import": "./dist/getTimezonesByOffset.mjs",
+      "require": "./dist/getTimezonesByOffset.js"
+    },
+    "./getUserTimezone": {
+      "types": "./dist/getUserTimezone.d.ts",
+      "import": "./dist/getUserTimezone.mjs",
+      "require": "./dist/getUserTimezone.js"
+    },
+    "./holiday-data": {
+      "types": "./dist/holidays.d.ts",
+      "import": "./dist/holiday-data.mjs",
+      "require": "./dist/holiday-data.js"
+    },
+    "./package.json": "./package.json"
   }
 }

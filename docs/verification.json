@@ -1,0 +1,34 @@
+{
+  "node": "v26.5.1",
+  "testCount": 230,
+  "hostTimezones": [
+    "UTC",
+    "Africa/Nairobi",
+    "America/New_York",
+    "Australia/Sydney",
+    "Asia/Kathmandu"
+  ],
+  "browsersVerifiedLocally": [
+    "Chromium",
+    "WebKit"
+  ],
+  "firefox": "Local profile startup failed; required by Linux CI",
+  "mutation": {
+    "scope": [
+      "src/convertTimezone.ts",
+      "src/fromTimestamp.ts",
+      "src/getISOWeek.ts",
+      "src/isLeapYear.ts"
+    ],
+    "counts": {
+      "Killed": 64
+    }
+  },
+  "coverage": {
+    "statements": 90.02,
+    "branches": 74.2,
+    "functions": 91.93,
+    "lines": 91.01
+  },
+  "limitations": "Contract and property testing provide evidence, not proof for all possible inputs. Coverage numbers are from the recorded local run."
+}

@@ -1,0 +1,36 @@
+{
+  "version": "3.0.0",
+  "tool": "esbuild 0.25.9",
+  "metrics": {
+    "leapYear": {
+      "minified": 3790,
+      "gzip": 1641,
+      "brotli": 1469,
+      "budget": 1850
+    },
+    "arithmetic": {
+      "minified": 5938,
+      "gzip": 2371,
+      "brotli": 2105,
+      "budget": 2700
+    },
+    "timezone": {
+      "minified": 4729,
+      "gzip": 2008,
+      "brotli": 1792,
+      "budget": 2300
+    },
+    "business": {
+      "minified": 6683,
+      "gzip": 2670,
+      "brotli": 2370,
+      "budget": 3000
+    },
+    "complete": {
+      "minified": 71531,
+      "gzip": 21512,
+      "brotli": 17977,
+      "budget": 24000
+    }
+  }
+}

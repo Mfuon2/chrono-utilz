@@ -1,0 +1,1087 @@
+{
+  "version": "3.0.0",
+  "api": [
+    {
+      "name": "addBusinessDays",
+      "kind": "function",
+      "signature": "function addBusinessDays(\n  date: Date | string | number,\n  businessDays: number,\n  timezone?: IANATimezone,\n): Date",
+      "summary": "Add signed calendar business days, excluding the starting date and preserving clock time.",
+      "source": "src/addBusinessDays.ts"
+    },
+    {
+      "name": "addCustomHolidays",
+      "kind": "function",
+      "signature": "function addCustomHolidays(holidayArray: (Date | string | number)[]): void",
+      "summary": "Adds custom holidays",
+      "source": "src/addCustomHolidays.ts"
+    },
+    {
+      "name": "addHolidayRules",
+      "kind": "function",
+      "signature": "function addHolidayRules(country: string, rules: HolidayRule[]): void",
+      "summary": "Replaces a country preset with copied rules. Fixed dates use MM-DD; floating rules are functions returning a valid date in the requested year.",
+      "source": "src/addHolidayRules.ts"
+    },
+    {
+      "name": "addTime",
+      "kind": "function",
+      "signature": "function addTime(\n  date: Date | string | number,\n  amount: number,\n  unit: TimeUnit,\n  timezone?: IANATimezone,\n): Date",
+      "summary": "Hours and smaller units are elapsed time. Days and larger units are calendar arithmetic; month/year additions clamp to the last valid day. Explicit timezone calendar operations reject DST gaps/folds. Calendar amounts must be integers.",
+      "source": "src/addTime.ts"
+    },
+    {
+      "name": "addWorkingHours",
+      "kind": "function",
+      "signature": "function addWorkingHours(\n  date: Date | string | number,\n  hours: number,\n  schedule?: WorkingSchedule,\n): Date",
+      "summary": "Consume nonnegative elapsed working hours, starting at or after the input. Supports partial days, overnight schedules and absent days (all days). Empty/zero-length schedules are rejected. Search is bounded to 100,000 iterations.",
+      "source": "src/addWorkingHours.ts"
+    },
+    {
+      "name": "businessDaysInMonth",
+      "kind": "function",
+      "signature": "function businessDaysInMonth(year: number, month: number): number",
+      "summary": "Counts the number of business days in a given month",
+      "source": "src/businessDaysInMonth.ts"
+    },
+    {
+      "name": "calculateAdvancedDuration",
+      "kind": "function",
+      "signature": "function calculateAdvancedDuration(\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n  options: DurationDisplayOptions = {},\n): string",
+      "summary": "Absolute calendar decomposition. Supported display units: year, month, day, hour, minute, second. Default precision 2. Omitted larger components are not converted into smaller units.",
+      "source": "src/calculateAdvancedDuration.ts"
+    },
+    {
+      "name": "calculateAge",
+      "kind": "function",
+      "signature": "function calculateAge(\n  birthDate: Date | string,\n  options: { referenceDate?: Date | string; units?: ('year' | 'month' | 'day')[] } = {},\n): number | { years: number; months: number; days: number }",
+      "summary": "Age calculator that handles leap years and different formats",
+      "source": "src/calculateAge.ts"
+    },
+    {
+      "name": "calculateBusinessDaysAdvanced",
+      "kind": "function",
+      "signature": "function calculateBusinessDaysAdvanced(\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n  config: WorkingTimeConfig = { startHour: 9, endHour: 17, workingDays: [1, 2, 3, 4, 5] },\n): number",
+      "summary": "Inclusive calendar days in config.timezone (host timezone by default). Honors workingDays, excludeHolidays and holidayConfig.",
+      "source": "src/calculateBusinessDaysAdvanced.ts"
+    },
+    {
+      "name": "calculateBusinessDaysCustom",
+      "kind": "function",
+      "signature": "function calculateBusinessDaysCustom(\n  start: Date | string | number,\n  end: Date | string | number,\n  rules: BusinessDayRules,\n): number",
+      "summary": "Excludes the start date and includes the end date. Global/custom holidays are combined with the supplied holidays. Reversed ranges return 0. workingHours is rejected; use calculateWorkingHours.",
+      "source": "src/calculateBusinessDaysCustom.ts"
+    },
+    {
+      "name": "calculateOvertime",
+      "kind": "function",
+      "signature": "function calculateOvertime(\n  hoursWorked: number,\n  regularHours = 40,\n  overtimeMultiplier = 1.5,\n  doubleTimeThreshold?: number,\n): {\n  regularHours: number;\n  overtimeHours: number;\n  doubleTimeHours: number;\n  totalRegularPay: number;\n  totalOvertimePay: number;\n  totalDoubleTimePay: number;\n}",
+      "summary": "Returns pay factors assuming hourly rate 1. Explicit thresholds are arithmetic inputs, not jurisdiction-specific payroll rules.",
+      "source": "src/calculateOvertime.ts"
+    },
+    {
+      "name": "calculateProjectMilestones",
+      "kind": "function",
+      "signature": "function calculateProjectMilestones(\n  startDate: Date | string | number,\n  tasks: number[],\n  config: WorkingTimeConfig = { startHour: 9, endHour: 17, workingDays: [1, 2, 3, 4, 5] },\n): Date[]",
+      "summary": "Calculates project milestones based on working days",
+      "source": "src/calculateProjectMilestones.ts"
+    },
+    {
+      "name": "calculateSLACompliance",
+      "kind": "function",
+      "signature": "function calculateSLACompliance(\n  incidentDate: Date | string | number,\n  resolvedDate: Date | string | number,\n  slaHours: number,\n  config: WorkingTimeConfig = { startHour: 9, endHour: 17, workingDays: [1, 2, 3, 4, 5] },\n): {\n  actualHours: number;\n  slaHours: number;\n  isCompliant: boolean;\n  breachHours: number;\n  percentageOfSLA: number;\n}",
+      "summary": "Calculates service level agreement (SLA) compliance",
+      "source": "src/calculateSLACompliance.ts"
+    },
+    {
+      "name": "calculateWorkingHours",
+      "kind": "function",
+      "signature": "function calculateWorkingHours(\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n  config: WorkingTimeConfig,\n): number",
+      "summary": "Overlap with half-open [start,end) work intervals. Supports fractional hours, overnight intervals (endHour < startHour), explicit timezone and configured holiday exclusion. The shift belongs to its starting calendar day. DST-ambiguous boundaries throw.",
+      "source": "src/calculateWorkingHours.ts"
+    },
+    {
+      "name": "CalendarDate",
+      "kind": "class",
+      "signature": "declare class CalendarDate {\n  constructor(year: number, month: number, day: number);\n  static fromDate(date: Date): CalendarDate;\n  static fromString(input: string | number): CalendarDate;\n  get year(): number;\n  get month(): number;\n  get day(): number;\n  toDate(): Date;\n  toString(): string;\n  add(amount: number, unit: Extract<TimeUnit, 'day' | 'week' | 'month' | 'year'>): CalendarDate;\n  equals(other: CalendarDate): boolean;\n  compare(other: CalendarDate): number;\n  isBefore(other: CalendarDate): boolean;\n  isAfter(other: CalendarDate): boolean;\n}",
+      "summary": "A calendar date without time information",
+      "source": "src/CalendarDate.ts"
+    },
+    {
+      "name": "ChronoUtilzError",
+      "kind": "class",
+      "signature": "declare class ChronoUtilzError {\n  constructor(message: string);\n}",
+      "summary": "ChronoUtilz error class",
+      "source": "src/ChronoUtilzError.ts"
+    },
+    {
+      "name": "cloneDate",
+      "kind": "function",
+      "signature": "function cloneDate(date: Date | string | number): Date",
+      "summary": "Creates a deep copy of a Date object",
+      "source": "src/cloneDate.ts"
+    },
+    {
+      "name": "compareDates",
+      "kind": "function",
+      "signature": "function compareDates(\n  date1: Date | string | number,\n  date2: Date | string | number,\n  unit?: TimeUnit,\n): -1 | 0 | 1",
+      "summary": "Compares two dates and returns -1, 0, or 1",
+      "source": "src/compareDates.ts"
+    },
+    {
+      "name": "compareDetailed",
+      "kind": "function",
+      "signature": "function compareDetailed(\n  date1: Date | string | number,\n  date2: Date | string | number,\n): DateComparison",
+      "summary": "Absolute calendar decomposition: clamped years, then clamped months, calendar days, then elapsed sub-day remainder. Direction is reported separately.",
+      "source": "src/compareDetailed.ts"
+    },
+    {
+      "name": "configureHolidays",
+      "kind": "function",
+      "signature": "function configureHolidays(holidays: (Date | string | number)[]): BusinessDayConfig",
+      "summary": "Adds holidays to the business day configuration",
+      "source": "src/configureHolidays.ts"
+    },
+    {
+      "name": "configureTimezone",
+      "kind": "function",
+      "signature": "function configureTimezone(config: {\n  defaultTimezone?: IANATimezone;\n  autoDetect?: boolean;\n}): void",
+      "summary": "Configure global timezone behavior for ChronoUtilz",
+      "source": "src/configureTimezone.ts"
+    },
+    {
+      "name": "configureWorkingDays",
+      "kind": "function",
+      "signature": "function configureWorkingDays(dayArray: number[]): BusinessDayConfig",
+      "summary": "Configures which days of the week are considered working days",
+      "source": "src/configureWorkingDays.ts"
+    },
+    {
+      "name": "convertTimezone",
+      "kind": "function",
+      "signature": "function convertTimezone(\n  date: Date | string | number,\n  options: TimezoneConversionOptions,\n): Date",
+      "summary": "Default: return a new Date with the same instant, validating the zones. preserveTime:true reinterprets source-zone wall fields in the target zone. Use formatDate/formatTimezone to display a zone. Gap/fold reinterpretations throw.",
+      "source": "src/convertTimezone.ts"
+    },
+    {
+      "name": "copyTime",
+      "kind": "function",
+      "signature": "function copyTime(fromDate: Date | string | number, toDate: Date | string | number): Date",
+      "summary": "Copies the time portion (hours, minutes, seconds, milliseconds) from one date to another",
+      "source": "src/copyTime.ts"
+    },
+    {
+      "name": "createDate",
+      "kind": "function",
+      "signature": "function createDate(\n  year: number,\n  month: number,\n  day: number,\n  hours = 0,\n  minutes = 0,\n  seconds = 0,\n  milliseconds = 0,\n): Date",
+      "summary": "Creates a date from components",
+      "source": "src/createDate.ts"
+    },
+    {
+      "name": "differenceInBusinessDays",
+      "kind": "function",
+      "signature": "function differenceInBusinessDays(\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n): number",
+      "summary": "Signed local calendar-day count. Forward ranges exclude the first date and include the last; reversed ranges negate the corresponding ordered interval.",
+      "source": "src/differenceInBusinessDays.ts"
+    },
+    {
+      "name": "endOf",
+      "kind": "function",
+      "signature": "function endOf(\n  date: Date | string | number,\n  unit: Exclude<TimeUnit, 'millisecond' | 'second' | 'minute'>,\n): Date",
+      "summary": "Gets the end of a time unit (e.g., end of day, end of month)",
+      "source": "src/endOf.ts"
+    },
+    {
+      "name": "findClosestDate",
+      "kind": "function",
+      "signature": "function findClosestDate(\n  targetDate: Date | string | number,\n  dates: (Date | string | number)[],\n): Date | null",
+      "summary": "Finds the closest date to a target from an array of dates",
+      "source": "src/findClosestDate.ts"
+    },
+    {
+      "name": "formatCalendar",
+      "kind": "function",
+      "signature": "function formatCalendar(date: Date | string | number, baseDate?: Date): string",
+      "summary": "Formats date as calendar format (Today, Tomorrow, etc.)",
+      "source": "src/formatCalendar.ts"
+    },
+    {
+      "name": "formatCustom",
+      "kind": "function",
+      "signature": "function formatCustom(date: Date | string | number, pattern: string): string",
+      "summary": "Single-pass token substitution with [literal text] escaping. Supported tokens are listed by getConfigs().formatTokens; d (weekday number) is also supported. Uses host local fields.",
+      "source": "src/formatCustom.ts"
+    },
+    {
+      "name": "formatDate",
+      "kind": "function",
+      "signature": "function formatDate(\n  date: Date | string | number,\n  format: DateFormat = 'YYYY-MM-DD',\n  timezone?: IANATimezone,\n): string",
+      "summary": "The eight DateFormat patterns only. Displays an instant in the explicit or globally effective timezone. Strings are parsed first; configureTimezone does not change parsing of offset-free strings.",
+      "source": "src/formatDate.ts"
+    },
+    {
+      "name": "formatDuration",
+      "kind": "function",
+      "signature": "function formatDuration(\n  milliseconds: number,\n  options: { longFormat?: boolean; maxUnits?: number } = {},\n): string",
+      "summary": "Elapsed approximation: 365-day years and 30-day months. Negative values retain a minus sign. maxUnits must be a positive integer.",
+      "source": "src/formatDuration.ts"
+    },
+    {
+      "name": "formatISO",
+      "kind": "function",
+      "signature": "function formatISO(\n  date: Date | string | number,\n  options: { includeTime?: boolean; includeTimezone?: boolean; includeMilliseconds?: boolean } = {},\n): string",
+      "summary": "UTC ISO output. includeTimezone:false removes the Z marker; remaining fields still represent UTC.",
+      "source": "src/formatISO.ts"
+    },
+    {
+      "name": "formatLocalized",
+      "kind": "function",
+      "signature": "function formatLocalized(\n  date: Date | string | number,\n  locale = 'en-US',\n  options: Intl.DateTimeFormatOptions = {},\n): string",
+      "summary": "Formats date with localization support",
+      "source": "src/formatLocalized.ts"
+    },
+    {
+      "name": "formatRelativeLocalized",
+      "kind": "function",
+      "signature": "function formatRelativeLocalized(\n  date: Date | string | number,\n  locale = 'en-US',\n  baseDate?: Date,\n): string",
+      "summary": "Formats relative time with localization",
+      "source": "src/formatRelativeLocalized.ts"
+    },
+    {
+      "name": "formatTimezone",
+      "kind": "function",
+      "signature": "function formatTimezone(\n  date: Date | string | number,\n  timezone: IANATimezone,\n  options: AdvancedFormatOptions = {},\n): string",
+      "summary": "Formats date in a specific timezone",
+      "source": "src/formatTimezone.ts"
+    },
+    {
+      "name": "fromTimestamp",
+      "kind": "function",
+      "signature": "function fromTimestamp(timestamp: number, inSeconds = false): Date",
+      "summary": "Unix milliseconds by default. Pass inSeconds:true for Unix seconds. No magnitude guessing.",
+      "source": "src/fromTimestamp.ts"
+    },
+    {
+      "name": "generateBusinessCalendar",
+      "kind": "function",
+      "signature": "function generateBusinessCalendar(\n  year: number,\n  month: number,\n  events: CalendarEvent[] = [],\n  config: WorkingTimeConfig = { startHour: 9, endHour: 17, workingDays: [1, 2, 3, 4, 5] },\n): Array<{\n  date: Date;\n  isWorkingDay: boolean;\n  isHoliday: boolean;\n  isWeekend: boolean;\n  events: CalendarEvent[];\n  workingHours: number;\n}>",
+      "summary": "Generate local calendar days, or midnight instants in config.timezone. workingHours is the nominal shift duration, not elapsed DST duration. Event date ranges include both calendar days; pre-expand recurring events. Event-specific timezone/recurring options are rejected rather than ignored.",
+      "source": "src/generateBusinessCalendar.ts"
+    },
+    {
+      "name": "generateDateRange",
+      "kind": "function",
+      "signature": "function generateDateRange(options: DateRangeOptions): Date[]",
+      "summary": "Generates an array of dates between a start and end date",
+      "source": "src/generateDateRange.ts"
+    },
+    {
+      "name": "generatePayrollPeriods",
+      "kind": "function",
+      "signature": "function generatePayrollPeriods(\n  year: number,\n  frequency: 'weekly' | 'biweekly' | 'semimonthly' | 'monthly',\n  startDate?: Date,\n): Array<{ startDate: Date; endDate: Date; payDate: Date }>",
+      "summary": "Calendar-year periods; final end is clipped to year end and includes the final millisecond. Pay date remains the scheduled date even when the period is clipped. No jurisdiction-specific payroll policy.",
+      "source": "src/generatePayrollPeriods.ts"
+    },
+    {
+      "name": "generateRecurringDates",
+      "kind": "function",
+      "signature": "function generateRecurringDates(\n  startDate: Date | string | number,\n  config: RecurringConfig,\n): Date[]",
+      "summary": "Includes the supplied start when inside the end bound, even if it does not match a filter. maxOccurrences:0 returns []. Positive integer intervals; finite bounded counts. Custom searches throw after eight years without a match. Month/year recurrences retain the original day anchor after clamping. Weekend/custom intervals count matching occurrences. Weekend generation rejects an all-working-days calendar. Interval is limited to 10,000.",
+      "source": "src/generateRecurringDates.ts"
+    },
+    {
+      "name": "generateShiftSchedule",
+      "kind": "function",
+      "signature": "function generateShiftSchedule(\n  startDate: Date | string | number,\n  patterns: Array<{\n    name: string;\n    startHour: number;\n    duration: number;\n    daysOn: number;\n    daysOff: number;\n  }>,\n  duration = 30,\n): Array<{\n  date: Date;\n  shiftName: string;\n  startTime: Date;\n  endTime: Date;\n  isWorkDay: boolean;\n}>",
+      "summary": "Manages shift schedules and rotations",
+      "source": "src/generateShiftSchedule.ts"
+    },
+    {
+      "name": "getBusinessDayConfig",
+      "kind": "function",
+      "signature": "function getBusinessDayConfig(): BusinessDayConfig",
+      "summary": "Gets the current business day configuration",
+      "source": "src/getBusinessDayConfig.ts"
+    },
+    {
+      "name": "getBusinessDays",
+      "kind": "function",
+      "signature": "function getBusinessDays(\n  startDate: Date | string,\n  endDate: Date | string,\n  holidays: (Date | string)[] = [],\n): number",
+      "summary": "Inclusive local calendar-day count, using configured working days and the union of global, custom, and supplied holidays. Reversed ranges return 0.",
+      "source": "src/getBusinessDays.ts"
+    },
+    {
+      "name": "getBusinessDaysInMonth",
+      "kind": "function",
+      "signature": "function getBusinessDaysInMonth(year: number, month: number): Date[]",
+      "summary": "Gets an array of all business days in a given month",
+      "source": "src/getBusinessDaysInMonth.ts"
+    },
+    {
+      "name": "getConfigs",
+      "kind": "function",
+      "signature": "function getConfigs(): ChronoUtilzConfig",
+      "summary": "Returns available format values, actual loaded holiday rule presets, timezone/locale catalogs and current business configuration. Large catalogs are loaded only when this API is imported.",
+      "source": "src/getConfigs.ts"
+    },
+    {
+      "name": "getDateDiff",
+      "kind": "function",
+      "signature": "function getDateDiff(\n  date1: Date | string | number,\n  date2: Date | string | number,\n  unit: TimeUnit,\n  timezone?: IANATimezone,\n): number",
+      "summary": "date1 minus date2. Elapsed units truncate toward zero. Month differences count calendar month boundaries, quarters truncate that count / 3, and years return month count / 12. These are not full-anniversary differences.",
+      "source": "src/getDateDiff.ts"
+    },
+    {
+      "name": "getDayOfYear",
+      "kind": "function",
+      "signature": "function getDayOfYear(date: Date | string | number): number",
+      "summary": "Local calendar ordinal, 1-366, independent of daylight-saving day length.",
+      "source": "src/getDayOfYear.ts"
+    },
+    {
+      "name": "getDaysInMonth",
+      "kind": "function",
+      "signature": "function getDaysInMonth(date: Date | string | number): number",
+      "summary": "Gets the number of days in a month",
+      "source": "src/getDaysInMonth.ts"
+    },
+    {
+      "name": "getEarliestDate",
+      "kind": "function",
+      "signature": "function getEarliestDate(dateArray: (Date | string | number)[]): Date",
+      "summary": "Gets the earliest date from an array of dates",
+      "source": "src/getEarliestDate.ts"
+    },
+    {
+      "name": "getFiscalPeriodAdvanced",
+      "kind": "function",
+      "signature": "function getFiscalPeriodAdvanced(\n  date: Date | string | number,\n  config: FiscalYearConfig = { startMonth: 1, startDay: 1 },\n): FiscalPeriod",
+      "summary": "Fiscal years are named by starting calendar year. startDay is restricted to 1-28 so every quarter has an unambiguous anchor. End includes the final millisecond of the quarter.",
+      "source": "src/getFiscalPeriodAdvanced.ts"
+    },
+    {
+      "name": "getFiscalQuarter",
+      "kind": "function",
+      "signature": "function getFiscalQuarter(date: Date | string | number, fiscalYearStart = 1): number",
+      "summary": "Gets fiscal quarter",
+      "source": "src/getFiscalQuarter.ts"
+    },
+    {
+      "name": "getFiscalYear",
+      "kind": "function",
+      "signature": "function getFiscalYear(date: Date | string | number, fiscalYearStart = 1): number",
+      "summary": "Gets fiscal year",
+      "source": "src/getFiscalYear.ts"
+    },
+    {
+      "name": "getHolidays",
+      "kind": "function",
+      "signature": "function getHolidays(year: number, country = 'US'): Date[]",
+      "summary": "Built-in recurring presets: US federal actual dates and UK England/Wales recurring actual dates. No substitute-day policy, historical rule changes, exceptional proclamations, or complete worldwide calendar. Add validated custom rules/dates for your jurisdiction and year.",
+      "source": "src/getHolidays.ts"
+    },
+    {
+      "name": "getISOWeek",
+      "kind": "function",
+      "signature": "function getISOWeek(date: Date | string | number): number",
+      "summary": "ISO 8601 week number, Monday start and first week containing January 4. Does not return the ISO week-year.",
+      "source": "src/getISOWeek.ts"
+    },
+    {
+      "name": "getLatestDate",
+      "kind": "function",
+      "signature": "function getLatestDate(dateArray: (Date | string | number)[]): Date",
+      "summary": "Gets the latest date from an array of dates",
+      "source": "src/getLatestDate.ts"
+    },
+    {
+      "name": "getMidnight",
+      "kind": "function",
+      "signature": "function getMidnight(date: Date | string | number): Date",
+      "summary": "Returns a new date set to midnight (00:00:00.000) of the given date",
+      "source": "src/getMidnight.ts"
+    },
+    {
+      "name": "getMonthBoundaries",
+      "kind": "function",
+      "signature": "function getMonthBoundaries(date: Date | string | number): MonthBoundaries",
+      "summary": "Gets the start and end dates of the month containing the given date",
+      "source": "src/getMonthBoundaries.ts"
+    },
+    {
+      "name": "getMonthName",
+      "kind": "function",
+      "signature": "function getMonthName(\n  monthNumber: number,\n  locale = 'en-US',\n  format: MonthNameFormat = 'long',\n): string",
+      "summary": "Gets month name",
+      "source": "src/getMonthName.ts"
+    },
+    {
+      "name": "getMonthsInQuarter",
+      "kind": "function",
+      "signature": "function getMonthsInQuarter(quarter: number, year: number)",
+      "summary": "Gets detailed information about months in a quarter",
+      "source": "src/getMonthsInQuarter.ts"
+    },
+    {
+      "name": "getNextBusinessDay",
+      "kind": "function",
+      "signature": "function getNextBusinessDay(date: Date | string | number): Date",
+      "summary": "Gets the next business day from the given date",
+      "source": "src/getNextBusinessDay.ts"
+    },
+    {
+      "name": "getNextHoliday",
+      "kind": "function",
+      "signature": "function getNextHoliday(date: Date | string | number, country = 'US'): Date | null",
+      "summary": "Gets the next holiday from a given date",
+      "source": "src/getNextHoliday.ts"
+    },
+    {
+      "name": "getNextWorkingHour",
+      "kind": "function",
+      "signature": "function getNextWorkingHour(date: Date | string | number, schedule?: WorkingSchedule): Date",
+      "summary": "During a working interval, consume one working hour. Outside it, return the next interval opening.",
+      "source": "src/getNextWorkingHour.ts"
+    },
+    {
+      "name": "getNoon",
+      "kind": "function",
+      "signature": "function getNoon(date: Date | string | number): Date",
+      "summary": "Returns a new date set to noon (12:00:00.000) of the given date",
+      "source": "src/getNoon.ts"
+    },
+    {
+      "name": "getNthWeekdayOfMonth",
+      "kind": "function",
+      "signature": "function getNthWeekdayOfMonth(\n  year: number,\n  month: number,\n  dayOfWeek: number,\n  occurrence: number,\n): Date | null",
+      "summary": "Gets the nth occurrence of a weekday in a month",
+      "source": "src/getNthWeekdayOfMonth.ts"
+    },
+    {
+      "name": "getPayPeriods",
+      "kind": "function",
+      "signature": "function getPayPeriods(\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n  frequency: PayPeriodFrequency,\n): Date[]",
+      "summary": "Anchored at startDate. Semi-monthly uses the anchor then the next 15th/1st; monthly additions clamp month ends. Invalid frequencies throw.",
+      "source": "src/getPayPeriods.ts"
+    },
+    {
+      "name": "getPreviousBusinessDay",
+      "kind": "function",
+      "signature": "function getPreviousBusinessDay(date: Date | string | number): Date",
+      "summary": "Gets the previous business day from the given date",
+      "source": "src/getPreviousBusinessDay.ts"
+    },
+    {
+      "name": "getQuarter",
+      "kind": "function",
+      "signature": "function getQuarter(date: Date | string): number",
+      "summary": "Returns the quarter number (1-4) for a given date",
+      "source": "src/getQuarter.ts"
+    },
+    {
+      "name": "getQuarterBoundaries",
+      "kind": "function",
+      "signature": "function getQuarterBoundaries(year: number, quarter: number): QuarterBoundaries",
+      "summary": "Gets the start and end dates of the specified quarter in the given year",
+      "source": "src/getQuarterBoundaries.ts"
+    },
+    {
+      "name": "getQuarterDate",
+      "kind": "function",
+      "signature": "function getQuarterDate(date: Date | string, type: 'start' | 'end'): Date",
+      "summary": "Returns the first or last date of a quarter",
+      "source": "src/getQuarterDate.ts"
+    },
+    {
+      "name": "getRelativeTime",
+      "kind": "function",
+      "signature": "function getRelativeTime(\n  date: Date | string | number,\n  baseDate: Date | string | number = new Date(),\n): string",
+      "summary": "Returns a relative time string (e.g., \"5 minutes ago\", \"in 2 days\")",
+      "source": "src/getRelativeTime.ts"
+    },
+    {
+      "name": "getSeason",
+      "kind": "function",
+      "signature": "function getSeason(\n  date: Date | string | number,\n  hemisphere: Hemisphere = 'northern',\n): Season",
+      "summary": "Gets the season for a date",
+      "source": "src/getSeason.ts"
+    },
+    {
+      "name": "getTimestamp",
+      "kind": "function",
+      "signature": "function getTimestamp(date: Date | string | number, inSeconds = false): number",
+      "summary": "Gets the Unix timestamp for a date",
+      "source": "src/getTimestamp.ts"
+    },
+    {
+      "name": "getTimezoneConfig",
+      "kind": "function",
+      "signature": "function getTimezoneConfig(): {\n  defaultTimezone: string;\n  autoDetect: boolean;\n  currentEffectiveTimezone: string;\n}",
+      "summary": "Get current timezone configuration",
+      "source": "src/getTimezoneConfig.ts"
+    },
+    {
+      "name": "getTimezoneInfo",
+      "kind": "function",
+      "signature": "function getTimezoneInfo(\n  timezone: IANATimezone,\n  date: Date = new Date(),\n): {\n  name: string;\n  abbreviation: string;\n  offset: number;\n  isDST: boolean;\n  offsetString: string;\n  description?: string;\n}",
+      "summary": "offset is hours east of UTC. isDST is a seasonal offset heuristic, not authoritative historical daylight-saving metadata; Intl does not expose a DST flag. Use offset for calculations.",
+      "source": "src/getTimezoneInfo.ts"
+    },
+    {
+      "name": "getTimezoneOffset",
+      "kind": "function",
+      "signature": "function getTimezoneOffset(date: Date | string | number = new Date()): number",
+      "summary": "Gets the timezone offset in minutes",
+      "source": "src/getTimezoneOffset.ts"
+    },
+    {
+      "name": "getTimezonesByOffset",
+      "kind": "function",
+      "signature": "function getTimezonesByOffset(\n  offset: number,\n): Array<{ id: string; offset: number; description: string }>",
+      "summary": "Filters the bundled catalog by its static reference offset; use getTimezoneInfo for a date-specific offset.",
+      "source": "src/timezones.ts"
+    },
+    {
+      "name": "getTimezonesByRegion",
+      "kind": "function",
+      "signature": "function getTimezonesByRegion(\n  region: string,\n): Array<{ id: string; offset: number; description: string }>",
+      "summary": "Get all available timezones filtered by region",
+      "source": "src/timezones.ts"
+    },
+    {
+      "name": "getTimezoneString",
+      "kind": "function",
+      "signature": "function getTimezoneString(): string",
+      "summary": "Gets a string representation of the current timezone",
+      "source": "src/getTimezoneString.ts"
+    },
+    {
+      "name": "getUserTimezone",
+      "kind": "function",
+      "signature": "function getUserTimezone(): string",
+      "summary": "Return the host IANA timezone, falling back to UTC when Intl is unavailable.",
+      "source": "src/getUserTimezone.ts"
+    },
+    {
+      "name": "getWeekBoundaries",
+      "kind": "function",
+      "signature": "function getWeekBoundaries(\n  date: Date | string | number,\n  weekStartsOn = 1, // Remove `: number` here\n): WeekBoundaries",
+      "summary": "Monday start by default; weekStartsOn can be 0-6. startOf/endOf/isSameWeek use Sunday start.",
+      "source": "src/getWeekBoundaries.ts"
+    },
+    {
+      "name": "getWeekOfMonth",
+      "kind": "function",
+      "signature": "function getWeekOfMonth(date: Date | string | number): number",
+      "summary": "Gets the week number within a month",
+      "source": "src/getWeekOfMonth.ts"
+    },
+    {
+      "name": "getWeekOfYear",
+      "kind": "function",
+      "signature": "function getWeekOfYear(date: Date | string | number): number",
+      "summary": "ISO 8601 week number, Monday start and first week containing January 4. Does not return the ISO week-year.",
+      "source": "src/getWeekOfYear.ts"
+    },
+    {
+      "name": "getWorkingHoursBetween",
+      "kind": "function",
+      "signature": "function getWorkingHoursBetween(\n  start: Date | string | number,\n  end: Date | string | number,\n  workingHours: WorkingSchedule,\n): number",
+      "summary": "Gets working hours between two dates",
+      "source": "src/getWorkingHoursBetween.ts"
+    },
+    {
+      "name": "getYearBoundaries",
+      "kind": "function",
+      "signature": "function getYearBoundaries(year: number): YearBoundaries",
+      "summary": "Gets the start and end dates of the specified year",
+      "source": "src/getYearBoundaries.ts"
+    },
+    {
+      "name": "humanizeDuration",
+      "kind": "function",
+      "signature": "function humanizeDuration(\n  milliseconds: number,\n  options: DurationDisplayOptions = {},\n): string",
+      "summary": "Elapsed approximation: 365-day years and 30-day months. Honors unit filtering and precision. Negative values append ago; month abbreviation is mo.",
+      "source": "src/humanizeDuration.ts"
+    },
+    {
+      "name": "isAfter",
+      "kind": "function",
+      "signature": "function isAfter(\n  date1: Date | string | number,\n  date2: Date | string | number,\n  unit?: TimeUnit,\n): boolean",
+      "summary": "Checks if the first date is after the second date",
+      "source": "src/isAfter.ts"
+    },
+    {
+      "name": "isBefore",
+      "kind": "function",
+      "signature": "function isBefore(\n  date1: Date | string | number,\n  date2: Date | string | number,\n  unit?: TimeUnit,\n): boolean",
+      "summary": "Checks if the first date is before the second date",
+      "source": "src/isBefore.ts"
+    },
+    {
+      "name": "isBetweenDates",
+      "kind": "function",
+      "signature": "function isBetweenDates(\n  date: Date | string | number,\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n  inclusive = true,\n): boolean",
+      "summary": "Checks if a date is between two other dates",
+      "source": "src/isBetweenDates.ts"
+    },
+    {
+      "name": "isBusinessDay",
+      "kind": "function",
+      "signature": "function isBusinessDay(date: Date | string | number): boolean",
+      "summary": "Checks if a date is a business day (weekday and not a holiday)",
+      "source": "src/isBusinessDay.ts"
+    },
+    {
+      "name": "isFirstBusinessDayOfMonth",
+      "kind": "function",
+      "signature": "function isFirstBusinessDayOfMonth(date: Date | string | number): boolean",
+      "summary": "Checks if a date is the first business day of the month",
+      "source": "src/isFirstBusinessDayOfMonth.ts"
+    },
+    {
+      "name": "isFirstDayOfMonth",
+      "kind": "function",
+      "signature": "function isFirstDayOfMonth(date: Date | string | number): boolean",
+      "summary": "Checks if the given date is the first day of the month",
+      "source": "src/isFirstDayOfMonth.ts"
+    },
+    {
+      "name": "isFirstDayOfYear",
+      "kind": "function",
+      "signature": "function isFirstDayOfYear(date: Date | string | number): boolean",
+      "summary": "Checks if the given date is the first day of the year (January 1st)",
+      "source": "src/isFirstDayOfYear.ts"
+    },
+    {
+      "name": "isHoliday",
+      "kind": "function",
+      "signature": "function isHoliday(\n  date: Date | string | number,\n  holidaysList?: (Date | string)[],\n  timezone?: IANATimezone,\n): boolean",
+      "summary": "Checks configured global holidays, custom holidays, and an optional supplied list. Country presets are applied explicitly through getHolidays or WorkingTimeConfig.holidayConfig.",
+      "source": "src/isHoliday.ts"
+    },
+    {
+      "name": "isLastBusinessDayOfMonth",
+      "kind": "function",
+      "signature": "function isLastBusinessDayOfMonth(date: Date | string | number): boolean",
+      "summary": "Checks if a date is the last business day of the month",
+      "source": "src/isLastBusinessDayOfMonth.ts"
+    },
+    {
+      "name": "isLastDayOfMonth",
+      "kind": "function",
+      "signature": "function isLastDayOfMonth(date: Date | string | number): boolean",
+      "summary": "Checks if the given date is the last day of the month",
+      "source": "src/isLastDayOfMonth.ts"
+    },
+    {
+      "name": "isLastDayOfYear",
+      "kind": "function",
+      "signature": "function isLastDayOfYear(date: Date | string | number): boolean",
+      "summary": "Checks if the given date is the last day of the year (December 31st)",
+      "source": "src/isLastDayOfYear.ts"
+    },
+    {
+      "name": "isLeapYear",
+      "kind": "function",
+      "signature": "function isLeapYear(year: number | Date | string): boolean",
+      "summary": "Checks if a year is a leap year",
+      "source": "src/isLeapYear.ts"
+    },
+    {
+      "name": "isSameDay",
+      "kind": "function",
+      "signature": "function isSameDay(date1: Date | string | number, date2: Date | string | number): boolean",
+      "summary": "Checks if two dates fall on the same day",
+      "source": "src/isSameDay.ts"
+    },
+    {
+      "name": "isSameMonth",
+      "kind": "function",
+      "signature": "function isSameMonth(date1: Date | string | number, date2: Date | string | number): boolean",
+      "summary": "Checks if two dates fall in the same month and year",
+      "source": "src/isSameMonth.ts"
+    },
+    {
+      "name": "isSameWeek",
+      "kind": "function",
+      "signature": "function isSameWeek(date1: Date | string | number, date2: Date | string | number): boolean",
+      "summary": "Checks if two dates fall in the same week (Sunday-Saturday)",
+      "source": "src/isSameWeek.ts"
+    },
+    {
+      "name": "isSameYear",
+      "kind": "function",
+      "signature": "function isSameYear(date1: Date | string | number, date2: Date | string | number): boolean",
+      "summary": "Checks if two dates fall in the same year",
+      "source": "src/isSameYear.ts"
+    },
+    {
+      "name": "isValidDate",
+      "kind": "function",
+      "signature": "function isValidDate(date: any): boolean",
+      "summary": "Validates whether a given input is a valid date in supported formats.",
+      "source": "src/isValidDate.ts"
+    },
+    {
+      "name": "isValidRange",
+      "kind": "function",
+      "signature": "function isValidRange(\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n): boolean",
+      "summary": "Validates if a date range is valid (start date is before or equal to end date)",
+      "source": "src/isValidRange.ts"
+    },
+    {
+      "name": "isWeekday",
+      "kind": "function",
+      "signature": "function isWeekday(date: Date | string | number): boolean",
+      "summary": "Uses configured workingDays; default Monday-Friday.",
+      "source": "src/isWeekday.ts"
+    },
+    {
+      "name": "isWeekend",
+      "kind": "function",
+      "signature": "function isWeekend(date: Date | string | number): boolean",
+      "summary": "Uses the complement of configured workingDays; default Saturday/Sunday.",
+      "source": "src/isWeekend.ts"
+    },
+    {
+      "name": "isWithinRange",
+      "kind": "function",
+      "signature": "function isWithinRange(\n  date: Date | string | number,\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n  inclusive = true,\n): boolean",
+      "summary": "Checks if a date falls within a specified range",
+      "source": "src/isWithinRange.ts"
+    },
+    {
+      "name": "isWorkingHours",
+      "kind": "function",
+      "signature": "function isWorkingHours(date: Date | string | number, schedule?: WorkingSchedule): boolean",
+      "summary": "Start-inclusive, end-exclusive. Overnight shifts belong to their starting weekday.",
+      "source": "src/isWorkingHours.ts"
+    },
+    {
+      "name": "listTimezones",
+      "kind": "function",
+      "signature": "function listTimezones(): string[]",
+      "summary": "Returns a copy of the bundled catalog, not a promise of every identifier supported by the runtime.",
+      "source": "src/listTimezones.ts"
+    },
+    {
+      "name": "maxDate",
+      "kind": "function",
+      "signature": "function maxDate(...dates: (Date | string | number)[]): Date",
+      "summary": "Returns the latest date from an array of dates",
+      "source": "src/maxDate.ts"
+    },
+    {
+      "name": "mergeDateTime",
+      "kind": "function",
+      "signature": "function mergeDateTime(\n  datePart: Date | string | number,\n  timePart: Date | string | number,\n): Date",
+      "summary": "Merges a date part with a time part",
+      "source": "src/mergeDateTime.ts"
+    },
+    {
+      "name": "minDate",
+      "kind": "function",
+      "signature": "function minDate(...dates: (Date | string | number)[]): Date",
+      "summary": "Returns the earliest date from an array of dates",
+      "source": "src/minDate.ts"
+    },
+    {
+      "name": "nextOccurrence",
+      "kind": "function",
+      "signature": "function nextOccurrence(date: Date | string | number, dayOfWeek: number): Date",
+      "summary": "Gets the next occurrence of a specific day of week",
+      "source": "src/nextOccurrence.ts"
+    },
+    {
+      "name": "parseDate",
+      "kind": "function",
+      "signature": "function parseDate(\n  input: string | number | Date,\n  options: DateParseOptions & { throwError: true },\n): Date;\nfunction parseDate(input: string | number | Date, options?: DateParseOptions): Date | null;",
+      "summary": "Strict supported ISO, slash and English month-name formats. Offset-bearing inputs preserve the instant. Offset-free inputs use the host timezone unless options.timezone is supplied. Ambiguous slash dates are month-first. Invalid input returns null, a cloned fallback, or throws when requested. No native-parser fallback.",
+      "source": "src/parseDate.ts"
+    },
+    {
+      "name": "parseISO",
+      "kind": "function",
+      "signature": "function parseISO(isoString: string): Date | null",
+      "summary": "Strict ISO subset: date-only, or T-separated time with optional seconds, 1-3 fractional digits and Z or numeric offset. Date-only is a local calendar date. Invalid dates return null.",
+      "source": "src/parseISO.ts"
+    },
+    {
+      "name": "parseMultipleFormats",
+      "kind": "function",
+      "signature": "function parseMultipleFormats(dateString: string, formats: string[]): Date | null",
+      "summary": "Tries multiple date formats for parsing",
+      "source": "src/parseMultipleFormats.ts"
+    },
+    {
+      "name": "parseNaturalLanguage",
+      "kind": "function",
+      "signature": "function parseNaturalLanguage(\n  expression: NaturalTimeExpression,\n  options: NaturalLanguageOptions = {},\n): Date | null",
+      "summary": "Supported English expressions only; options.baseDate and timezone determine relative calculations. Next/last weekday preserves clock time; today/tomorrow/yesterday resolve local midnight. Strict mode throws on unsupported expressions.",
+      "source": "src/parseNaturalLanguage.ts"
+    },
+    {
+      "name": "previousOccurrence",
+      "kind": "function",
+      "signature": "function previousOccurrence(date: Date | string | number, dayOfWeek: number): Date",
+      "summary": "Gets the previous occurrence of a specific day of week",
+      "source": "src/previousOccurrence.ts"
+    },
+    {
+      "name": "randomDate",
+      "kind": "function",
+      "signature": "function randomDate(\n  startDate: Date | string | number,\n  endDate: Date | string | number,\n): Date",
+      "summary": "Generates a random date between two dates",
+      "source": "src/randomDate.ts"
+    },
+    {
+      "name": "remainingTime",
+      "kind": "function",
+      "signature": "function remainingTime(\n  targetDate: Date | string | number,\n  unit: TimeUnit = 'millisecond',\n  referenceDate: Date | string | number = new Date(),\n  timezone?: IANATimezone,\n): number",
+      "summary": "target minus reference, with the same units and truncation as getDateDiff.",
+      "source": "src/remainingTime.ts"
+    },
+    {
+      "name": "removeDuplicateDates",
+      "kind": "function",
+      "signature": "function removeDuplicateDates(\n  dateArray: (Date | string | number)[],\n  unit: TimeUnit = 'day',\n): Date[]",
+      "summary": "Filters invalid entries and keeps the first original instant at each requested calendar precision.",
+      "source": "src/removeDuplicateDates.ts"
+    },
+    {
+      "name": "resetBusinessDayConfig",
+      "kind": "function",
+      "signature": "function resetBusinessDayConfig(): BusinessDayConfig",
+      "summary": "Resets business day configuration to defaults",
+      "source": "src/resetBusinessDayConfig.ts"
+    },
+    {
+      "name": "roundToNearest",
+      "kind": "function",
+      "signature": "function roundToNearest(\n  date: Date | string | number,\n  unit: Extract<TimeUnit, 'minute' | 'hour' | 'day'>,\n): Date",
+      "summary": "Rounds a date to the nearest specified unit",
+      "source": "src/roundToNearest.ts"
+    },
+    {
+      "name": "searchTimezones",
+      "kind": "function",
+      "signature": "function searchTimezones(\n  query: string,\n): Array<{ id: string; offset: number; description: string }>",
+      "summary": "Search timezones by description or ID",
+      "source": "src/timezones.ts"
+    },
+    {
+      "name": "setTime",
+      "kind": "function",
+      "signature": "function setTime(\n  date: Date | string | number,\n  hours: number,\n  minutes?: number,\n  seconds?: number,\n  milliseconds?: number,\n): Date",
+      "summary": "Sets the time components of a date",
+      "source": "src/setTime.ts"
+    },
+    {
+      "name": "smartParse",
+      "kind": "function",
+      "signature": "function smartParse(dateString: string): Date | null",
+      "summary": "Smart parsing with multiple fallback strategies",
+      "source": "src/smartParse.ts"
+    },
+    {
+      "name": "sortDates",
+      "kind": "function",
+      "signature": "function sortDates(dateArray: (Date | string | number)[], order: SortOrder = 'asc'): Date[]",
+      "summary": "Returns new Dates, filters invalid entries, and rejects unknown sort orders.",
+      "source": "src/sortDates.ts"
+    },
+    {
+      "name": "startOf",
+      "kind": "function",
+      "signature": "function startOf(\n  date: Date | string | number,\n  unit: Exclude<TimeUnit, 'millisecond' | 'second' | 'minute'>,\n): Date",
+      "summary": "Gets the start of a time unit (e.g., start of day, start of month)",
+      "source": "src/startOf.ts"
+    },
+    {
+      "name": "stripTime",
+      "kind": "function",
+      "signature": "function stripTime(date: Date | string | number): Date",
+      "summary": "Returns a new date with time set to midnight (00:00:00.000)",
+      "source": "src/stripTime.ts"
+    },
+    {
+      "name": "subtractBusinessDays",
+      "kind": "function",
+      "signature": "function subtractBusinessDays(date: Date | string | number, businessDays: number): Date",
+      "summary": "Subtracts the specified number of business days from a date",
+      "source": "src/subtractBusinessDays.ts"
+    },
+    {
+      "name": "subtractTime",
+      "kind": "function",
+      "signature": "function subtractTime(\n  date: Date | string | number,\n  amount: number,\n  unit: TimeUnit,\n  timezone?: IANATimezone,\n): Date",
+      "summary": "Subtracts time from a date",
+      "source": "src/subtractTime.ts"
+    },
+    {
+      "name": "timeOfDay",
+      "kind": "function",
+      "signature": "function timeOfDay(date: Date | string | number): TimeOfDay",
+      "summary": "Gets the time of day category",
+      "source": "src/timeOfDay.ts"
+    },
+    {
+      "name": "toUTC",
+      "kind": "function",
+      "signature": "function toUTC(date: Date | string | number): Date",
+      "summary": "Returns a clone of the same instant; Date does not carry a timezone.",
+      "source": "src/toUTC.ts"
+    },
+    {
+      "name": "truncateToUnit",
+      "kind": "function",
+      "signature": "function truncateToUnit(date: Date | string | number, unit: TimeUnit): Date",
+      "summary": "Truncates a date to the specified unit (sets smaller units to their minimum values)",
+      "source": "src/truncateToUnit.ts"
+    },
+    {
+      "name": "utcNow",
+      "kind": "function",
+      "signature": "function utcNow(): Date",
+      "summary": "Returns the current instant. Format with timezone UTC to display UTC calendar fields.",
+      "source": "src/utcNow.ts"
+    },
+    {
+      "name": "validateDateFormat",
+      "kind": "function",
+      "signature": "function validateDateFormat(dateStr: string, format: DateFormat): boolean",
+      "summary": "Validates if a date string matches a specific format",
+      "source": "src/validateDateFormat.ts"
+    }
+  ],
+  "types": [
+    {
+      "name": "AdvancedFormatOptions",
+      "declaration": "export interface AdvancedFormatOptions {\n  locale?: string;\n  timezone?: IANATimezone;\n  includeTime?: boolean;\n  includeSeconds?: boolean;\n  use24Hour?: boolean;\n  includeDayOfWeek?: boolean;\n  includeTimezone?: boolean;\n}"
+    },
+    {
+      "name": "BusinessDayRules",
+      "declaration": "export interface BusinessDayRules {\n  workingDays: number[];\n  holidays: (Date | string)[];\n  workingHours?: { start: string; end: string };\n}"
+    },
+    {
+      "name": "CalendarEvent",
+      "declaration": "export interface CalendarEvent {\n  id?: string;\n  title: string;\n  startDate: Date;\n  endDate?: Date;\n  isAllDay?: boolean;\n  recurring?: RecurringConfig;\n  timezone?: IANATimezone;\n}"
+    },
+    {
+      "name": "ChronoUtilzConfig",
+      "declaration": "export interface ChronoUtilzConfig {\n  dateFormats: string[];\n  timeUnits: string[];\n  timezones: string[];\n  naturalLanguageExpressions: string[];\n  recurringPatterns: string[];\n  businessDayConfig: {\n    defaultWorkingDays: number[];\n    currentWorkingDays: number[];\n    defaultHolidays: string[];\n    currentHolidays: string[];\n    workingDayNames: Record<number, string>;\n  };\n  holidayConfig: {\n    supportedCountries: string[];\n    availableHolidayRules: Record<string, Array<{ name: string; date: string; type: string }>>;\n  };\n  locales: {\n    standard: readonly string[];\n    popular: readonly string[];\n    regions: Record<string, string[]>;\n  };\n  workingTimeDefaults: {\n    startHour: number;\n    endHour: number;\n    workingDays: number[];\n    timezone: string;\n  };\n  payrollFrequencies: string[];\n  seasonalConfig: {\n    hemispheres: string[];\n    seasons: string[];\n    timeOfDay: string[];\n  };\n  formatTokens: Record<string, string>;\n  fiscalYearDefaults: {\n    startMonth: number;\n    startDay: number;\n  };\n  overtime: {\n    defaultRegularHours: number;\n    defaultOvertimeMultiplier: number;\n    defaultDoubleTimeThreshold: number;\n  };\n}"
+    },
+    {
+      "name": "DateComparison",
+      "declaration": "export interface DateComparison {\n  isBefore: boolean;\n  isAfter: boolean;\n  isSame: boolean;\n  difference: {\n    years: number;\n    months: number;\n    days: number;\n    hours: number;\n    minutes: number;\n    seconds: number;\n    milliseconds: number;\n  };\n}"
+    },
+    {
+      "name": "DateFormat",
+      "declaration": "export type DateFormat =\n  | 'YYYY-MM-DD' // 2025-05-07\n  | 'MM/DD/YYYY' // 05/07/2025\n  | 'DD/MM/YYYY' // 07/05/2025\n  | 'YYYY-MM-DD HH:mm:ss' // 2025-05-07 14:30:00\n  | 'DD MMM YYYY' // 07 May 2025\n  | 'MMM DD, YYYY' // May 07, 2025\n  | 'HH:mm:ss' // 14:30:00\n  | 'hh:mm A';"
+    },
+    {
+      "name": "DateParseOptions",
+      "declaration": "export interface DateParseOptions {\n  /**\n   * Whether to throw an error if the date is invalid\n   */\n  throwError?: boolean;\n  /**\n   * The fallback date to use if parsing fails\n   */\n  fallback?: Date | null;\n  /**\n   * Timezone to use for parsing (defaults to user's timezone)\n   */\n  timezone?: IANATimezone;\n}"
+    },
+    {
+      "name": "DateRangeOptions",
+      "declaration": "export interface DateRangeOptions {\n  /** The start date of the range */\n  start: Date | string;\n  /** The end date of the range */\n  end: Date | string;\n  /** The increment unit (default: 'day') */\n  unit?: TimeUnit;\n  /** The increment value (default: 1) */\n  step?: number;\n  /** Whether to include the end date (default: true) */\n  inclusive?: boolean;\n}"
+    },
+    {
+      "name": "DurationDisplayOptions",
+      "declaration": "export interface DurationDisplayOptions {\n  precision?: number;\n  units?: TimeUnit[];\n  format?: 'long' | 'short' | 'narrow';\n  separator?: string;\n  includeZeroValues?: boolean;\n}"
+    },
+    {
+      "name": "FiscalPeriod",
+      "declaration": "export interface FiscalPeriod {\n  quarter: number;\n  year: number;\n  startDate: Date;\n  endDate: Date;\n  isCurrentPeriod: boolean;\n}"
+    },
+    {
+      "name": "FiscalYearConfig",
+      "declaration": "export interface FiscalYearConfig {\n  startMonth: number; // 1-12\n  startDay: number; // 1-31\n}"
+    },
+    {
+      "name": "Hemisphere",
+      "declaration": "export type Hemisphere = 'northern' | 'southern';"
+    },
+    {
+      "name": "HolidayConfig",
+      "declaration": "export interface HolidayConfig {\n  country?: string;\n  region?: string;\n  includeObserved?: boolean;\n  customHolidays?: Date[];\n}"
+    },
+    {
+      "name": "HolidayRule",
+      "declaration": "export interface HolidayRule {\n  name: string;\n  date: string | ((year: number) => Date);\n  type?: 'fixed' | 'floating';\n}"
+    },
+    {
+      "name": "IANATimezone",
+      "declaration": "export type IANATimezone = (typeof TIMEZONE_IDS)[number] | string;"
+    },
+    {
+      "name": "MonthBoundaries",
+      "declaration": "export interface MonthBoundaries {\n  /** Start of the month */\n  start: Date;\n  /** End of the month */\n  end: Date;\n}"
+    },
+    {
+      "name": "MonthNameFormat",
+      "declaration": "export type MonthNameFormat = 'long' | 'short' | 'narrow';"
+    },
+    {
+      "name": "NaturalLanguageOptions",
+      "declaration": "export interface NaturalLanguageOptions {\n  baseDate?: Date;\n  timezone?: IANATimezone;\n  strictParsing?: boolean;\n}"
+    },
+    {
+      "name": "NaturalTimeExpression",
+      "declaration": "export type NaturalTimeExpression =\n  | 'now'\n  | 'today'\n  | 'tomorrow'\n  | 'yesterday'\n  | 'next week'\n  | 'last week'\n  | 'next month'\n  | 'last month'\n  | 'next year'\n  | 'last year'\n  | 'next monday'\n  | 'next tuesday'\n  | 'next wednesday'\n  | 'next thursday'\n  | 'next friday'\n  | 'next saturday'\n  | 'next sunday'\n  | 'last monday'\n  | 'last tuesday'\n  | 'last wednesday'\n  | 'last thursday'\n  | 'last friday'\n  | 'last saturday'\n  | 'last sunday'\n  | 'beginning of week'\n  | 'end of week'\n  | 'beginning of month'\n  | 'end of month'\n  | 'beginning of year'\n  | 'end of year'\n  | string;"
+    },
+    {
+      "name": "PayPeriodFrequency",
+      "declaration": "export type PayPeriodFrequency = 'weekly' | 'bi-weekly' | 'semi-monthly' | 'monthly';"
+    },
+    {
+      "name": "QuarterBoundaries",
+      "declaration": "export interface QuarterBoundaries {\n  /** Start of the quarter */\n  start: Date;\n  /** End of the quarter */\n  end: Date;\n}"
+    },
+    {
+      "name": "RecurringConfig",
+      "declaration": "export interface RecurringConfig {\n  pattern: RecurringPattern;\n  interval?: number; // e.g., every 2 weeks\n  daysOfWeek?: number[]; // 0-6, Sunday is 0\n  daysOfMonth?: number[]; // 1-31\n  monthsOfYear?: number[]; // 1-12\n  endDate?: Date;\n  maxOccurrences?: number;\n}"
+    },
+    {
+      "name": "RecurringPattern",
+      "declaration": "export type RecurringPattern =\n  | 'daily'\n  | 'weekly'\n  | 'biweekly'\n  | 'monthly'\n  | 'quarterly'\n  | 'yearly'\n  | 'weekdays'\n  | 'weekends'\n  | 'custom';"
+    },
+    {
+      "name": "Season",
+      "declaration": "export type Season = 'Spring' | 'Summer' | 'Autumn' | 'Winter';"
+    },
+    {
+      "name": "SortOrder",
+      "declaration": "export type SortOrder = 'asc' | 'desc';"
+    },
+    {
+      "name": "TimeOfDay",
+      "declaration": "export type TimeOfDay = 'Night' | 'Morning' | 'Afternoon' | 'Evening';"
+    },
+    {
+      "name": "TimeUnit",
+      "declaration": "export type TimeUnit =\n  'millisecond' | 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';"
+    },
+    {
+      "name": "TimezoneConversionOptions",
+      "declaration": "export interface TimezoneConversionOptions {\n  from?: IANATimezone;\n  to: IANATimezone;\n  preserveTime?: boolean;\n}"
+    },
+    {
+      "name": "WeekBoundaries",
+      "declaration": "export interface WeekBoundaries {\n  /** Start of the week */\n  start: Date;\n  /** End of the week */\n  end: Date;\n}"
+    },
+    {
+      "name": "WorkingSchedule",
+      "declaration": "export interface WorkingSchedule {\n  start: string; // HH:mm format\n  end: string; // HH:mm format\n  days?: number[]; // Optional specific days\n}"
+    },
+    {
+      "name": "WorkingTimeConfig",
+      "declaration": "export interface WorkingTimeConfig {\n  startHour: number;\n  endHour: number;\n  workingDays: number[]; // 0-6, Sunday is 0\n  timezone?: IANATimezone;\n  excludeHolidays?: boolean;\n  holidayConfig?: HolidayConfig;\n}"
+    },
+    {
+      "name": "YearBoundaries",
+      "declaration": "export interface YearBoundaries {\n  /** Start of the year */\n  start: Date;\n  /** End of the year */\n  end: Date;\n}"
+    }
+  ]
+}

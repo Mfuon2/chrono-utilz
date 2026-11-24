@@ -1,131 +1,81 @@
-name: CI & Publish Pipeline
-
+name: Verify and release
 on:
   push:
-    branches:
-      - main
-      - release/*
+    branches: [main, 'codex/**']
+    tags: ['v*']
   pull_request:
   workflow_dispatch:
-
+permissions:
+  contents: read
+concurrency:
+  group: chrono-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
 jobs:
-  test:
+  verify:
     runs-on: ubuntu-latest
-    name: Run Lint, Typecheck, and Tests
+    strategy:
+      matrix:
+        node: [22, 24]
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
-
-      - name: Clean install dependencies
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Typecheck
-        run: npm run typecheck
-
-      - name: Run Tests and generate report
-        run: npm run test:ci
-
-      - name: Publish Test Report to GitHub UI
-        uses: dorny/test-reporter@v1
-        if: always()
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: node scripts/benchmark.cjs
+      - if: matrix.node == 24
+        run: npx playwright install --with-deps chromium firefox webkit
+      - if: matrix.node == 24
+        run: npm run test:browsers
+      - if: matrix.node == 24
+        run: npm run test:mutation
+      - if: matrix.node == 24
+        run: mkdir -p release && npm pack --ignore-scripts --pack-destination release
+      - if: matrix.node == 24
+        uses: actions/upload-artifact@v4
         with:
-          name: Mocha Tests
-          path: report/json/result.json
-          reporter: mocha-json
-
-  build:
+          name: npm-package
+          path: release/*.tgz
+          if-no-files-found: error
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports-node-${{ matrix.node }}
+          path: |
+            docs/bundle-sizes.json
+            docs/benchmarks.json
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: verify
     runs-on: ubuntu-latest
-    name: Build the Project
-    needs: test
+    environment: npm-publish
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
-
-      - name: Clean install dependencies
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-
-      - name: Build
-        run: npm run prepublishOnly
-
-  publish-npm-registry:
-    runs-on: ubuntu-latest
-    name: Publish to npm
-    needs: build
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
-    environment:
-      name: npm-publish
-      url: https://www.npmjs.com/package/@mfuon2/chrono-utilz
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js for npm
-        uses: actions/setup-node@v4
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Validate tag
+        run: node -e "if(process.env.GITHUB_REF_NAME !== 'v'+require('./package.json').version) process.exit(1)"
+      - uses: actions/download-artifact@v4
         with:
-          node-version: 22.14.0
-          registry-url: 'https://registry.npmjs.org/'
-
-      - name: Clean install dependencies
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-
-      - name: Configure .npmrc for npm
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-
-      - name: Build (Ensure output before publishing)
-        run: npm run prepare
-
-      - name: ✅ Publish to npm
-        run: npm publish --access public
+          name: npm-package
+          path: release
+      - name: Publish the verified tarball
+        run: npm publish release/*.tgz --ignore-scripts --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  publish-gh-registry:
-    runs-on: ubuntu-latest
-    name: Publish to GitHub Packages
-    needs: build
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js for GitHub Packages
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.14.0
-          registry-url: 'https://npm.pkg.github.com/'
-
-      - name: Configure .npmrc for GitHub
+      - name: Verify public installation
         run: |
-          echo "@mfuon2:registry=https://npm.pkg.github.com" >> ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
-
-      - name: Clean install dependencies
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-
-      - name: Build (Ensure output before publishing)
-        run: npm run prepare
-
-      - name: 📦 Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          mkdir /tmp/chrono-release
+          cd /tmp/chrono-release
+          for attempt in 1 2 3 4 5; do
+            npm install --ignore-scripts "@mfuon2/chrono-utilz@${GITHUB_REF_NAME#v}" && break
+            sleep 5
+          done
+          node -e "const assert=require('node:assert/strict'); const c=require('@mfuon2/chrono-utilz'); assert.equal(c.formatDate(c.addBusinessDays('2025-01-03',3)), '2025-01-08')"
