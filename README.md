@@ -1,5 +1,7 @@
 # ChronoUtilz
 
+[![npm version](https://img.shields.io/npm/v/@mfuon2/chrono-utilz.svg)](https://www.npmjs.com/package/@mfuon2/chrono-utilz) [![Bundle size](https://img.shields.io/bundlephobia/minzip/@mfuon2/chrono-utilz.svg)](https://bundlephobia.com/package/@mfuon2/chrono-utilz) [![License](https://img.shields.io/npm/l/@mfuon2/chrono-utilz.svg)](LICENSE.md)
+
 Precise date utilities for JavaScript and TypeScript, from everyday calculations to business scheduling.
 
 - Import individual functions with tree-shakeable ES modules and TypeScript declarations.

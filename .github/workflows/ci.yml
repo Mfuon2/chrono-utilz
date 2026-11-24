@@ -104,12 +104,15 @@ jobs:
           path: release
           run-id: ${{ inputs.verified_run_id || github.run_id }}
           github-token: ${{ github.token }}
+      - name: Configure trusted publishing
+        run: |
+          npm config delete '//registry.npmjs.org/:_authToken'
+          npm config delete always-auth
+          npm --version
       - name: Verify packed version and publish
         run: |
           test "$(tar -xOf ./release/*.tgz package/package.json | node -e 'let s="";process.stdin.on("data",x=>s+=x);process.stdin.on("end",()=>console.log(JSON.parse(s).version))')" = "${RELEASE_TAG#v}"
           npm publish ./release/*.tgz --ignore-scripts --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Verify public installation
         run: |
           mkdir /tmp/chrono-release
