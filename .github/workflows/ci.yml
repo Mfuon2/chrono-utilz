@@ -117,5 +117,10 @@ jobs:
         run: |
           mkdir /tmp/chrono-release
           cd /tmp/chrono-release
-          npm install --ignore-scripts "@mfuon2/chrono-utilz@${RELEASE_TAG#v}"
+          # The registry can take a few minutes to serve a just-published version.
+          for attempt in $(seq 1 20); do
+            npm install --ignore-scripts --prefer-online "@mfuon2/chrono-utilz@${RELEASE_TAG#v}" && break
+            test "$attempt" -lt 20 || exit 1
+            echo "Version not visible yet (attempt $attempt); retrying in 30s"; sleep 30
+          done
           node -e "const assert=require('node:assert/strict'); const c=require('@mfuon2/chrono-utilz'); assert.equal(c.formatDate(c.addBusinessDays('2025-01-03',3)), '2025-01-08')"
