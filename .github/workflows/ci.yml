@@ -71,7 +71,7 @@ jobs:
           name: npm-package
           path: release
       - name: Publish the verified tarball
-        run: npm publish release/*.tgz --ignore-scripts --provenance --access public
+        run: npm publish ./release/*.tgz --ignore-scripts --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Verify public installation
