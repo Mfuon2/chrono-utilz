@@ -32,6 +32,8 @@ jobs:
       - if: matrix.node == 24
         run: npm run test:mutation
       - if: matrix.node == 24
+        run: npm run coverage
+      - if: matrix.node == 24
         run: mkdir -p release && npm pack --ignore-scripts --pack-destination release
       - if: matrix.node == 24
         uses: actions/upload-artifact@v4
@@ -46,6 +48,8 @@ jobs:
           path: |
             docs/bundle-sizes.json
             docs/benchmarks.json
+            coverage/lcov.info
+            reports/mutation/mutation.json
   publish:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: verify

@@ -19,4 +19,4 @@ console.log(formatDate(deadline)); // 2025-01-08
 
 [Documentation](https://chronoutilz.netlify.app/documentation) · [API reference](https://chronoutilz.netlify.app/api-docs) · [Playground](https://chronoutilz.netlify.app/playground)
 
-Supports Node.js 22+ and modern browsers with `Intl`. [Upgrading from v2](docs/MIGRATION.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE.md)
+Supports Node.js 22+ and modern browsers with `Intl`. [Upgrading from v2](https://github.com/Mfuon2/chrono-utilz/blob/main/docs/MIGRATION.md) · [Contributing](https://github.com/Mfuon2/chrono-utilz/blob/main/CONTRIBUTING.md) · [MIT license](LICENSE.md)

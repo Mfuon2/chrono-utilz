@@ -7,13 +7,13 @@ export function formatCustom(date: Date | string | number, pattern: string): str
 
   // Define tokens in order of length (longest first to avoid conflicts)
   const tokens: Array<{ token: string; fn: () => string }> = [
-    { token: 'YYYY', fn: () => safeDate.getFullYear().toString() },
+    { token: 'YYYY', fn: () => safeDate.getFullYear().toString().padStart(4, '0') },
     { token: 'MMMM', fn: () => safeDate.toLocaleString('en', { month: 'long' }) },
     { token: 'dddd', fn: () => safeDate.toLocaleString('en', { weekday: 'long' }) },
     { token: 'MMM', fn: () => safeDate.toLocaleString('en', { month: 'short' }) },
     { token: 'ddd', fn: () => safeDate.toLocaleString('en', { weekday: 'short' }) },
     { token: 'SSS', fn: () => safeDate.getMilliseconds().toString().padStart(3, '0') },
-    { token: 'YY', fn: () => safeDate.getFullYear().toString().slice(-2) },
+    { token: 'YY', fn: () => safeDate.getFullYear().toString().padStart(4, '0').slice(-2) },
     { token: 'MM', fn: () => (safeDate.getMonth() + 1).toString().padStart(2, '0') },
     { token: 'DD', fn: () => safeDate.getDate().toString().padStart(2, '0') },
     { token: 'Do', fn: () => getOrdinalSuffix(safeDate.getDate()) },

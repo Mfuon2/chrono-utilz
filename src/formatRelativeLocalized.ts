@@ -33,7 +33,7 @@ export function formatRelativeLocalized(
     } else {
       return formatter.format(Math.round(diffInSeconds / 31536000), 'year');
     }
-  } catch (error) {
+  } catch {
     // Fallback to English if locale not supported
     return getRelativeTime(safeDate, base);
   }

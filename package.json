@@ -42,7 +42,7 @@
     "test:zones": "node scripts/test-zones.cjs",
     "test:package": "node scripts/test-package.cjs",
     "test:examples": "node scripts/test-examples.cjs",
-    "coverage": "nyc --all --include \"src/**/*.ts\" --extension .ts --reporter=text --reporter=lcov npm test",
+    "coverage": "c8 --all --include \"src/**/*.ts\" --extension .ts --reporter=text --reporter=lcov npm test",
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
@@ -73,27 +73,22 @@
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.16.0",
-    "@types/sinon": "^10.0.15",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
     "assert": "2.1.0",
+    "c8": "12.0.0",
     "chai": "^4.3.7",
     "date-fns": "4.4.0",
     "dayjs": "1.11.23",
-    "eslint": "^8.57.1",
+    "eslint": "10.15.0",
     "fast-check": "4.11.0",
     "globals": "^16.1.0",
     "luxon": "3.7.2",
-    "mocha": "^10.2.0",
-    "mocha-json-output-reporter": "^2.1.0",
+    "mocha": "11.8.0",
     "moment": "2.31.0",
-    "nyc": "^15.1.0",
     "prettier": "3.10.1",
-    "sinon": "^15.0.4",
     "ts-node": "^10.9.1",
     "tsup": "^8.4.0",
     "typescript": "^5.0.4",
-    "typescript-eslint": "^8.32.0"
+    "typescript-eslint": "8.74.0"
   },
   "engines": {
     "node": ">=22"
@@ -790,5 +785,12 @@
       "require": "./dist/holiday-data.js"
     },
     "./package.json": "./package.json"
+  },
+  "overrides": {
+    "glob": "14.0.6",
+    "minimatch": "11.0.9",
+    "qs": "6.17.1",
+    "diff": "8.0.4",
+    "serialize-javascript": "7.1.4"
   }
 }

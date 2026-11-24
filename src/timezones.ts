@@ -252,7 +252,7 @@ export const TIMEZONES = [
 export function getUserTimezone() {
   try {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
-  } catch (error) {
+  } catch {
     // Fallback to UTC if Intl API is not available
     return 'UTC';
   }

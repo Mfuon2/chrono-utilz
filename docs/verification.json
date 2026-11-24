@@ -1,6 +1,6 @@
 {
   "node": "v26.5.1",
-  "testCount": 230,
+  "testCount": 231,
   "hostTimezones": [
     "UTC",
     "Africa/Nairobi",
@@ -30,5 +30,13 @@
     "functions": 91.93,
     "lines": 91.01
   },
-  "limitations": "Contract and property testing provide evidence, not proof for all possible inputs. Coverage numbers are from the recorded local run."
+  "limitations": "Contract, property and mutation tests provide evidence, not proof for every possible input. Native coverage includes source catalogs and declaration-only modules.",
+  "dependencyAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  }
 }

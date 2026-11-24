@@ -102,3 +102,11 @@ export function wallFromComponents(
     throw new RangeError('Invalid calendar date');
   return wall;
 }
+
+/** Construct a local calendar boundary without the 0-99 -> 1900-1999 constructor mapping. */
+export function localCalendarDate(year: number, month: number, day: number): Date {
+  const date = new Date(0);
+  date.setFullYear(year, month, day);
+  date.setHours(0, 0, 0, 0);
+  return date;
+}

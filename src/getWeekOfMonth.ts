@@ -1,3 +1,4 @@
+import { localCalendarDate } from './zone';
 import { parseDate } from './parseDate';
 
 /**
@@ -8,6 +9,8 @@ import { parseDate } from './parseDate';
 export function getWeekOfMonth(date: Date | string | number): number {
   const d = parseDate(date, { throwError: true })!;
   return (
-    Math.floor((d.getDate() + new Date(d.getFullYear(), d.getMonth(), 1).getDay() - 1) / 7) + 1
+    Math.floor(
+      (d.getDate() + localCalendarDate(d.getFullYear(), d.getMonth(), 1).getDay() - 1) / 7,
+    ) + 1
   );
 }

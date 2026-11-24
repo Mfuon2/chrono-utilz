@@ -1,3 +1,4 @@
+import { localCalendarDate } from './zone';
 import { MonthBoundaries } from './MonthBoundaries';
 import { parseDate } from './parseDate';
 
@@ -18,10 +19,10 @@ import { parseDate } from './parseDate';
 export function getMonthBoundaries(date: Date | string | number): MonthBoundaries {
   const safeDate = parseDate(date, { throwError: true });
 
-  const start = new Date(safeDate.getFullYear(), safeDate.getMonth(), 1);
+  const start = localCalendarDate(safeDate.getFullYear(), safeDate.getMonth(), 1);
   start.setHours(0, 0, 0, 0);
 
-  const end = new Date(safeDate.getFullYear(), safeDate.getMonth() + 1, 0);
+  const end = localCalendarDate(safeDate.getFullYear(), safeDate.getMonth() + 1, 0);
   end.setHours(23, 59, 59, 999);
 
   return { start, end };

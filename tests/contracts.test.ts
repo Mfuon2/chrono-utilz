@@ -892,3 +892,17 @@ describe('Recurring anchors and calendar timezone options', () => {
     assert.equal(cal[0].events.length, 0);
   });
 });
+
+describe('Small-year calendar boundaries', () => {
+  it('preserves four-digit years across month/quarter helpers and holidays', () => {
+    const d = c.createDate(4, 1, 15);
+    assert.equal(c.getMonthBoundaries(d).start.getFullYear(), 4);
+    assert.equal(c.getQuarterDate(d, 'end').getFullYear(), 4);
+    assert.equal(c.getMonthsInQuarter(1, 4).months[1].lastDay.getDate(), 29);
+    assert.equal(c.formatCustom(d, 'YYYY YY'), '0004 04');
+    c.configureHolidays([d]);
+    assert(c.isBusinessDay(d) === false);
+    c.resetBusinessDayConfig();
+    assert.equal(c.formatCalendar(c.createDate(4, 2, 1), c.createDate(4, 1, 29)), 'Tomorrow');
+  });
+});

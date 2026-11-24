@@ -24,3 +24,5 @@ reports/
 playwright-report/
 test-results/
 .browser-profile/
+
+coverage/

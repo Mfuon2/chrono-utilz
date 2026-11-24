@@ -17,7 +17,7 @@
     "timezone": {
       "minified": 4729,
       "gzip": 2008,
-      "brotli": 1792,
+      "brotli": 1790,
       "budget": 2300
     },
     "business": {
@@ -27,9 +27,9 @@
       "budget": 3000
     },
     "complete": {
-      "minified": 71531,
-      "gzip": 21512,
-      "brotli": 17977,
+      "minified": 71670,
+      "gzip": 21560,
+      "brotli": 18069,
       "budget": 24000
     }
   }

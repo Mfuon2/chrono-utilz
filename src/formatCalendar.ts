@@ -1,3 +1,4 @@
+import { localWallDate } from './zone';
 import { formatDate } from './formatDate';
 import { parseDate } from './parseDate';
 
@@ -10,11 +11,11 @@ import { parseDate } from './parseDate';
 export function formatCalendar(date: Date | string | number, baseDate?: Date): string {
   const d = parseDate(date, { throwError: true })!,
     b = parseDate(baseDate || new Date(), { throwError: true })!;
-  const days = Math.round(
-    (Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) -
-      Date.UTC(b.getFullYear(), b.getMonth(), b.getDate())) /
-      86400000,
-  );
+  const wallA = localWallDate(d),
+    wallB = localWallDate(b);
+  wallA.setUTCHours(0, 0, 0, 0);
+  wallB.setUTCHours(0, 0, 0, 0);
+  const days = Math.round((+wallA - +wallB) / 86400000);
   if (days === 0) return 'Today';
   if (days === 1) return 'Tomorrow';
   if (days === -1) return 'Yesterday';

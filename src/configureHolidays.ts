@@ -28,7 +28,7 @@ export function configureHolidays(holidays: (Date | string | number)[]): Busines
     const parsedHoliday = parseDate(holiday, { throwError: true });
 
     // Store as YYYY-MM-DD format for consistent comparison (timezone neutral)
-    const year = parsedHoliday.getFullYear();
+    const year = String(parsedHoliday.getFullYear()).padStart(4, '0');
     const month = String(parsedHoliday.getMonth() + 1).padStart(2, '0');
     const day = String(parsedHoliday.getDate()).padStart(2, '0');
     const holidayStr = `${year}-${month}-${day}`;

@@ -1,3 +1,4 @@
+import { localCalendarDate } from './zone';
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { getMonthName } from './getMonthName';
 
@@ -24,8 +25,8 @@ export function getMonthsInQuarter(quarter: number, year: number) {
     months.push({
       name: getMonthName(monthNumber),
       number: monthNumber,
-      firstDay: new Date(year, monthNumber - 1, 1),
-      lastDay: new Date(year, monthNumber, 0), // 0th day of next month = last day of current month
+      firstDay: localCalendarDate(year, monthNumber - 1, 1),
+      lastDay: localCalendarDate(year, monthNumber, 0), // 0th day of next month = last day of current month
     });
   }
 
@@ -33,7 +34,7 @@ export function getMonthsInQuarter(quarter: number, year: number) {
     quarter,
     year,
     months,
-    startDate: new Date(year, (quarter - 1) * 3, 1),
-    endDate: new Date(year, quarter * 3, 0),
+    startDate: localCalendarDate(year, (quarter - 1) * 3, 1),
+    endDate: localCalendarDate(year, quarter * 3, 0),
   };
 }
