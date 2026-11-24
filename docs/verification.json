@@ -1,0 +1,42 @@
+{
+  "node": "v26.5.1",
+  "testCount": 231,
+  "hostTimezones": [
+    "UTC",
+    "Africa/Nairobi",
+    "America/New_York",
+    "Australia/Sydney",
+    "Asia/Kathmandu"
+  ],
+  "browsersVerifiedLocally": [
+    "Chromium",
+    "WebKit"
+  ],
+  "firefox": "Local profile startup failed; required by Linux CI",
+  "mutation": {
+    "scope": [
+      "src/convertTimezone.ts",
+      "src/fromTimestamp.ts",
+      "src/getISOWeek.ts",
+      "src/isLeapYear.ts"
+    ],
+    "counts": {
+      "Killed": 64
+    }
+  },
+  "coverage": {
+    "statements": 90.02,
+    "branches": 74.2,
+    "functions": 91.93,
+    "lines": 91.01
+  },
+  "limitations": "Contract, property and mutation tests provide evidence, not proof for every possible input. Native coverage includes source catalogs and declaration-only modules.",
+  "dependencyAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  }
+}
