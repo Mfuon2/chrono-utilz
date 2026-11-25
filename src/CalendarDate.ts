@@ -1,7 +1,7 @@
 import { TimeUnit } from './TimeUnit';
 import { addTime } from './addTime';
 import { createDate } from './createDate';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * A calendar date without time information
@@ -44,7 +44,7 @@ export class CalendarDate {
    * @returns A new CalendarDate
    */
   static fromString(input: string | number): CalendarDate {
-    const date = parseDate(input, { throwError: true });
+    const date = readDate(input);
 
     return CalendarDate.fromDate(date);
   }

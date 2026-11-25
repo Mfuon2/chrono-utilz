@@ -1,5 +1,5 @@
 import { TimeOfDay } from './TimeOfDayType';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the time of day category
@@ -7,7 +7,7 @@ import { parseDate } from './parseDate';
  * @returns Time of day category
  */
 export function timeOfDay(date: Date | string | number): TimeOfDay {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const hour = safeDate.getHours();
 

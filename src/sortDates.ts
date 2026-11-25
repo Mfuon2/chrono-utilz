@@ -1,6 +1,6 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { SortOrder } from './SortOrder';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Returns new Dates, filters invalid entries, and rejects unknown sort orders. */
 export function sortDates(dateArray: (Date | string | number)[], order: SortOrder = 'asc'): Date[] {
@@ -16,7 +16,7 @@ export function sortDates(dateArray: (Date | string | number)[], order: SortOrde
 
   // Parse all dates and filter out invalid ones
   const parsedDates = dateArray
-    .map((date) => parseDate(date, { throwError: false }))
+    .map((date) => readDate(date, { throwError: false }))
     .filter((date): date is Date => date !== null);
 
   // Sort based on order

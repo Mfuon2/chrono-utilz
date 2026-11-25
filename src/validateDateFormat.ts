@@ -1,6 +1,6 @@
 import { DateFormat } from './DateFormat';
 import { createDate } from './createDate';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Validates if a date string matches a specific format
@@ -27,7 +27,7 @@ export function validateDateFormat(dateStr: string, format: DateFormat): boolean
       createDate(y, (format === 'MM/DD/YYYY' ? a : b) - 1, format === 'MM/DD/YYYY' ? b : a);
       return true;
     }
-    return parseDate(dateStr) !== null;
+    return readDate(dateStr, {}) !== null;
   } catch {
     return false;
   }

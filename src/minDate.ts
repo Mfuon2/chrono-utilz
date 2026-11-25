@@ -1,5 +1,5 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Returns the earliest date from an array of dates
@@ -12,7 +12,7 @@ export function minDate(...dates: (Date | string | number)[]): Date {
   }
 
   const parsedDates = dates.map((date) => {
-    const parsed = parseDate(date, { throwError: true });
+    const parsed = readDate(date);
 
     return parsed;
   });

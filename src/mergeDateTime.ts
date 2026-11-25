@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Merges a date part with a time part
@@ -10,8 +10,8 @@ export function mergeDateTime(
   datePart: Date | string | number,
   timePart: Date | string | number,
 ): Date {
-  const safeDate = parseDate(datePart, { throwError: true });
-  const safeTime = parseDate(timePart, { throwError: true });
+  const safeDate = readDate(datePart);
+  const safeTime = readDate(timePart);
 
   const result = new Date(safeDate);
   result.setHours(

@@ -1,14 +1,14 @@
 import { DateComparison } from './DateComparison';
 import { addTime } from './addTime';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Absolute calendar decomposition: clamped years, then clamped months, calendar days, then elapsed sub-day remainder. Direction is reported separately. */
 export function compareDetailed(
   date1: Date | string | number,
   date2: Date | string | number,
 ): DateComparison {
-  const a = parseDate(date1, { throwError: true })!,
-    b = parseDate(date2, { throwError: true })!;
+  const a = readDate(date1),
+    b = readDate(date2);
   const first = a < b ? a : b,
     last = a < b ? b : a;
   let cursor = new Date(first);

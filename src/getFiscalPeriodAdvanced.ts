@@ -4,14 +4,14 @@ import { FiscalYearConfig } from './FiscalYearConfig';
 import { addTime } from './addTime';
 import { createDate } from './createDate';
 import { isBetweenDates } from './isBetweenDates';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Fiscal years are named by starting calendar year. startDay is restricted to 1-28 so every quarter has an unambiguous anchor. End includes the final millisecond of the quarter. */
 export function getFiscalPeriodAdvanced(
   date: Date | string | number,
   config: FiscalYearConfig = { startMonth: 1, startDay: 1 },
 ): FiscalPeriod {
-  const d = parseDate(date, { throwError: true })!;
+  const d = readDate(date);
   if (
     !Number.isInteger(config.startMonth) ||
     config.startMonth < 1 ||

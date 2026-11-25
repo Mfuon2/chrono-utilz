@@ -1,6 +1,6 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { isValidRange } from './isValidRange';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Generates a random date between two dates
@@ -14,8 +14,8 @@ export function randomDate(
 ): Date {
   if (!isValidRange(startDate, endDate)) throw new ChronoUtilzError('Invalid random date range');
 
-  const safeStartDate = parseDate(startDate, { throwError: true });
-  const safeEndDate = parseDate(endDate, { throwError: true });
+  const safeStartDate = readDate(startDate);
+  const safeEndDate = readDate(endDate);
 
   if (safeStartDate >= safeEndDate) {
     throw new ChronoUtilzError('Start date must be before end date');

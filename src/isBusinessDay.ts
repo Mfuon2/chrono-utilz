@@ -2,7 +2,7 @@ import { currentConfig } from './currentConfig';
 import { customHolidays } from './customHolidays';
 import { formatDateForComparison } from './formatDateForComparison';
 import { isWeekend } from './isWeekend';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Checks if a date is a business day (weekday and not a holiday)
@@ -17,7 +17,7 @@ import { parseDate } from './parseDate';
  * ```
  */
 export function isBusinessDay(date: Date | string | number): boolean {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   // First check if it's a weekday
   if (isWeekend(safeDate)) {

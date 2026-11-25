@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.1",
   "api": [
     {
       "name": "addBusinessDays",
@@ -536,14 +536,14 @@
     {
       "name": "getTimezonesByOffset",
       "kind": "function",
-      "signature": "function getTimezonesByOffset(\n  offset: number,\n): Array<{ id: string; offset: number; description: string }>",
+      "signature": "function getTimezonesByOffset(offset: number): Array<{\n  id: string;\n  offset: number;\n  description: string;\n}>",
       "summary": "Filters the bundled catalog by its static reference offset; use getTimezoneInfo for a date-specific offset.",
       "source": "src/timezones.ts"
     },
     {
       "name": "getTimezonesByRegion",
       "kind": "function",
-      "signature": "function getTimezonesByRegion(\n  region: string,\n): Array<{ id: string; offset: number; description: string }>",
+      "signature": "function getTimezonesByRegion(region: string): Array<{\n  id: string;\n  offset: number;\n  description: string;\n}>",
       "summary": "Get all available timezones filtered by region",
       "source": "src/timezones.ts"
     },
@@ -865,7 +865,7 @@
     {
       "name": "searchTimezones",
       "kind": "function",
-      "signature": "function searchTimezones(\n  query: string,\n): Array<{ id: string; offset: number; description: string }>",
+      "signature": "function searchTimezones(query: string): Array<{\n  id: string;\n  offset: number;\n  description: string;\n}>",
       "summary": "Search timezones by description or ID",
       "source": "src/timezones.ts"
     },
@@ -1013,7 +1013,7 @@
     },
     {
       "name": "IANATimezone",
-      "declaration": "export type IANATimezone = (typeof TIMEZONE_IDS)[number] | string;"
+      "declaration": "export type IANATimezone = string;"
     },
     {
       "name": "MonthBoundaries",

@@ -4,7 +4,7 @@ import { localWallDate } from './zone';
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { IANATimezone } from './IANATimezone';
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** date1 minus date2. Elapsed units truncate toward zero. Month differences count calendar month boundaries, quarters truncate that count / 3, and years return month count / 12. These are not full-anniversary differences. */
 export function getDateDiff(
@@ -13,8 +13,8 @@ export function getDateDiff(
   unit: TimeUnit,
   timezone?: IANATimezone,
 ): number {
-  const first = parseDate(date1, { throwError: true })!,
-    second = parseDate(date2, { throwError: true })!;
+  const first = readDate(date1),
+    second = readDate(date2);
   const factors: Partial<Record<TimeUnit, number>> = {
     millisecond: 1,
     second: 1000,

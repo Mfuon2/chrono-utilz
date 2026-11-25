@@ -1,5 +1,5 @@
 import { getRelativeTime } from './getRelativeTime';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Formats relative time with localization
@@ -13,7 +13,7 @@ export function formatRelativeLocalized(
   locale = 'en-US',
   baseDate?: Date,
 ): string {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
   const base = baseDate || new Date();
 
   try {

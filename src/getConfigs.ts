@@ -1,6 +1,4 @@
-import { STANDARD_LOCALES } from './locales';
-import { POPULAR_LOCALES } from './locales';
-import { LOCALES_BY_REGION } from './locales';
+import { STANDARD_LOCALES, POPULAR_LOCALES, LOCALES_BY_REGION } from './locales';
 import { ChronoUtilzConfig } from './ChronoUtilzConfig';
 import { getBusinessDayConfig } from './getBusinessDayConfig';
 import { holidayRules } from './holidayRules';
@@ -124,11 +122,9 @@ export function getConfigs(): ChronoUtilzConfig {
     },
 
     locales: {
-      standard: [...STANDARD_LOCALES],
-      popular: [...POPULAR_LOCALES],
-      regions: Object.fromEntries(
-        Object.entries(LOCALES_BY_REGION).map(([key, values]) => [key, [...values]]),
-      ),
+      standard: STANDARD_LOCALES(),
+      popular: POPULAR_LOCALES(),
+      regions: LOCALES_BY_REGION(),
     },
 
     workingTimeDefaults: {

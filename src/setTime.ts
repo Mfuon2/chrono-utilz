@@ -1,5 +1,5 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Sets the time components of a date
@@ -17,7 +17,7 @@ export function setTime(
   seconds?: number,
   milliseconds?: number,
 ): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   // Validate hours
   if (hours < 0 || hours > 23 || !Number.isInteger(hours)) {

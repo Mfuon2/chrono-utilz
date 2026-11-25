@@ -1,5 +1,5 @@
 import { isBusinessDay } from './isBusinessDay';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the next business day from the given date
@@ -14,7 +14,7 @@ import { parseDate } from './parseDate';
  * ```
  */
 export function getNextBusinessDay(date: Date | string | number): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const result = new Date(safeDate);
 

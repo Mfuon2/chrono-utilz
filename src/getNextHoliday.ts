@@ -1,5 +1,5 @@
 import { getHolidays } from './getHolidays';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the next holiday from a given date
@@ -8,7 +8,7 @@ import { parseDate } from './parseDate';
  * @returns The next holiday date
  */
 export function getNextHoliday(date: Date | string | number, country = 'US'): Date | null {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const currentYear = safeDate.getFullYear();
 

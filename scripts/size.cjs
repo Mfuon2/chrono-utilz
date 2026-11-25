@@ -4,21 +4,21 @@ const { build } = require('esbuild');
 const scenarios = {
   leapYear: {
     code: "import {isLeapYear} from '@mfuon2/chrono-utilz';console.log(isLeapYear(Number(globalThis.year)))",
-    budget: 1850,
+    budget: 1300,
   },
   arithmetic: {
     code: "import {addTime,formatDate} from '@mfuon2/chrono-utilz';console.log(formatDate(addTime(new Date(),1,'day')))",
-    budget: 2700,
+    budget: 2450,
   },
   timezone: {
     code: "import {formatDate} from '@mfuon2/chrono-utilz';console.log(formatDate(new Date(),'YYYY-MM-DD HH:mm:ss','Africa/Nairobi'))",
-    budget: 2300,
+    budget: 1850,
   },
   business: {
     code: "import {addBusinessDays} from '@mfuon2/chrono-utilz';console.log(addBusinessDays(new Date(),3))",
-    budget: 3000,
+    budget: 2800,
   },
-  complete: { code: "import * as c from '@mfuon2/chrono-utilz';console.log(c)", budget: 24000 },
+  complete: { code: "import * as c from '@mfuon2/chrono-utilz';console.log(c)", budget: 21000 },
 };
 (async () => {
   const report = {

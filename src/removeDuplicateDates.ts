@@ -1,6 +1,6 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { truncateToUnit } from './truncateToUnit';
 
 /** Filters invalid entries and keeps the first original instant at each requested calendar precision. */
@@ -18,7 +18,7 @@ export function removeDuplicateDates(
 
   // Parse all dates and filter out invalid ones
   const parsedDates = dateArray
-    .map((date) => parseDate(date, { throwError: false }))
+    .map((date) => readDate(date, { throwError: false }))
     .filter((date): date is Date => date !== null);
 
   // Use a Set to track unique timestamps at the specified unit precision

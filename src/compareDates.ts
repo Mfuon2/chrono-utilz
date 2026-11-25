@@ -1,5 +1,5 @@
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { truncateToUnit } from './truncateToUnit';
 
 /**
@@ -14,8 +14,8 @@ export function compareDates(
   date2: Date | string | number,
   unit?: TimeUnit,
 ): -1 | 0 | 1 {
-  const safeDate1 = parseDate(date1, { throwError: true });
-  const safeDate2 = parseDate(date2, { throwError: true });
+  const safeDate1 = readDate(date1);
+  const safeDate2 = readDate(date2);
 
   let time1 = safeDate1.getTime();
   let time2 = safeDate2.getTime();

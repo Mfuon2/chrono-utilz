@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Returns a new date set to noon (12:00:00.000) of the given date
@@ -12,7 +12,7 @@ import { parseDate } from './parseDate';
  * ```
  */
 export function getNoon(date: Date | string | number): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const result = new Date(safeDate);
   result.setHours(12, 0, 0, 0);

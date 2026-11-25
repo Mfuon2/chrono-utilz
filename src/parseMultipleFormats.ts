@@ -1,6 +1,6 @@
 import { DateFormat } from './DateFormat';
 import { createDate } from './createDate';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { validateDateFormat } from './validateDateFormat';
 
 /**
@@ -16,7 +16,7 @@ export function parseMultipleFormats(dateString: string, formats: string[]): Dat
       const [d, m, y] = dateString.split('/').map(Number);
       return createDate(y, m - 1, d);
     }
-    return parseDate(dateString);
+    return readDate(dateString, {});
   }
   return null;
 }

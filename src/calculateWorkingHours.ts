@@ -4,7 +4,7 @@ import { fromWallDate } from './zone';
 import { WorkingTimeConfig } from './WorkingTimeConfig';
 import { createDate } from './createDate';
 import { isConfiguredHoliday } from './isConfiguredHoliday';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { validateWorkingConfig } from './validateWorkingConfig';
 
 /** Overlap with half-open [start,end) work intervals. Supports fractional hours, overnight intervals (endHour < startHour), explicit timezone and configured holiday exclusion. The shift belongs to its starting calendar day. DST-ambiguous boundaries throw. */
@@ -14,8 +14,8 @@ export function calculateWorkingHours(
   config: WorkingTimeConfig,
 ): number {
   validateWorkingConfig(config);
-  const start = parseDate(startDate, { throwError: true })!,
-    end = parseDate(endDate, { throwError: true })!;
+  const start = readDate(startDate),
+    end = readDate(endDate);
   if (start >= end) return 0;
   const zone = config.timezone;
   const first = zone ? zonedWallDate(start, zone) : localWallDate(start);

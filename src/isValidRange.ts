@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Validates if a date range is valid (start date is before or equal to end date)
@@ -10,8 +10,8 @@ export function isValidRange(
   startDate: Date | string | number,
   endDate: Date | string | number,
 ): boolean {
-  const safeStartDate = parseDate(startDate, { throwError: false });
-  const safeEndDate = parseDate(endDate, { throwError: false });
+  const safeStartDate = readDate(startDate, { throwError: false });
+  const safeEndDate = readDate(endDate, { throwError: false });
 
   if (!safeStartDate || !safeEndDate) {
     return false;

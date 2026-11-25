@@ -1,6 +1,6 @@
 # ChronoUtilz API reference
 
-Generated from the public TypeScript exports for version 3.0.0. Run `npm run docs` to regenerate.
+Generated from the public TypeScript exports for version 3.0.1. Run `npm run docs` to regenerate.
 
 136 callable exports. [Hosted documentation](https://chronoutilz.netlify.app/documentation) · [API reference](https://chronoutilz.netlify.app/api-docs) · [Playground](https://chronoutilz.netlify.app/playground)
 
@@ -826,9 +826,11 @@ function getTimezoneOffset(date: Date | string | number = new Date()): number
 Filters the bundled catalog by its static reference offset; use getTimezoneInfo for a date-specific offset.
 
 ```typescript
-function getTimezonesByOffset(
-  offset: number,
-): Array<{ id: string; offset: number; description: string }>
+function getTimezonesByOffset(offset: number): Array<{
+  id: string;
+  offset: number;
+  description: string;
+}>
 ```
 
 ## getTimezonesByRegion
@@ -836,9 +838,11 @@ function getTimezonesByOffset(
 Get all available timezones filtered by region
 
 ```typescript
-function getTimezonesByRegion(
-  region: string,
-): Array<{ id: string; offset: number; description: string }>
+function getTimezonesByRegion(region: string): Array<{
+  id: string;
+  offset: number;
+  description: string;
+}>
 ```
 
 ## getTimezoneString
@@ -1265,9 +1269,11 @@ function roundToNearest(
 Search timezones by description or ID
 
 ```typescript
-function searchTimezones(
-  query: string,
-): Array<{ id: string; offset: number; description: string }>
+function searchTimezones(query: string): Array<{
+  id: string;
+  offset: number;
+  description: string;
+}>
 ```
 
 ## setTime
@@ -1544,7 +1550,7 @@ export interface HolidayRule {
   type?: 'fixed' | 'floating';
 }
 
-export type IANATimezone = (typeof TIMEZONE_IDS)[number] | string;
+export type IANATimezone = string;
 
 export interface MonthBoundaries {
   /** Start of the month */

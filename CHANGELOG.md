@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.1
+
+Smaller bundles with no API or behavior changes.
+
+- Functions that do not take a timezone no longer bundle the Intl timezone resolver: most single-function imports are about 23% smaller (median 1.69 kB → 1.30 kB gzip).
+- The timezone and locale catalogs are stored packed and decoded on first use; `getConfigs`, `listTimezones` and the timezone search helpers return identical data.
+- Complete bundle (webpack 5 + terser, as Bundlephobia measures): 70.0 kB → 60.4 kB minified, 20.9 kB → 20.2 kB gzip.
+- Timezone and locale lookups return copies, so callers can no longer mutate the bundled catalog.
+- Removed date-fns, dayjs, luxon and moment from development dependencies, along with the comparison benchmark; contract tests use in-file reference implementations.
+
 ## 3.0.0
 
 - Preserve ISO offsets and UTC instants; apply explicit timezone formatting.

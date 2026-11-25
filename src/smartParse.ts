@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { parseNaturalLanguage } from './parseNaturalLanguage';
 
 /**
@@ -8,5 +8,5 @@ import { parseNaturalLanguage } from './parseNaturalLanguage';
  */
 export function smartParse(dateString: string): Date | null {
   if (typeof dateString !== 'string' || !dateString.trim()) return null;
-  return parseNaturalLanguage(dateString.trim()) || parseDate(dateString.trim());
+  return parseNaturalLanguage(dateString.trim()) || readDate(dateString.trim(), {});
 }

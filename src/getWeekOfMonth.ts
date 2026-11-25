@@ -1,5 +1,5 @@
 import { localCalendarDate } from './zone';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the week number within a month
@@ -7,7 +7,7 @@ import { parseDate } from './parseDate';
  * @returns Week number within the month (1-6)
  */
 export function getWeekOfMonth(date: Date | string | number): number {
-  const d = parseDate(date, { throwError: true })!;
+  const d = readDate(date);
   return (
     Math.floor(
       (d.getDate() + localCalendarDate(d.getFullYear(), d.getMonth(), 1).getDay() - 1) / 7,

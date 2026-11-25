@@ -1,9 +1,9 @@
 import { getOrdinalSuffix } from './getOrdinalSuffix';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Single-pass token substitution with [literal text] escaping. Supported tokens are listed by getConfigs().formatTokens; d (weekday number) is also supported. Uses host local fields. */
 export function formatCustom(date: Date | string | number, pattern: string): string {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   // Define tokens in order of length (longest first to avoid conflicts)
   const tokens: Array<{ token: string; fn: () => string }> = [

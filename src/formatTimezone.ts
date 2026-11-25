@@ -1,7 +1,7 @@
 import { AdvancedFormatOptions } from './AdvancedFormatOptions';
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { IANATimezone } from './IANATimezone';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Formats date in a specific timezone
@@ -15,7 +15,7 @@ export function formatTimezone(
   timezone: IANATimezone,
   options: AdvancedFormatOptions = {},
 ): string {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   try {
     if (options.timezone && options.timezone !== timezone)

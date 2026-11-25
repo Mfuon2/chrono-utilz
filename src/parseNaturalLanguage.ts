@@ -2,7 +2,7 @@ import { ChronoUtilzError } from './ChronoUtilzError';
 import { NaturalTimeExpression } from './NaturalTimeExpression';
 import { NaturalLanguageOptions } from './NaturalLanguageOptions';
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { addTime } from './addTime';
 import { zonedWallDate, localWallDate, fromWallDate, assertTimezone } from './zone';
 /** Supported English expressions only; options.baseDate and timezone determine relative calculations. Next/last weekday preserves clock time; today/tomorrow/yesterday resolve local midnight. Strict mode throws on unsupported expressions. */
@@ -12,7 +12,7 @@ export function parseNaturalLanguage(
 ): Date | null {
   try {
     if (typeof expression !== 'string') throw new ChronoUtilzError('Expression must be a string');
-    const base = parseDate(options.baseDate || new Date(), { throwError: true })!;
+    const base = readDate(options.baseDate || new Date());
     const zone = options.timezone;
     if (zone) assertTimezone(zone);
     const expr = expression.toLowerCase().trim();
