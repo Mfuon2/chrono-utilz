@@ -1,7 +1,7 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { PayPeriodFrequency } from './PayPeriodFrequency';
 import { addTime } from './addTime';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Anchored at startDate. Semi-monthly uses the anchor then the next 15th/1st; monthly additions clamp month ends. Invalid frequencies throw. */
 export function getPayPeriods(
@@ -12,8 +12,8 @@ export function getPayPeriods(
   if (!['weekly', 'bi-weekly', 'semi-monthly', 'monthly'].includes(frequency))
     throw new ChronoUtilzError('Invalid pay frequency');
 
-  const start = parseDate(startDate, { throwError: true });
-  const end = parseDate(endDate, { throwError: true });
+  const start = readDate(startDate);
+  const end = readDate(endDate);
 
   const periods: Date[] = [];
   const current = new Date(start);

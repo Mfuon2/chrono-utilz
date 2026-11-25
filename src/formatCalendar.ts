@@ -1,6 +1,6 @@
 import { localWallDate } from './zone';
 import { formatDate } from './formatDate';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Formats date as calendar format (Today, Tomorrow, etc.)
@@ -9,8 +9,8 @@ import { parseDate } from './parseDate';
  * @returns Calendar format string
  */
 export function formatCalendar(date: Date | string | number, baseDate?: Date): string {
-  const d = parseDate(date, { throwError: true })!,
-    b = parseDate(baseDate || new Date(), { throwError: true })!;
+  const d = readDate(date),
+    b = readDate(baseDate || new Date());
   const wallA = localWallDate(d),
     wallB = localWallDate(b);
   wallA.setUTCHours(0, 0, 0, 0);

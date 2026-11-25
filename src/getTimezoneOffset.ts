@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the timezone offset in minutes
@@ -6,7 +6,7 @@ import { parseDate } from './parseDate';
  * @returns Timezone offset in minutes
  */
 export function getTimezoneOffset(date: Date | string | number = new Date()): number {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   return safeDate.getTimezoneOffset();
 }

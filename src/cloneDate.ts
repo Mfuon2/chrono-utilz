@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Creates a deep copy of a Date object
@@ -6,7 +6,7 @@ import { parseDate } from './parseDate';
  * @returns A new Date object with the same time value
  */
 export function cloneDate(date: Date | string | number): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   return new Date(safeDate.getTime());
 }

@@ -1,5 +1,5 @@
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { truncateToUnit } from './truncateToUnit';
 
 /**
@@ -14,8 +14,8 @@ export function isAfter(
   date2: Date | string | number,
   unit?: TimeUnit,
 ): boolean {
-  const safeDate1 = parseDate(date1, { throwError: true });
-  const safeDate2 = parseDate(date2, { throwError: true });
+  const safeDate1 = readDate(date1);
+  const safeDate2 = readDate(date2);
 
   if (unit) {
     const truncated1 = truncateToUnit(safeDate1, unit);

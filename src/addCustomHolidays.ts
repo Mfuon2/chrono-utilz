@@ -1,7 +1,7 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { customHolidays } from './customHolidays';
 import { formatDateForComparison } from './formatDateForComparison';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Adds custom holidays
@@ -13,7 +13,7 @@ export function addCustomHolidays(holidayArray: (Date | string | number)[]): voi
   }
 
   for (const holiday of holidayArray) {
-    const holidayDate = parseDate(holiday, { throwError: true });
+    const holidayDate = readDate(holiday);
 
     const holidayStr = formatDateForComparison(holidayDate);
     customHolidays.add(holidayStr);

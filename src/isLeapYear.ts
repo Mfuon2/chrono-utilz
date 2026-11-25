@@ -1,5 +1,5 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Checks if a year is a leap year
@@ -15,7 +15,7 @@ export function isLeapYear(year: number | Date | string): boolean {
   if (typeof year === 'number') {
     yearToCheck = year;
   } else {
-    const safeDate = parseDate(year, { throwError: true });
+    const safeDate = readDate(year);
     yearToCheck = safeDate!.getFullYear();
   }
 

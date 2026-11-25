@@ -1,5 +1,5 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets fiscal year
@@ -11,7 +11,7 @@ export function getFiscalYear(date: Date | string | number, fiscalYearStart = 1)
   if (!Number.isInteger(fiscalYearStart))
     throw new ChronoUtilzError('Fiscal start must be an integer');
 
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   if (fiscalYearStart < 1 || fiscalYearStart > 12) {
     throw new ChronoUtilzError('fiscalYearStart must be between 1 and 12');

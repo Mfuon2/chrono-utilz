@@ -1,5 +1,5 @@
 import { compareDetailed } from './compareDetailed';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Returns a relative time string (e.g., "5 minutes ago", "in 2 days")
@@ -11,8 +11,8 @@ export function getRelativeTime(
   date: Date | string | number,
   baseDate: Date | string | number = new Date(),
 ): string {
-  const d = parseDate(date, { throwError: true })!,
-    b = parseDate(baseDate, { throwError: true })!;
+  const d = readDate(date),
+    b = readDate(baseDate);
   const delta = d.getTime() - b.getTime(),
     seconds = Math.round(Math.abs(delta) / 1000);
   const render = (n: number, u: string) =>

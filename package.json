@@ -4,7 +4,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "sideEffects": false,
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Precise, tree-shakeable date utilities for JavaScript and TypeScript, from everyday calculations to business scheduling.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -53,8 +53,7 @@
     "prepublishOnly": "npm run check",
     "test:browsers": "node scripts/test-browsers.cjs",
     "test:mutation": "stryker run",
-    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/*.{cjs,json}\"",
-    "benchmark": "node scripts/benchmark.cjs"
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/*.{cjs,json}\""
   },
   "repository": {
     "type": "git",
@@ -76,14 +75,10 @@
     "assert": "2.1.0",
     "c8": "12.0.0",
     "chai": "^4.3.7",
-    "date-fns": "4.4.0",
-    "dayjs": "1.11.23",
     "eslint": "10.15.0",
     "fast-check": "4.11.0",
     "globals": "^16.1.0",
-    "luxon": "3.7.2",
     "mocha": "11.8.0",
-    "moment": "2.31.0",
     "prettier": "3.10.1",
     "ts-node": "^10.9.1",
     "tsup": "^8.4.0",

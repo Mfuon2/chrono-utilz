@@ -2,7 +2,7 @@ import { assertTimezone } from './zone';
 import { zoneOffset } from './zone';
 import { getTimezoneInfo as getTimezoneInfoFromDB } from './timezones';
 import { IANATimezone } from './IANATimezone';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** offset is hours east of UTC. isDST is a seasonal offset heuristic, not authoritative historical daylight-saving metadata; Intl does not expose a DST flag. Use offset for calculations. */
 export function getTimezoneInfo(
@@ -16,7 +16,7 @@ export function getTimezoneInfo(
   offsetString: string;
   description?: string;
 } {
-  const parsed = parseDate(date, { throwError: true })!;
+  const parsed = readDate(date);
   assertTimezone(timezone);
   const offset = zoneOffset(parsed, timezone);
   const offsets = [0, 3, 6, 9].map((month) =>

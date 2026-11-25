@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { startOf } from './startOf';
 
 /**
@@ -8,8 +8,8 @@ import { startOf } from './startOf';
  * @returns True if both dates are in the same week
  */
 export function isSameWeek(date1: Date | string | number, date2: Date | string | number): boolean {
-  const safeDate1 = parseDate(date1, { throwError: true });
-  const safeDate2 = parseDate(date2, { throwError: true });
+  const safeDate1 = readDate(date1);
+  const safeDate2 = readDate(date2);
 
   const startOfWeek1 = startOf(safeDate1, 'week');
   const startOfWeek2 = startOf(safeDate2, 'week');

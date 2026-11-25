@@ -1,6 +1,6 @@
 import { Hemisphere } from './Hemisphere';
 import { Season } from './Season';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the season for a date
@@ -12,7 +12,7 @@ export function getSeason(
   date: Date | string | number,
   hemisphere: Hemisphere = 'northern',
 ): Season {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const month = safeDate.getMonth() + 1; // 1-12
   const day = safeDate.getDate();

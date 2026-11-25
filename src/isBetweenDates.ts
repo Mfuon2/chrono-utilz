@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Checks if a date is between two other dates
@@ -14,9 +14,9 @@ export function isBetweenDates(
   endDate: Date | string | number,
   inclusive = true,
 ): boolean {
-  const safeDate = parseDate(date, { throwError: true });
-  const safeStartDate = parseDate(startDate, { throwError: true });
-  const safeEndDate = parseDate(endDate, { throwError: true });
+  const safeDate = readDate(date);
+  const safeStartDate = readDate(startDate);
+  const safeEndDate = readDate(endDate);
 
   const dateTime = safeDate.getTime();
   const startTime = safeStartDate.getTime();

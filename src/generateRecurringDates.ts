@@ -6,7 +6,7 @@ import { getNextBusinessDay } from './getNextBusinessDay';
 import { handleCustomRecurrence } from './handleCustomRecurrence';
 import { isValidDate } from './isValidDate';
 import { isWeekend } from './isWeekend';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Includes the supplied start when inside the end bound, even if it does not match a filter. maxOccurrences:0 returns []. Positive integer intervals; finite bounded counts. Custom searches throw after eight years without a match. */
 export function generateRecurringDates(
@@ -38,7 +38,7 @@ export function generateRecurringDates(
 
   if (config.pattern === 'weekends' && currentConfig.workingDays.length === 7)
     throw new ChronoUtilzError('No weekend days are configured');
-  const safeStartDate = parseDate(startDate, { throwError: true });
+  const safeStartDate = readDate(startDate);
 
   if (config.endDate && safeStartDate > config.endDate) return [];
   const dates: Date[] = [new Date(safeStartDate)];

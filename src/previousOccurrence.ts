@@ -1,5 +1,5 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the previous occurrence of a specific day of week
@@ -8,7 +8,7 @@ import { parseDate } from './parseDate';
  * @returns Previous occurrence date
  */
 export function previousOccurrence(date: Date | string | number, dayOfWeek: number): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   if (!Number.isInteger(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6) {
     throw new ChronoUtilzError('dayOfWeek must be between 0 and 6');

@@ -1,36 +1,36 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.1",
   "tool": "esbuild 0.25.9",
   "metrics": {
     "leapYear": {
-      "minified": 3790,
-      "gzip": 1641,
-      "brotli": 1469,
-      "budget": 1850
+      "minified": 2796,
+      "gzip": 1235,
+      "brotli": 1084,
+      "budget": 1300
     },
     "arithmetic": {
-      "minified": 5938,
-      "gzip": 2371,
-      "brotli": 2105,
-      "budget": 2700
+      "minified": 5875,
+      "gzip": 2372,
+      "brotli": 2102,
+      "budget": 2450
     },
     "timezone": {
-      "minified": 4729,
-      "gzip": 2008,
-      "brotli": 1790,
-      "budget": 2300
+      "minified": 4147,
+      "gzip": 1799,
+      "brotli": 1606,
+      "budget": 1850
     },
     "business": {
-      "minified": 6683,
-      "gzip": 2670,
-      "brotli": 2370,
-      "budget": 3000
+      "minified": 6682,
+      "gzip": 2706,
+      "brotli": 2401,
+      "budget": 2800
     },
     "complete": {
-      "minified": 71670,
-      "gzip": 21560,
-      "brotli": 18069,
-      "budget": 24000
+      "minified": 61787,
+      "gzip": 20934,
+      "brotli": 17784,
+      "budget": 21000
     }
   }
 }

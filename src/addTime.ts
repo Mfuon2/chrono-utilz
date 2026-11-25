@@ -7,7 +7,7 @@ import { ChronoUtilzError } from './ChronoUtilzError';
 import { IANATimezone } from './IANATimezone';
 import { TimeUnit } from './TimeUnit';
 import { globalTimezoneConfig } from './globalTimezoneConfig';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Hours and smaller units are elapsed time. Days and larger units are calendar arithmetic; month/year additions clamp to the last valid day. Explicit timezone calendar operations reject DST gaps/folds. Calendar amounts must be integers. */
 export function addTime(
@@ -16,7 +16,7 @@ export function addTime(
   unit: TimeUnit,
   timezone?: IANATimezone,
 ): Date {
-  const parsed = parseDate(date, { throwError: true })!;
+  const parsed = readDate(date);
   if (!Number.isFinite(amount)) throw new ChronoUtilzError('Amount must be finite');
   if (timezone) assertTimezone(timezone);
   const factors: Partial<Record<TimeUnit, number>> = {

@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Validates whether a given input is a valid date in supported formats.
@@ -7,6 +7,6 @@ import { parseDate } from './parseDate';
  * @returns True if the date is valid
  */
 export function isValidDate(date: any): boolean {
-  const parsedDate = parseDate(date, { throwError: false });
+  const parsedDate = readDate(date, { throwError: false });
   return parsedDate !== null;
 }

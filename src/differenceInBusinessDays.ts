@@ -1,13 +1,13 @@
 import { isBusinessDay } from './isBusinessDay';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Signed local calendar-day count. Forward ranges exclude the first date and include the last; reversed ranges negate the corresponding ordered interval. */
 export function differenceInBusinessDays(
   startDate: Date | string | number,
   endDate: Date | string | number,
 ): number {
-  const safeStartDate = parseDate(startDate, { throwError: true });
-  const safeEndDate = parseDate(endDate, { throwError: true });
+  const safeStartDate = readDate(startDate);
+  const safeEndDate = readDate(endDate);
 
   // Normalize to start of day for accurate counting
   const start = new Date(safeStartDate);

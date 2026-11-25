@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Returns the quarter number (1-4) for a given date
@@ -12,7 +12,7 @@ import { parseDate } from './parseDate';
  * @returns The quarter number (1-4)
  */
 export function getQuarter(date: Date | string): number {
-  const parsedDate = parseDate(date);
+  const parsedDate = readDate(date, {});
   if (!parsedDate) {
     throw new Error('Invalid date provided');
   }

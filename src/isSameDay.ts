@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Checks if two dates fall on the same day
@@ -7,8 +7,8 @@ import { parseDate } from './parseDate';
  * @returns True if both dates are on the same day
  */
 export function isSameDay(date1: Date | string | number, date2: Date | string | number): boolean {
-  const safeDate1 = parseDate(date1, { throwError: true });
-  const safeDate2 = parseDate(date2, { throwError: true });
+  const safeDate1 = readDate(date1);
+  const safeDate2 = readDate(date2);
 
   return (
     safeDate1.getFullYear() === safeDate2.getFullYear() &&

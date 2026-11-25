@@ -1,5 +1,5 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Formats date with localization support
@@ -13,7 +13,7 @@ export function formatLocalized(
   locale = 'en-US',
   options: Intl.DateTimeFormatOptions = {},
 ): string {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   try {
     return safeDate.toLocaleDateString(locale, options);

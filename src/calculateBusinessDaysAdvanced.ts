@@ -3,7 +3,7 @@ import { localWallDate } from './zone';
 import { WorkingTimeConfig } from './WorkingTimeConfig';
 import { createDate } from './createDate';
 import { isConfiguredHoliday } from './isConfiguredHoliday';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { validateWorkingConfig } from './validateWorkingConfig';
 
 /** Inclusive calendar days in config.timezone (host timezone by default). Honors workingDays, excludeHolidays and holidayConfig. */
@@ -13,8 +13,8 @@ export function calculateBusinessDaysAdvanced(
   config: WorkingTimeConfig = { startHour: 9, endHour: 17, workingDays: [1, 2, 3, 4, 5] },
 ): number {
   validateWorkingConfig(config);
-  const a = parseDate(startDate, { throwError: true })!,
-    b = parseDate(endDate, { throwError: true })!;
+  const a = readDate(startDate),
+    b = readDate(endDate);
   const first = config.timezone ? zonedWallDate(a, config.timezone) : localWallDate(a),
     last = config.timezone ? zonedWallDate(b, config.timezone) : localWallDate(b);
   first.setUTCHours(0, 0, 0, 0);

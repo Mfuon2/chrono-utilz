@@ -1,7 +1,21 @@
 import { strict as assert } from 'assert';
 import * as c from '../src';
 import fc from 'fast-check';
-import { getISOWeek as referenceISOWeek, addMonths as referenceAddMonths } from 'date-fns';
+
+// Independent reference implementations (ISO 8601 Thursday rule; month arithmetic clamped to the last day).
+const referenceISOWeek = (value: Date) => {
+  const day = new Date(Date.UTC(value.getFullYear(), value.getMonth(), value.getDate()));
+  day.setUTCDate(day.getUTCDate() + 4 - (day.getUTCDay() || 7));
+  return Math.ceil(((+day - Date.UTC(day.getUTCFullYear(), 0, 1)) / 86400000 + 1) / 7);
+};
+const referenceAddMonths = (value: Date, months: number) => {
+  const result = new Date(value);
+  const lastDay = new Date(value);
+  lastDay.setMonth(value.getMonth() + months + 1, 0);
+  if (value.getDate() >= lastDay.getDate()) return lastDay;
+  result.setFullYear(lastDay.getFullYear(), lastDay.getMonth(), value.getDate());
+  return result;
+};
 
 const date = (text = '2025-01-15T12:34:56.789') => new Date(text);
 const local = (value: Date) => [

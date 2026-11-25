@@ -34,7 +34,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
-      - run: node scripts/benchmark.cjs
       - if: matrix.node == 24
         run: npx playwright install --with-deps chromium firefox webkit
       - if: matrix.node == 24
@@ -57,7 +56,6 @@ jobs:
           name: reports-node-${{ matrix.node }}
           path: |
             docs/bundle-sizes.json
-            docs/benchmarks.json
             coverage/lcov.info
             reports/mutation/mutation.json
   publish:

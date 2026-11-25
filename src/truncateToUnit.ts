@@ -1,6 +1,6 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Truncates a date to the specified unit (sets smaller units to their minimum values)
@@ -9,7 +9,7 @@ import { parseDate } from './parseDate';
  * @returns A new Date truncated to the specified unit
  */
 export function truncateToUnit(date: Date | string | number, unit: TimeUnit): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const result = new Date(safeDate.getTime());
 

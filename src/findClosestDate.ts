@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Finds the closest date to a target from an array of dates
@@ -12,13 +12,13 @@ export function findClosestDate(
 ): Date | null {
   if (dates.length === 0) return null;
 
-  const safeTargetDate = parseDate(targetDate, { throwError: true });
+  const safeTargetDate = readDate(targetDate);
 
   let closest: Date | null = null;
   let minDifference = Infinity;
 
   for (const date of dates) {
-    const safeDate = parseDate(date);
+    const safeDate = readDate(date, {});
     if (!safeDate) continue;
 
     const difference = Math.abs(safeDate.getTime() - safeTargetDate.getTime());

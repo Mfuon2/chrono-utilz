@@ -1,6 +1,6 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the end of a time unit (e.g., end of day, end of month)
@@ -12,7 +12,7 @@ export function endOf(
   date: Date | string | number,
   unit: Exclude<TimeUnit, 'millisecond' | 'second' | 'minute'>,
 ): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const result = new Date(safeDate.getTime());
 

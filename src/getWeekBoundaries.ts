@@ -1,13 +1,13 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { WeekBoundaries } from './WeekBoundaries';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Monday start by default; weekStartsOn can be 0-6. startOf/endOf/isSameWeek use Sunday start. */
 export function getWeekBoundaries(
   date: Date | string | number,
   weekStartsOn = 1, // Remove `: number` here
 ): WeekBoundaries {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   if (weekStartsOn < 0 || weekStartsOn > 6 || !Number.isInteger(weekStartsOn)) {
     throw new ChronoUtilzError('weekStartsOn must be an integer between 0 and 6');

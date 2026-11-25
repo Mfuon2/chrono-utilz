@@ -1,272 +1,26 @@
-/**
- * Standardized IANA Timezone Database
- * Based on IBM Cloud Pak System W4600 timezone list
- * https://www.ibm.com/docs/en/cloud-pak-system-w4600/2.3.3?topic=SSDLT6_2.3.3/psapsys_restapi/time_zone_list.htm
- */
+/** Bundled timezone catalog: offset|description|ids groups (an empty offset repeats the previous one), decoded on first use. Offsets are standard (non-DST) hours. */
+const PACKED =
+  '-12|GMT-12:00|Etc/GMT+12;-11|Samoa Standard Time|Pacific/Midway,Pacific/Pago_Pago,Pacific/Samoa,US/Samoa;|GMT-11:00|Etc/GMT+11;-10|Hawaii Standard Time|Pacific/Honolulu,US/Hawaii;|Cook Is. Time|Pacific/Rarotonga;|Tahiti Time|Pacific/Tahiti;|GMT-10:00|Etc/GMT+10;-9|Alaska Standard Time|US/Alaska,America/Anchorage,America/Juneau,America/Nome,America/Yakutat;|Gambier Time|Pacific/Gambier;|GMT-09:00|Etc/GMT+9;-8|Pacific Standard Time|US/Pacific,America/Los_Angeles,America/Vancouver,America/Tijuana;|Pitcairn Standard Time|Pacific/Pitcairn;|GMT-08:00|Etc/GMT+8;-7|Mountain Standard Time|US/Mountain,America/Denver,America/Phoenix,America/Calgary,America/Edmonton,US/Arizona;|GMT-07:00|Etc/GMT+7;-6|Central Standard Time|US/Central,America/Chicago,America/Mexico_City,America/Winnipeg,America/Guatemala;|Easter Is. Time|Pacific/Easter;|GMT-06:00|Etc/GMT+6;-5|Eastern Standard Time|US/Eastern,America/New_York,America/Toronto,America/Montreal;|Colombia Time|America/Bogota;|Peru Time|America/Lima;|Eastern Standard Time|America/Panama;|GMT-05:00|Etc/GMT+5;-4|Venezuela Time|America/Caracas;|Chile Time|America/Santiago;|Bolivia Time|America/La_Paz;|Atlantic Standard Time|America/Halifax,America/Barbados,Atlantic/Bermuda;|GMT-04:00|Etc/GMT+4;-3|Brazil Time|America/Sao_Paulo;|Argentina Time|America/Buenos_Aires;|Uruguay Time|America/Montevideo;|French Guiana Time|America/Cayenne;|West Greenland Time|America/Godthab;|GMT-03:00|Etc/GMT+3;-2|Fernando de Noronha Time|America/Noronha;|South Georgia Time|Atlantic/South_Georgia;|GMT-02:00|Etc/GMT+2;-1|Azores Time|Atlantic/Azores;|Cape Verde Time|Atlantic/Cape_Verde;|GMT-01:00|Etc/GMT+1;0|Coordinated Universal Time|UTC;|Greenwich Mean Time|GMT,Europe/London;|Irish Standard Time|Europe/Dublin;|Western European Time|Africa/Casablanca;|Greenwich Mean Time|Atlantic/Reykjavik;|GMT|Etc/GMT;1|Central European Time|Europe/Paris,Europe/Berlin,Europe/Rome,Europe/Madrid,Europe/Amsterdam,Europe/Brussels,Europe/Vienna,Europe/Zurich;|West Africa Time|Africa/Lagos;|GMT+01:00|Etc/GMT-1;2|Eastern European Time|Europe/Helsinki,Europe/Athens;|Turkey Time|Europe/Istanbul;|Eastern European Time|Europe/Kiev,Africa/Cairo;|South Africa Standard Time|Africa/Johannesburg;|Israel Standard Time|Asia/Jerusalem;|GMT+02:00|Etc/GMT-2;3|Moscow Standard Time|Europe/Moscow;|Arabia Standard Time|Asia/Riyadh,Asia/Kuwait,Asia/Baghdad;|East Africa Time|Africa/Nairobi,Indian/Antananarivo;|GMT+03:00|Etc/GMT-3;3.5|Iran Standard Time|Asia/Tehran;4|Gulf Standard Time|Asia/Dubai,Asia/Muscat;|Azerbaijan Time|Asia/Baku;|Georgia Time|Asia/Tbilisi;|Mauritius Time|Indian/Mauritius;|GMT+04:00|Etc/GMT-4;4.5|Afghanistan Time|Asia/Kabul;5|Pakistan Standard Time|Asia/Karachi;|Uzbekistan Time|Asia/Tashkent;|Yekaterinburg Time|Asia/Yekaterinburg;|Maldives Time|Indian/Maldives;|GMT+05:00|Etc/GMT-5;5.5|India Standard Time|Asia/Kolkata;|Sri Lanka Time|Asia/Colombo;5.75|Nepal Time|Asia/Kathmandu;6|East Kazakhstan Time|Asia/Almaty;|Bangladesh Time|Asia/Dhaka;|Omsk Time|Asia/Omsk;|Indian Ocean Time|Indian/Chagos;|GMT+06:00|Etc/GMT-6;6.5|Myanmar Time|Asia/Rangoon;|Cocos Islands Time|Indian/Cocos;7|Indochina Time|Asia/Bangkok;|West Indonesia Time|Asia/Jakarta;|Indochina Time|Asia/Ho_Chi_Minh;|Krasnoyarsk Time|Asia/Krasnoyarsk;|GMT+07:00|Etc/GMT-7;8|China Standard Time|Asia/Shanghai;|Hong Kong Time|Asia/Hong_Kong;|Singapore Time|Asia/Singapore;|China Standard Time|Asia/Taipei;|Philippine Time|Asia/Manila;|Malaysia Time|Asia/Kuala_Lumpur;|Western Standard Time (Australia)|Australia/Perth;|Irkutsk Time|Asia/Irkutsk;|GMT+08:00|Etc/GMT-8;9|Japan Standard Time|Asia/Tokyo;|Korea Standard Time|Asia/Seoul;|Yakutsk Time|Asia/Yakutsk;|Palau Time|Pacific/Palau;|GMT+09:00|Etc/GMT-9;9.5|Central Standard Time (South Australia)|Australia/Adelaide;|Central Standard Time (Northern Territory)|Australia/Darwin;10|Eastern Standard Time (New South Wales)|Australia/Sydney;|Eastern Standard Time (Victoria)|Australia/Melbourne;|Eastern Standard Time (Queensland)|Australia/Brisbane;|Eastern Standard Time (Tasmania)|Australia/Hobart;|Chamorro Standard Time|Pacific/Guam;|Vladivostok Time|Asia/Vladivostok;|GMT+10:00|Etc/GMT-10;10.5|Lord Howe Standard Time|Australia/Lord_Howe;11|Norfolk Time|Pacific/Norfolk;|Magadan Time|Asia/Magadan;|New Caledonia Time|Pacific/Noumea;|GMT+11:00|Etc/GMT-11;12|New Zealand Standard Time|Pacific/Auckland;|Fiji Time|Pacific/Fiji;|Kamchatka Time|Asia/Kamchatka;|Gilbert Is. Time|Pacific/Tarawa;|GMT+12:00|Etc/GMT-12;12.75|Chatham Standard Time|Pacific/Chatham;13|Tonga Time|Pacific/Tongatapu;|West Samoa Time|Pacific/Apia;|GMT+13:00|Etc/GMT-13;14|Line Is. Time|Pacific/Kiritimati;|GMT+14:00|Etc/GMT-14';
 
-/**
- * Complete IANA timezone database with standardized offsets and descriptions
- */
-export const TIMEZONES = [
-  // GMT-12 to GMT-11
-  { id: 'Etc/GMT+12', offset: -12, description: 'GMT-12:00' },
-  { id: 'Pacific/Midway', offset: -11, description: 'Samoa Standard Time' },
-  { id: 'Pacific/Pago_Pago', offset: -11, description: 'Samoa Standard Time' },
-  { id: 'Pacific/Samoa', offset: -11, description: 'Samoa Standard Time' },
-  { id: 'US/Samoa', offset: -11, description: 'Samoa Standard Time' },
-  { id: 'Etc/GMT+11', offset: -11, description: 'GMT-11:00' },
+type TimezoneEntry = { id: string; offset: number; description: string };
+let catalog: TimezoneEntry[] | undefined;
 
-  // GMT-10
-  { id: 'Pacific/Honolulu', offset: -10, description: 'Hawaii Standard Time' },
-  { id: 'US/Hawaii', offset: -10, description: 'Hawaii Standard Time' },
-  { id: 'Pacific/Rarotonga', offset: -10, description: 'Cook Is. Time' },
-  { id: 'Pacific/Tahiti', offset: -10, description: 'Tahiti Time' },
-  { id: 'Etc/GMT+10', offset: -10, description: 'GMT-10:00' },
-
-  // GMT-9
-  { id: 'US/Alaska', offset: -9, description: 'Alaska Standard Time' },
-  { id: 'America/Anchorage', offset: -9, description: 'Alaska Standard Time' },
-  { id: 'America/Juneau', offset: -9, description: 'Alaska Standard Time' },
-  { id: 'America/Nome', offset: -9, description: 'Alaska Standard Time' },
-  { id: 'America/Yakutat', offset: -9, description: 'Alaska Standard Time' },
-  { id: 'Pacific/Gambier', offset: -9, description: 'Gambier Time' },
-  { id: 'Etc/GMT+9', offset: -9, description: 'GMT-09:00' },
-
-  // GMT-8
-  { id: 'US/Pacific', offset: -8, description: 'Pacific Standard Time' },
-  { id: 'America/Los_Angeles', offset: -8, description: 'Pacific Standard Time' },
-  { id: 'America/Vancouver', offset: -8, description: 'Pacific Standard Time' },
-  { id: 'America/Tijuana', offset: -8, description: 'Pacific Standard Time' },
-  { id: 'Pacific/Pitcairn', offset: -8, description: 'Pitcairn Standard Time' },
-  { id: 'Etc/GMT+8', offset: -8, description: 'GMT-08:00' },
-
-  // GMT-7
-  { id: 'US/Mountain', offset: -7, description: 'Mountain Standard Time' },
-  { id: 'America/Denver', offset: -7, description: 'Mountain Standard Time' },
-  { id: 'America/Phoenix', offset: -7, description: 'Mountain Standard Time' },
-  { id: 'America/Calgary', offset: -7, description: 'Mountain Standard Time' },
-  { id: 'America/Edmonton', offset: -7, description: 'Mountain Standard Time' },
-  { id: 'US/Arizona', offset: -7, description: 'Mountain Standard Time' },
-  { id: 'Etc/GMT+7', offset: -7, description: 'GMT-07:00' },
-
-  // GMT-6
-  { id: 'US/Central', offset: -6, description: 'Central Standard Time' },
-  { id: 'America/Chicago', offset: -6, description: 'Central Standard Time' },
-  { id: 'America/Mexico_City', offset: -6, description: 'Central Standard Time' },
-  { id: 'America/Winnipeg', offset: -6, description: 'Central Standard Time' },
-  { id: 'America/Guatemala', offset: -6, description: 'Central Standard Time' },
-  { id: 'Pacific/Easter', offset: -6, description: 'Easter Is. Time' },
-  { id: 'Etc/GMT+6', offset: -6, description: 'GMT-06:00' },
-
-  // GMT-5
-  { id: 'US/Eastern', offset: -5, description: 'Eastern Standard Time' },
-  { id: 'America/New_York', offset: -5, description: 'Eastern Standard Time' },
-  { id: 'America/Toronto', offset: -5, description: 'Eastern Standard Time' },
-  { id: 'America/Montreal', offset: -5, description: 'Eastern Standard Time' },
-  { id: 'America/Bogota', offset: -5, description: 'Colombia Time' },
-  { id: 'America/Lima', offset: -5, description: 'Peru Time' },
-  { id: 'America/Panama', offset: -5, description: 'Eastern Standard Time' },
-  { id: 'Etc/GMT+5', offset: -5, description: 'GMT-05:00' },
-
-  // GMT-4
-  { id: 'America/Caracas', offset: -4, description: 'Venezuela Time' },
-  { id: 'America/Santiago', offset: -4, description: 'Chile Time' },
-  { id: 'America/La_Paz', offset: -4, description: 'Bolivia Time' },
-  { id: 'America/Halifax', offset: -4, description: 'Atlantic Standard Time' },
-  { id: 'America/Barbados', offset: -4, description: 'Atlantic Standard Time' },
-  { id: 'Atlantic/Bermuda', offset: -4, description: 'Atlantic Standard Time' },
-  { id: 'Etc/GMT+4', offset: -4, description: 'GMT-04:00' },
-
-  // GMT-3
-  { id: 'America/Sao_Paulo', offset: -3, description: 'Brazil Time' },
-  { id: 'America/Buenos_Aires', offset: -3, description: 'Argentina Time' },
-  { id: 'America/Montevideo', offset: -3, description: 'Uruguay Time' },
-  { id: 'America/Cayenne', offset: -3, description: 'French Guiana Time' },
-  { id: 'America/Godthab', offset: -3, description: 'West Greenland Time' },
-  { id: 'Etc/GMT+3', offset: -3, description: 'GMT-03:00' },
-
-  // GMT-2
-  { id: 'America/Noronha', offset: -2, description: 'Fernando de Noronha Time' },
-  { id: 'Atlantic/South_Georgia', offset: -2, description: 'South Georgia Time' },
-  { id: 'Etc/GMT+2', offset: -2, description: 'GMT-02:00' },
-
-  // GMT-1
-  { id: 'Atlantic/Azores', offset: -1, description: 'Azores Time' },
-  { id: 'Atlantic/Cape_Verde', offset: -1, description: 'Cape Verde Time' },
-  { id: 'Etc/GMT+1', offset: -1, description: 'GMT-01:00' },
-
-  // GMT+0 (UTC/GMT)
-  { id: 'UTC', offset: 0, description: 'Coordinated Universal Time' },
-  { id: 'GMT', offset: 0, description: 'Greenwich Mean Time' },
-  { id: 'Europe/London', offset: 0, description: 'Greenwich Mean Time' },
-  { id: 'Europe/Dublin', offset: 0, description: 'Irish Standard Time' },
-  { id: 'Africa/Casablanca', offset: 0, description: 'Western European Time' },
-  { id: 'Atlantic/Reykjavik', offset: 0, description: 'Greenwich Mean Time' },
-  { id: 'Etc/GMT', offset: 0, description: 'GMT' },
-
-  // GMT+1
-  { id: 'Europe/Paris', offset: 1, description: 'Central European Time' },
-  { id: 'Europe/Berlin', offset: 1, description: 'Central European Time' },
-  { id: 'Europe/Rome', offset: 1, description: 'Central European Time' },
-  { id: 'Europe/Madrid', offset: 1, description: 'Central European Time' },
-  { id: 'Europe/Amsterdam', offset: 1, description: 'Central European Time' },
-  { id: 'Europe/Brussels', offset: 1, description: 'Central European Time' },
-  { id: 'Europe/Vienna', offset: 1, description: 'Central European Time' },
-  { id: 'Europe/Zurich', offset: 1, description: 'Central European Time' },
-  { id: 'Africa/Lagos', offset: 1, description: 'West Africa Time' },
-  { id: 'Etc/GMT-1', offset: 1, description: 'GMT+01:00' },
-
-  // GMT+2
-  { id: 'Europe/Helsinki', offset: 2, description: 'Eastern European Time' },
-  { id: 'Europe/Athens', offset: 2, description: 'Eastern European Time' },
-  { id: 'Europe/Istanbul', offset: 2, description: 'Turkey Time' },
-  { id: 'Europe/Kiev', offset: 2, description: 'Eastern European Time' },
-  { id: 'Africa/Cairo', offset: 2, description: 'Eastern European Time' },
-  { id: 'Africa/Johannesburg', offset: 2, description: 'South Africa Standard Time' },
-  { id: 'Asia/Jerusalem', offset: 2, description: 'Israel Standard Time' },
-  { id: 'Etc/GMT-2', offset: 2, description: 'GMT+02:00' },
-
-  // GMT+3
-  { id: 'Europe/Moscow', offset: 3, description: 'Moscow Standard Time' },
-  { id: 'Asia/Riyadh', offset: 3, description: 'Arabia Standard Time' },
-  { id: 'Asia/Kuwait', offset: 3, description: 'Arabia Standard Time' },
-  { id: 'Asia/Baghdad', offset: 3, description: 'Arabia Standard Time' },
-  { id: 'Africa/Nairobi', offset: 3, description: 'East Africa Time' },
-  { id: 'Indian/Antananarivo', offset: 3, description: 'East Africa Time' },
-  { id: 'Etc/GMT-3', offset: 3, description: 'GMT+03:00' },
-
-  // GMT+3.5
-  { id: 'Asia/Tehran', offset: 3.5, description: 'Iran Standard Time' },
-
-  // GMT+4
-  { id: 'Asia/Dubai', offset: 4, description: 'Gulf Standard Time' },
-  { id: 'Asia/Muscat', offset: 4, description: 'Gulf Standard Time' },
-  { id: 'Asia/Baku', offset: 4, description: 'Azerbaijan Time' },
-  { id: 'Asia/Tbilisi', offset: 4, description: 'Georgia Time' },
-  { id: 'Indian/Mauritius', offset: 4, description: 'Mauritius Time' },
-  { id: 'Etc/GMT-4', offset: 4, description: 'GMT+04:00' },
-
-  // GMT+4.5
-  { id: 'Asia/Kabul', offset: 4.5, description: 'Afghanistan Time' },
-
-  // GMT+5
-  { id: 'Asia/Karachi', offset: 5, description: 'Pakistan Standard Time' },
-  { id: 'Asia/Tashkent', offset: 5, description: 'Uzbekistan Time' },
-  { id: 'Asia/Yekaterinburg', offset: 5, description: 'Yekaterinburg Time' },
-  { id: 'Indian/Maldives', offset: 5, description: 'Maldives Time' },
-  { id: 'Etc/GMT-5', offset: 5, description: 'GMT+05:00' },
-
-  // GMT+5.5
-  { id: 'Asia/Kolkata', offset: 5.5, description: 'India Standard Time' },
-  { id: 'Asia/Colombo', offset: 5.5, description: 'Sri Lanka Time' },
-
-  // GMT+5.75
-  { id: 'Asia/Kathmandu', offset: 5.75, description: 'Nepal Time' },
-
-  // GMT+6
-  { id: 'Asia/Almaty', offset: 6, description: 'East Kazakhstan Time' },
-  { id: 'Asia/Dhaka', offset: 6, description: 'Bangladesh Time' },
-  { id: 'Asia/Omsk', offset: 6, description: 'Omsk Time' },
-  { id: 'Indian/Chagos', offset: 6, description: 'Indian Ocean Time' },
-  { id: 'Etc/GMT-6', offset: 6, description: 'GMT+06:00' },
-
-  // GMT+6.5
-  { id: 'Asia/Rangoon', offset: 6.5, description: 'Myanmar Time' },
-  { id: 'Indian/Cocos', offset: 6.5, description: 'Cocos Islands Time' },
-
-  // GMT+7
-  { id: 'Asia/Bangkok', offset: 7, description: 'Indochina Time' },
-  { id: 'Asia/Jakarta', offset: 7, description: 'West Indonesia Time' },
-  { id: 'Asia/Ho_Chi_Minh', offset: 7, description: 'Indochina Time' },
-  { id: 'Asia/Krasnoyarsk', offset: 7, description: 'Krasnoyarsk Time' },
-  { id: 'Etc/GMT-7', offset: 7, description: 'GMT+07:00' },
-
-  // GMT+8
-  { id: 'Asia/Shanghai', offset: 8, description: 'China Standard Time' },
-  { id: 'Asia/Hong_Kong', offset: 8, description: 'Hong Kong Time' },
-  { id: 'Asia/Singapore', offset: 8, description: 'Singapore Time' },
-  { id: 'Asia/Taipei', offset: 8, description: 'China Standard Time' },
-  { id: 'Asia/Manila', offset: 8, description: 'Philippine Time' },
-  { id: 'Asia/Kuala_Lumpur', offset: 8, description: 'Malaysia Time' },
-  { id: 'Australia/Perth', offset: 8, description: 'Western Standard Time (Australia)' },
-  { id: 'Asia/Irkutsk', offset: 8, description: 'Irkutsk Time' },
-  { id: 'Etc/GMT-8', offset: 8, description: 'GMT+08:00' },
-
-  // GMT+9
-  { id: 'Asia/Tokyo', offset: 9, description: 'Japan Standard Time' },
-  { id: 'Asia/Seoul', offset: 9, description: 'Korea Standard Time' },
-  { id: 'Asia/Yakutsk', offset: 9, description: 'Yakutsk Time' },
-  { id: 'Pacific/Palau', offset: 9, description: 'Palau Time' },
-  { id: 'Etc/GMT-9', offset: 9, description: 'GMT+09:00' },
-
-  // GMT+9.5
-  { id: 'Australia/Adelaide', offset: 9.5, description: 'Central Standard Time (South Australia)' },
-  {
-    id: 'Australia/Darwin',
-    offset: 9.5,
-    description: 'Central Standard Time (Northern Territory)',
-  },
-
-  // GMT+10
-  { id: 'Australia/Sydney', offset: 10, description: 'Eastern Standard Time (New South Wales)' },
-  { id: 'Australia/Melbourne', offset: 10, description: 'Eastern Standard Time (Victoria)' },
-  { id: 'Australia/Brisbane', offset: 10, description: 'Eastern Standard Time (Queensland)' },
-  { id: 'Australia/Hobart', offset: 10, description: 'Eastern Standard Time (Tasmania)' },
-  { id: 'Pacific/Guam', offset: 10, description: 'Chamorro Standard Time' },
-  { id: 'Asia/Vladivostok', offset: 10, description: 'Vladivostok Time' },
-  { id: 'Etc/GMT-10', offset: 10, description: 'GMT+10:00' },
-
-  // GMT+10.5
-  { id: 'Australia/Lord_Howe', offset: 10.5, description: 'Lord Howe Standard Time' },
-
-  // GMT+11
-  { id: 'Pacific/Norfolk', offset: 11, description: 'Norfolk Time' },
-  { id: 'Asia/Magadan', offset: 11, description: 'Magadan Time' },
-  { id: 'Pacific/Noumea', offset: 11, description: 'New Caledonia Time' },
-  { id: 'Etc/GMT-11', offset: 11, description: 'GMT+11:00' },
-
-  // GMT+12
-  { id: 'Pacific/Auckland', offset: 12, description: 'New Zealand Standard Time' },
-  { id: 'Pacific/Fiji', offset: 12, description: 'Fiji Time' },
-  { id: 'Asia/Kamchatka', offset: 12, description: 'Kamchatka Time' },
-  { id: 'Pacific/Tarawa', offset: 12, description: 'Gilbert Is. Time' },
-  { id: 'Etc/GMT-12', offset: 12, description: 'GMT+12:00' },
-
-  // GMT+12.75
-  { id: 'Pacific/Chatham', offset: 12.75, description: 'Chatham Standard Time' },
-
-  // GMT+13
-  { id: 'Pacific/Tongatapu', offset: 13, description: 'Tonga Time' },
-  { id: 'Pacific/Apia', offset: 13, description: 'West Samoa Time' },
-  { id: 'Etc/GMT-13', offset: 13, description: 'GMT+13:00' },
-
-  // GMT+14
-  { id: 'Pacific/Kiritimati', offset: 14, description: 'Line Is. Time' },
-  { id: 'Etc/GMT-14', offset: 14, description: 'GMT+14:00' },
-];
-
-/**
- * Get user's current timezone using Intl API
- * @returns {string} The user's IANA timezone identifier
- */
-export function getUserTimezone() {
-  try {
-    return Intl.DateTimeFormat().resolvedOptions().timeZone;
-  } catch {
-    // Fallback to UTC if Intl API is not available
-    return 'UTC';
-  }
+/** The decoded catalog, shared and never handed out directly. */
+export function timezoneCatalog(): TimezoneEntry[] {
+  let offset = 0;
+  return (catalog ||= PACKED.split(';').flatMap((group) => {
+    const [hours, description, ids] = group.split('|');
+    if (hours) offset = +hours;
+    return ids.split(',').map((id) => ({ id, offset, description }));
+  }));
 }
 
-/**
- * Get timezone information by IANA identifier
- * @param timezoneId - IANA timezone identifier
- * @returns Timezone information or null if not found
- */
-export function getTimezoneInfo(
-  timezoneId: string,
-): { id: string; offset: number; description: string } | null {
-  return TIMEZONES.find((tz) => tz.id === timezoneId) || null;
+const copies = (entries: TimezoneEntry[]) => entries.map((tz) => ({ ...tz }));
+
+/** Catalog entry for an IANA identifier, or null when it is not bundled. */
+export function getTimezoneInfo(timezoneId: string): TimezoneEntry | null {
+  const found = timezoneCatalog().find((tz) => tz.id === timezoneId);
+  return found ? { ...found } : null;
 }
 
 /**
@@ -274,10 +28,12 @@ export function getTimezoneInfo(
  * @param region - Region to filter by (e.g., 'America', 'Europe', 'Asia')
  * @returns Array of timezone objects in the specified region
  */
-export function getTimezonesByRegion(
-  region: string,
-): Array<{ id: string; offset: number; description: string }> {
-  return TIMEZONES.filter((tz) => tz.id.startsWith(region + '/')).map((tz) => ({ ...tz }));
+export function getTimezonesByRegion(region: string): Array<{
+  id: string;
+  offset: number;
+  description: string;
+}> {
+  return copies(timezoneCatalog().filter((tz) => tz.id.startsWith(region + '/')));
 }
 
 /**
@@ -285,13 +41,18 @@ export function getTimezonesByRegion(
  * @param query - Search query
  * @returns Array of matching timezone objects
  */
-export function searchTimezones(
-  query: string,
-): Array<{ id: string; offset: number; description: string }> {
+export function searchTimezones(query: string): Array<{
+  id: string;
+  offset: number;
+  description: string;
+}> {
   const searchTerm = query.toLowerCase();
-  return TIMEZONES.filter(
-    (tz) =>
-      tz.id.toLowerCase().includes(searchTerm) || tz.description.toLowerCase().includes(searchTerm),
+  return copies(
+    timezoneCatalog().filter(
+      (tz) =>
+        tz.id.toLowerCase().includes(searchTerm) ||
+        tz.description.toLowerCase().includes(searchTerm),
+    ),
   );
 }
 
@@ -300,13 +61,10 @@ export function searchTimezones(
  * @param offset - GMT offset in hours
  * @returns Array of timezone objects with the specified offset
  */
-export function getTimezonesByOffset(
-  offset: number,
-): Array<{ id: string; offset: number; description: string }> {
-  return TIMEZONES.filter((tz) => tz.offset === offset);
+export function getTimezonesByOffset(offset: number): Array<{
+  id: string;
+  offset: number;
+  description: string;
+}> {
+  return copies(timezoneCatalog().filter((tz) => tz.offset === offset));
 }
-
-/**
- * Create a comprehensive timezone type for TypeScript
- */
-export const TIMEZONE_IDS = /* @__PURE__ */ TIMEZONES.map((tz) => tz.id);

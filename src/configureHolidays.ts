@@ -1,7 +1,7 @@
 import { BusinessDayConfig } from './BusinessDayConfig';
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { currentConfig } from './currentConfig';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Adds holidays to the business day configuration
@@ -25,7 +25,7 @@ export function configureHolidays(holidays: (Date | string | number)[]): Busines
   const holidaySet = new Set<string>();
 
   for (const holiday of holidays) {
-    const parsedHoliday = parseDate(holiday, { throwError: true });
+    const parsedHoliday = readDate(holiday);
 
     // Store as YYYY-MM-DD format for consistent comparison (timezone neutral)
     const year = String(parsedHoliday.getFullYear()).padStart(4, '0');

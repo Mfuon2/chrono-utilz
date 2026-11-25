@@ -1,6 +1,6 @@
 import { localCalendarDate } from './zone';
 import { getQuarter } from './getQuarter';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Returns the first or last date of a quarter
@@ -21,7 +21,7 @@ import { parseDate } from './parseDate';
 export function getQuarterDate(date: Date | string, type: 'start' | 'end'): Date {
   if (type !== 'start' && type !== 'end')
     throw new RangeError('Quarter boundary must be start or end');
-  const parsedDate = parseDate(date);
+  const parsedDate = readDate(date, {});
   if (!parsedDate) {
     throw new Error('Invalid date provided');
   }

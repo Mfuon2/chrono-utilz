@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Checks if the given date is the first day of the year (January 1st)
@@ -12,7 +12,7 @@ import { parseDate } from './parseDate';
  * ```
  */
 export function isFirstDayOfYear(date: Date | string | number): boolean {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   return safeDate.getMonth() === 0 && safeDate.getDate() === 1;
 }

@@ -1,7 +1,7 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { DateRangeOptions } from './DateRangeOptions';
 import { addTime } from './addTime';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Generates an array of dates between a start and end date
@@ -23,8 +23,8 @@ export function generateDateRange(options: DateRangeOptions): Date[] {
 
   if (!Number.isInteger(step) || step <= 0)
     throw new ChronoUtilzError('Step must be a positive integer');
-  const startDate = parseDate(start);
-  const endDate = parseDate(end);
+  const startDate = readDate(start, {});
+  const endDate = readDate(end, {});
 
   if (!startDate || !endDate) {
     throw new Error('Invalid start or end date provided');

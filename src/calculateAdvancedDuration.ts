@@ -1,7 +1,7 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { DurationDisplayOptions } from './DurationDisplayOptions';
 import { compareDetailed } from './compareDetailed';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** Absolute calendar decomposition. Supported display units: year, month, day, hour, minute, second. Default precision 2. Omitted larger components are not converted into smaller units. */
 export function calculateAdvancedDuration(
@@ -12,8 +12,8 @@ export function calculateAdvancedDuration(
   if (!Number.isInteger(options.precision ?? 2) || (options.precision ?? 2) < 1)
     throw new ChronoUtilzError('Invalid duration precision');
 
-  const safeStartDate = parseDate(startDate, { throwError: true });
-  const safeEndDate = parseDate(endDate, { throwError: true });
+  const safeStartDate = readDate(startDate);
+  const safeEndDate = readDate(endDate);
 
   const comparison = compareDetailed(safeStartDate, safeEndDate);
   const { difference } = comparison;

@@ -1,7 +1,7 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { WorkingSchedule } from './WorkingSchedule';
 import { addTime } from './addTime';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { scheduleConfig } from './scheduleConfig';
 import { startOf } from './startOf';
 
@@ -15,7 +15,7 @@ export function addWorkingHours(
     throw new ChronoUtilzError('Hours must be finite and nonnegative');
   const config = scheduleConfig(schedule);
   let remaining = hours * 3600000;
-  let current = parseDate(date, { throwError: true })!;
+  let current = readDate(date);
   if (!remaining) return current;
   for (let attempts = 0; attempts < 100000; attempts++) {
     let found = false;

@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Checks if the given date is the last day of the year (December 31st)
@@ -12,7 +12,7 @@ import { parseDate } from './parseDate';
  * ```
  */
 export function isLastDayOfYear(date: Date | string | number): boolean {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   return safeDate.getMonth() === 11 && safeDate.getDate() === 31;
 }

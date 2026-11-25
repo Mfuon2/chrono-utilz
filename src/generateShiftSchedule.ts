@@ -1,6 +1,6 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { addTime } from './addTime';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Manages shift schedules and rotations
@@ -43,7 +43,7 @@ export function generateShiftSchedule(
     )
       throw new ChronoUtilzError('Invalid shift pattern');
 
-  const safeStartDate = parseDate(startDate, { throwError: true });
+  const safeStartDate = readDate(startDate);
 
   const schedule: Array<{
     date: Date;

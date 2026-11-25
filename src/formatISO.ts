@@ -1,11 +1,11 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** UTC ISO output. includeTimezone:false removes the Z marker; remaining fields still represent UTC. */
 export function formatISO(
   date: Date | string | number,
   options: { includeTime?: boolean; includeTimezone?: boolean; includeMilliseconds?: boolean } = {},
 ): string {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const { includeTime = true, includeTimezone = true, includeMilliseconds = false } = options;
 

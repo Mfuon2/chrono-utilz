@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Copies the time portion (hours, minutes, seconds, milliseconds) from one date to another
@@ -7,8 +7,8 @@ import { parseDate } from './parseDate';
  * @returns A new Date with the date from toDate and time from fromDate
  */
 export function copyTime(fromDate: Date | string | number, toDate: Date | string | number): Date {
-  const safeFromDate = parseDate(fromDate, { throwError: true });
-  const safeToDate = parseDate(toDate, { throwError: true });
+  const safeFromDate = readDate(fromDate);
+  const safeToDate = readDate(toDate);
 
   const result = new Date(safeToDate.getTime());
   result.setHours(

@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Checks if the given date is the last day of the month
@@ -13,7 +13,7 @@ import { parseDate } from './parseDate';
  * ```
  */
 export function isLastDayOfMonth(date: Date | string | number): boolean {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const nextDay = new Date(safeDate);
   nextDay.setDate(safeDate.getDate() + 1);

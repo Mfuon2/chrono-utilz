@@ -1,6 +1,4 @@
-import { TIMEZONE_IDS } from './timezones';
-
 /**
- * IANA Timezone identifiers - Complete standardized list
+ * IANA Timezone identifier, such as 'Africa/Nairobi'. listTimezones() returns the bundled catalog.
  */
-export type IANATimezone = (typeof TIMEZONE_IDS)[number] | string;
+export type IANATimezone = string;

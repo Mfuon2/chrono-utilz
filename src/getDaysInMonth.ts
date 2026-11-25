@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the number of days in a month
@@ -6,7 +6,7 @@ import { parseDate } from './parseDate';
  * @returns The number of days in the month
  */
 export function getDaysInMonth(date: Date | string | number): number {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const end = new Date(safeDate);
   end.setMonth(end.getMonth() + 1, 0);

@@ -5,7 +5,7 @@ import { WorkingTimeConfig } from './WorkingTimeConfig';
 import { addTime } from './addTime';
 import { createDate } from './createDate';
 import { isConfiguredHoliday } from './isConfiguredHoliday';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { validateWorkingConfig } from './validateWorkingConfig';
 
 /**
@@ -23,7 +23,7 @@ export function calculateProjectMilestones(
   validateWorkingConfig(config);
   if (!tasks.every((n) => Number.isSafeInteger(n) && n >= 0))
     throw new ChronoUtilzError('Task durations must be nonnegative integers');
-  let current = parseDate(startDate, { throwError: true })!;
+  let current = readDate(startDate);
   const milestones = [new Date(current)];
   for (const days of tasks) {
     let remaining = days;

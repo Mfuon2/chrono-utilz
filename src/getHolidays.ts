@@ -1,4 +1,4 @@
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { holidayRules } from './holidayRules';
 
@@ -20,7 +20,7 @@ export function getHolidays(year: number, country = 'US'): Date[] {
       // Fixed date format: MM-DD
       if (!/^\d{2}-\d{2}$/.test(rule.date))
         throw new ChronoUtilzError('Fixed holidays must use MM-DD');
-      const parsed = parseDate(String(year) + '-' + rule.date, { throwError: true })!;
+      const parsed = readDate(String(year) + '-' + rule.date);
       holidays.push(parsed);
     } else if (typeof rule.date === 'function') {
       // Floating date calculation

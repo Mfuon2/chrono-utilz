@@ -1,6 +1,6 @@
 import { localCalendarDate } from './zone';
 import { MonthBoundaries } from './MonthBoundaries';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Gets the start and end dates of the month containing the given date
@@ -17,7 +17,7 @@ import { parseDate } from './parseDate';
  * ```
  */
 export function getMonthBoundaries(date: Date | string | number): MonthBoundaries {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const start = localCalendarDate(safeDate.getFullYear(), safeDate.getMonth(), 1);
   start.setHours(0, 0, 0, 0);

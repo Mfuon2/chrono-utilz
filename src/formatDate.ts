@@ -3,7 +3,7 @@ import { ChronoUtilzError } from './ChronoUtilzError';
 import { DateFormat } from './DateFormat';
 import { IANATimezone } from './IANATimezone';
 import { getEffectiveTimezone } from './getEffectiveTimezone';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /** The eight DateFormat patterns only. Displays an instant in the explicit or globally effective timezone. Strings are parsed first; configureTimezone does not change parsing of offset-free strings. */
 export function formatDate(
@@ -12,7 +12,7 @@ export function formatDate(
   timezone?: IANATimezone,
 ): string {
   const targetTimezone = getEffectiveTimezone(timezone);
-  const safeDate = zonedWallDate(parseDate(date, { throwError: true })!, targetTimezone);
+  const safeDate = zonedWallDate(readDate(date), targetTimezone);
   if (!safeDate) {
     throw new ChronoUtilzError('Invalid date provided to formatDate');
   }

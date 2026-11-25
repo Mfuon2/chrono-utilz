@@ -1,6 +1,6 @@
 import { ChronoUtilzError } from './ChronoUtilzError';
 import { TimeUnit } from './TimeUnit';
-import { parseDate } from './parseDate';
+import { readDate } from './readDate';
 
 /**
  * Rounds a date to the nearest specified unit
@@ -12,7 +12,7 @@ export function roundToNearest(
   date: Date | string | number,
   unit: Extract<TimeUnit, 'minute' | 'hour' | 'day'>,
 ): Date {
-  const safeDate = parseDate(date, { throwError: true });
+  const safeDate = readDate(date);
 
   const result = new Date(safeDate.getTime());
 
